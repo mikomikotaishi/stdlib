@@ -42,3 +42,25 @@ Disabled by default - enabled when `STDLIB_EXTENSIONS` is enabled.
 > **NOTE:** Some parts of this library may be third-party or re-exports of existing libraries, and thus not entirely original code. Code that originates from third party will be adequately attributed, but if there are any issues or concerns, please do not hesitate to contact me.
 Some third-party libraries used here include:
 * POCO C++ libraries
+
+## Example
+```cpp
+import std;
+import stdx;
+
+using std::collections::Vector;
+using stdx::linq::Query;
+
+int main(int argc, char* argv[]) {
+    Vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    // Create a Query from the vector
+    int result = Query<Vector<int>>::from(numbers)
+        .where([](int x) -> bool { return x % 2 == 1; })
+        .select([](int x) -> int { return x * x; })
+        .order_by([](int x) -> int { return -x; })
+        .first();
+
+    std::io::println("The largest squared odd number in this list is {}", result);
+}
+```
