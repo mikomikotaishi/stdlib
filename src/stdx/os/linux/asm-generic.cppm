@@ -1,7 +1,3 @@
-#if defined(__GNUC__) || defined(__clang__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcomment"
-#endif
 /**
  * @file asm-generic.cppm
  * @module stdx.os.linux.asmgeneric
@@ -10,9 +6,6 @@
  * This file contains the implementation of the Unix asm-generic operations from the POSIX libraries,
  * located in all <asm-generic/*.h> files.
  */
-#if defined(__GNUC__) || defined(__clang__)
-#pragma GCC diagnostic pop
-#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.asmgeneric;
