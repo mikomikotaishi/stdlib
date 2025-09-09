@@ -127,5 +127,5 @@ export namespace stdlibx::os::win32 {
     constexpr unsigned long SYMOPT_DISABLE_SYMSRV_AUTODETECT = 0x02000000;
     constexpr unsigned long SYMOPT_DEBUG = 0x80000000;
 
-     constexpr int MAXIMUM_SUPPORTED_EXTENSION = 512;
+    constexpr int MAXIMUM_SUPPORTED_EXTENSION = 512;
 }

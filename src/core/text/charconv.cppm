@@ -23,7 +23,7 @@ module;
 
 #define FROM_CHARS_TYPE(Type) \
     [[nodiscard]] \
-    FromCharsResult from_chars(const char* first, const char* last, Type& value, CharsFormat fmt = CharsFormat::General) { \
+    FromCharsResult from_chars(const char* first, const char* last, Type& value, CharsFormat fmt = CharsFormat::GENERAL) { \
         return std::from_chars(first, last, value, static_cast<std::chars_format>(fmt)); \
     }
 
@@ -35,10 +35,10 @@ export module core.text.charconv;
  */
 export namespace core::text {
     enum class CharsFormat {
-        Scientific = static_cast<int>(std::chars_format::scientific),
-        Fixed = static_cast<int>(std::chars_format::fixed),
-        Hex = static_cast<int>(std::chars_format::hex),
-        General = static_cast<int>(std::chars_format::general)
+        SCIENTIFIC = static_cast<int>(std::chars_format::scientific),
+        FIXED = static_cast<int>(std::chars_format::fixed),
+        HEX = static_cast<int>(std::chars_format::hex),
+        GENERAL = static_cast<int>(std::chars_format::general)
     };
 
     [[nodiscard]]

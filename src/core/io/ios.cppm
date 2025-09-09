@@ -38,7 +38,7 @@ export namespace core::io {
     using FilePosition = std::fpos<StateT>;
 
     enum class IOErrc {
-        Stream = static_cast<int>(std::io_errc::stream)
+        STREAM = static_cast<int>(std::io_errc::stream)
     };
 
     template <typename T>

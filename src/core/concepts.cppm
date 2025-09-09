@@ -13,7 +13,7 @@ module;
 #include "Macros.hpp"
 
 export module core.concepts;
- 
+
 /**
  * @namespace core
  * @brief Wrapper namespace for the core objects of the standard library.

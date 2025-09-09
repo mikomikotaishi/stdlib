@@ -46,8 +46,8 @@ export namespace stdlibx::os::linux::sys {
     };
 
     enum class CapValue_t {
-        CLEAR=0, ///< The flag is cleared/disabled
-        SET=1 ///< The flag is set/enabled
+        CLEAR = 0, ///< The flag is cleared/disabled
+        SET = 1 ///< The flag is set/enabled
     };
 
     using CapIAB_s = ::cap_iab_s;
@@ -76,8 +76,8 @@ export namespace stdlibx::os::linux::sys {
     };
 
     enum class CapFlagValue {
-        CLEAR=0, ///< The flag is cleared/disabled
-        SET=1 ///< The flag is set/enabled
+        CLEAR = 0, ///< The flag is cleared/disabled
+        SET = 1 ///< The flag is set/enabled
     };
 
     using CapabilityIABStruct = ::cap_iab_s;

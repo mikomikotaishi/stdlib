@@ -24,8 +24,8 @@ export module core.contracts;
 export namespace core {
     #ifdef STDLIB_EXPERIMENTAL_STD
     enum class ContractViolationContinuationMode {
-        NeverContinue = static_cast<int>(std::experimental::contract_violation_continuation_mode::never_continue),
-        MaybeContinue = static_cast<int>(std::experimental::contract_violation_continuation_mode::maybe_continue)
+        NEVER_CONTINUE = static_cast<int>(std::experimental::contract_violation_continuation_mode::never_continue),
+        MAYBE_CONTINUE = static_cast<int>(std::experimental::contract_violation_continuation_mode::maybe_continue)
     };
 
     using ContractViolation = std::experimental::contract_violation;

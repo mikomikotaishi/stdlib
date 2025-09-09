@@ -45,21 +45,21 @@ export namespace stdlib::concurrent {
     using SharedFuture = ::std::shared_future<T>;
 
     enum class Launch {
-        Async = static_cast<int>(::std::launch::async),
-        Deferred = static_cast<int>(::std::launch::deferred)
+        ASYNC = static_cast<int>(::std::launch::async),
+        DEFERRED = static_cast<int>(::std::launch::deferred)
     };
 
     enum class FutureStatus {
-        Ready = static_cast<int>(::std::future_status::ready),
-        Timeout = static_cast<int>(::std::future_status::timeout),
-        Deferred = static_cast<int>(::std::future_status::deferred)
+        READY = static_cast<int>(::std::future_status::ready),
+        TIMEOUT = static_cast<int>(::std::future_status::timeout),
+        DEFERRED = static_cast<int>(::std::future_status::deferred)
     };
 
     enum class FutureErrc {
-        FutureAlreadyRetrieved = static_cast<int>(::std::future_errc::future_already_retrieved),
-        PromiseAlreadySatisfied = static_cast<int>(::std::future_errc::promise_already_satisfied),
-        NoState = static_cast<int>(::std::future_errc::no_state),
-        BrokenPromise = static_cast<int>(::std::future_errc::broken_promise)
+        FUTURE_ALREADY_RETRIEVED = static_cast<int>(::std::future_errc::future_already_retrieved),
+        PROMISE_ALREADY_SATISFIED = static_cast<int>(::std::future_errc::promise_already_satisfied),
+        NO_STATE = static_cast<int>(::std::future_errc::no_state),
+        BROKEN_PROMISE = static_cast<int>(::std::future_errc::broken_promise)
     };
 
     class FutureException: public ::std::future_error {

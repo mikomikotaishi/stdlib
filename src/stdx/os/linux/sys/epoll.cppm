@@ -30,21 +30,21 @@ export namespace stdlibx::os::linux::sys {
 #endif
     #ifdef __linux__
     enum class EpollEvents : uint32_t {
-        In = 0x001,
-        Pri = 0x002,
-        Out = 0x004,
-        RdNorm = 0x040,
-        RdBand = 0x080,
-        WrNorm = 0x100,
-        WrBand = 0x200,
-        Msg = 0x400,
-        Err = 0x008,
-        Hup = 0x010,
-        RdHup = 0x2000,
-        Exclusive = 1u << 28,
-        Wakeup = 1u << 29,
-        OneShot = 1u << 30,
-        EdgeTriggered = 1u << 31
+        IN = 0x001,
+        PRI = 0x002,
+        OUT = 0x004,
+        RD_NORM = 0x040,
+        RD_BAND = 0x080,
+        WR_NORM = 0x100,
+        WR_BAND = 0x200,
+        MSG = 0x400,
+        ERR = 0x008,
+        HUP = 0x010,
+        RD_HUP = 0x2000,
+        EXCLUSIVE = 1u << 28,
+        WAKEUP = 1u << 29,
+        ONE_SHOT = 1u << 30,
+        EDGE_TRIGGERED = 1u << 31
     };
 
     using EpollData = ::epoll_data;

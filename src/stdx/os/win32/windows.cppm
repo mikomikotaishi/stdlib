@@ -115,6 +115,7 @@ export namespace stdlibx::os::win32 {
     using InterlockedIncrement = ::_InterlockedIncrement;
     using InterlockedCompareExchange = ::_InterlockedCompareExchange;
 
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
     enum class SymTag {
         Null = static_cast<int>(SymTagEnum::SymTagNull),
         Exe = static_cast<int>(SymTagEnum::SymTagExe),
@@ -153,7 +154,48 @@ export namespace stdlibx::os::win32 {
         VectorType = static_cast<int>(SymTagEnum::SymTagVectorType),
         MatrixType = static_cast<int>(SymTagEnum::SymTagMatrixType),
         HLSLType = static_cast<int>(SymTagEnum::SymTagHLSLType)
-     };
+    };
+    #else
+    enum class SymTag {
+        NULL = static_cast<int>(SymTagEnum::SymTagNull),
+        EXE = static_cast<int>(SymTagEnum::SymTagExe),
+        COMPILAND = static_cast<int>(SymTagEnum::SymTagCompiland),
+        COMPILAND_DETAILS = static_cast<int>(SymTagEnum::SymTagCompilandDetails),
+        COMPILAND_ENV = static_cast<int>(SymTagEnum::SymTagCompilandEnv),
+        FUNCTION = static_cast<int>(SymTagEnum::SymTagFunction),
+        BLOCK = static_cast<int>(SymTagEnum::SymTagBlock),
+        DATA = static_cast<int>(SymTagEnum::SymTagData),
+        ANNOTATION = static_cast<int>(SymTagEnum::SymTagAnnotation),
+        LABEL = static_cast<int>(SymTagEnum::SymTagLabel),
+        PUBLIC_SYMBOL = static_cast<int>(SymTagEnum::SymTagPublicSymbol),
+        UDT = static_cast<int>(SymTagEnum::SymTagUDT),
+        ENUM = static_cast<int>(SymTagEnum::SymTagEnum),
+        FUNCTION_TYPE = static_cast<int>(SymTagEnum::SymTagFunctionType),
+        POINTER_TYPE = static_cast<int>(SymTagEnum::SymTagPointerType),
+        ARRAY_TYPE = static_cast<int>(SymTagEnum::SymTagArrayType),
+        BASE_TYPE = static_cast<int>(SymTagEnum::SymTagBaseType),
+        TYPEDEF = static_cast<int>(SymTagEnum::SymTagTypedef),
+        BASE_CLASS = static_cast<int>(SymTagEnum::SymTagBaseClass),
+        FRIEND = static_cast<int>(SymTagEnum::SymTagFriend),
+        FUNCTION_ARG_TYPE = static_cast<int>(SymTagEnum::SymTagFunctionArgType),
+        FUNC_DEBUG_START = static_cast<int>(SymTagEnum::SymTagFuncDebugStart),
+        FUNC_DEBUG_END = static_cast<int>(SymTagEnum::SymTagFuncDebugEnd),
+        USING_NAMESPACE = static_cast<int>(SymTagEnum::SymTagUsingNamespace),
+        VTABLE_SHAPE = static_cast<int>(SymTagEnum::SymTagVTableShape),
+        VTABLE = static_cast<int>(SymTagEnum::SymTagVTable),
+        CUSTOM = static_cast<int>(SymTagEnum::SymTagCustom),
+        THUNK = static_cast<int>(SymTagEnum::SymTagThunk),
+        CUSTOM_TYPE = static_cast<int>(SymTagEnum::SymTagCustomType),
+        MANAGED_TYPE = static_cast<int>(SymTagEnum::SymTagManagedType),
+        DIMENSION = static_cast<int>(SymTagEnum::SymTagDimension),
+        CALL_SITE = static_cast<int>(SymTagEnum::SymTagCallSite),
+        INLINE_SITE = static_cast<int>(SymTagEnum::SymTagInlineSite),
+        BASE_INTERFACE = static_cast<int>(SymTagEnum::SymTagBaseInterface),
+        VECTOR_TYPE = static_cast<int>(SymTagEnum::SymTagVectorType),
+        MATRIX_TYPE = static_cast<int>(SymTagEnum::SymTagMatrixType),
+        HLSL_TYPE = static_cast<int>(SymTagEnum::SymTagHLSLType)
+    };
+    #endif
 
     #ifdef _AMD64_
     using InterlockedExchange64 = ::_InterlockedExchange64;

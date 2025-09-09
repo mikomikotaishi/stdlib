@@ -37,20 +37,20 @@ export namespace stdlibx::os::unix::netinet {
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     enum class TcpCaState {
-        Open = 0,
-        Disorder = 1,
+        OPEN = 0,
+        DISORDER = 1,
         CWR = 2,
-        Recovery = 3,
-        Loss = 4
+        RECOVERY = 3,
+        LOSS = 4
     };
     #endif
 
     enum class TcpCongestionAlgorithmState {
-        Open = 0,
-        Disorder = 1,
+        OPEN = 0,
+        DISORDER = 1,
         CWR = 2,
-        Recovery = 3,
-        Loss = 4
+        RECOVERY = 3,
+        LOSS = 4
     };
 
     using TcpInfo = ::tcp_info;

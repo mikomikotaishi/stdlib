@@ -38,29 +38,29 @@ export namespace stdlib::fs {
     using SpaceInfo = std::filesystem::space_info;
 
     enum class FileType: signed char {
-        None = static_cast<signed char>(std::filesystem::file_type::none),
-        NotFound = static_cast<signed char>(std::filesystem::file_type::not_found),
-        Regular = static_cast<signed char>(std::filesystem::file_type::regular),
-        Directory = static_cast<signed char>(std::filesystem::file_type::directory),
-        Symlink = static_cast<signed char>(std::filesystem::file_type::symlink),
-        Block = static_cast<signed char>(std::filesystem::file_type::block),
-        Character = static_cast<signed char>(std::filesystem::file_type::character),
+        NONE = static_cast<signed char>(std::filesystem::file_type::none),
+        NOT_FOUND = static_cast<signed char>(std::filesystem::file_type::not_found),
+        REGULAR = static_cast<signed char>(std::filesystem::file_type::regular),
+        DIRECTORY = static_cast<signed char>(std::filesystem::file_type::directory),
+        SYMLINK = static_cast<signed char>(std::filesystem::file_type::symlink),
+        BLOCK = static_cast<signed char>(std::filesystem::file_type::block),
+        CHARACTER = static_cast<signed char>(std::filesystem::file_type::character),
         FIFO = static_cast<signed char>(std::filesystem::file_type::fifo),
-        Socket = static_cast<signed char>(std::filesystem::file_type::socket),
-        Unknown = static_cast<signed char>(std::filesystem::file_type::unknown)
+        SOCKET = static_cast<signed char>(std::filesystem::file_type::socket),
+        UNKNOWN = static_cast<signed char>(std::filesystem::file_type::unknown)
     };
 
     enum class CopyOptions: unsigned short {
-        None = static_cast<unsigned short>(std::filesystem::copy_options::none),
-        SkipExisting = static_cast<unsigned short>(std::filesystem::copy_options::skip_existing),
-        OverwriteExisting = static_cast<unsigned short>(std::filesystem::copy_options::overwrite_existing),
-        UpdateExisting = static_cast<unsigned short>(std::filesystem::copy_options::update_existing),
-        Recursive = static_cast<unsigned short>(std::filesystem::copy_options::recursive),
-        CopySymlinks = static_cast<unsigned short>(std::filesystem::copy_options::copy_symlinks),
-        SkipSymlinks = static_cast<unsigned short>(std::filesystem::copy_options::skip_symlinks),
-        DirectoriesOnly = static_cast<unsigned short>(std::filesystem::copy_options::directories_only),
-        CreateSymlinks = static_cast<unsigned short>(std::filesystem::copy_options::create_symlinks),
-        CreateHardLinks = static_cast<unsigned short>(std::filesystem::copy_options::create_hard_links)
+        NONE = static_cast<unsigned short>(std::filesystem::copy_options::none),
+        SKIP_EXISTING = static_cast<unsigned short>(std::filesystem::copy_options::skip_existing),
+        OVERWRITE_EXISTING = static_cast<unsigned short>(std::filesystem::copy_options::overwrite_existing),
+        UPDATE_EXISTING = static_cast<unsigned short>(std::filesystem::copy_options::update_existing),
+        RECURSIVE = static_cast<unsigned short>(std::filesystem::copy_options::recursive),
+        COPY_SYMLINKS = static_cast<unsigned short>(std::filesystem::copy_options::copy_symlinks),
+        SKIP_SYMLINKS = static_cast<unsigned short>(std::filesystem::copy_options::skip_symlinks),
+        DIRECTORIES_ONLY = static_cast<unsigned short>(std::filesystem::copy_options::directories_only),
+        CREATE_SYMLINKS = static_cast<unsigned short>(std::filesystem::copy_options::create_symlinks),
+        CREATE_HARD_LINKS = static_cast<unsigned short>(std::filesystem::copy_options::create_hard_links)
     };
 
     [[nodiscard]]
@@ -118,25 +118,25 @@ export namespace stdlib::fs {
     }
 
     enum class Permissions: unsigned {
-        None = static_cast<unsigned>(std::filesystem::perms::none),
-        OwnerRead = static_cast<unsigned>(std::filesystem::perms::owner_read),
-        OwnerWrite = static_cast<unsigned>(std::filesystem::perms::owner_write),
-        OwnerExec = static_cast<unsigned>(std::filesystem::perms::owner_exec),
-        OwnerAll = static_cast<unsigned>(std::filesystem::perms::owner_all),
-        GroupRead = static_cast<unsigned>(std::filesystem::perms::group_read),
-        GroupWrite = static_cast<unsigned>(std::filesystem::perms::group_write),
-        GroupExec = static_cast<unsigned>(std::filesystem::perms::group_exec),
-        GroupAll = static_cast<unsigned>(std::filesystem::perms::group_all),
-        OthersRead = static_cast<unsigned>(std::filesystem::perms::others_read),
-        OthersWrite = static_cast<unsigned>(std::filesystem::perms::others_write),
-        OthersExec = static_cast<unsigned>(std::filesystem::perms::others_exec),
-        OthersAll = static_cast<unsigned>(std::filesystem::perms::others_all),
-        All = static_cast<unsigned>(std::filesystem::perms::all),
-        SetUID = static_cast<unsigned>(std::filesystem::perms::set_uid),
-        SetGID = static_cast<unsigned>(std::filesystem::perms::set_gid),
-        StickyBit = static_cast<unsigned>(std::filesystem::perms::sticky_bit),
-        Mask = static_cast<unsigned>(std::filesystem::perms::mask),
-        Unknown = static_cast<unsigned>(std::filesystem::perms::unknown)
+        NONE = static_cast<unsigned>(std::filesystem::perms::none),
+        OWNER_READ = static_cast<unsigned>(std::filesystem::perms::owner_read),
+        OWNER_WRITE = static_cast<unsigned>(std::filesystem::perms::owner_write),
+        OWNER_EXEC = static_cast<unsigned>(std::filesystem::perms::owner_exec),
+        OWNER_ALL = static_cast<unsigned>(std::filesystem::perms::owner_all),
+        GROUP_READ = static_cast<unsigned>(std::filesystem::perms::group_read),
+        GROUP_WRITE = static_cast<unsigned>(std::filesystem::perms::group_write),
+        GROUP_EXEC = static_cast<unsigned>(std::filesystem::perms::group_exec),
+        GROUP_ALL = static_cast<unsigned>(std::filesystem::perms::group_all),
+        OTHERS_READ = static_cast<unsigned>(std::filesystem::perms::others_read),
+        OTHERS_WRITE = static_cast<unsigned>(std::filesystem::perms::others_write),
+        OTHERS_EXEC = static_cast<unsigned>(std::filesystem::perms::others_exec),
+        OTHERS_ALL = static_cast<unsigned>(std::filesystem::perms::others_all),
+        ALL = static_cast<unsigned>(std::filesystem::perms::all),
+        SET_UID = static_cast<unsigned>(std::filesystem::perms::set_uid),
+        SET_GID = static_cast<unsigned>(std::filesystem::perms::set_gid),
+        STICKY_BIT = static_cast<unsigned>(std::filesystem::perms::sticky_bit),
+        MASK = static_cast<unsigned>(std::filesystem::perms::mask),
+        UNKNOWN = static_cast<unsigned>(std::filesystem::perms::unknown)
     };
 
     [[nodiscard]]
@@ -194,10 +194,10 @@ export namespace stdlib::fs {
     }
 
     enum class PermissionOptions: unsigned {
-        Replace = static_cast<unsigned>(std::filesystem::perm_options::replace),
-        Add = static_cast<unsigned>(std::filesystem::perm_options::add),
-        Remove = static_cast<unsigned>(std::filesystem::perm_options::remove),
-        NoFollow = static_cast<unsigned>(std::filesystem::perm_options::nofollow)
+        REPLACE = static_cast<unsigned>(std::filesystem::perm_options::replace),
+        ADD = static_cast<unsigned>(std::filesystem::perm_options::add),
+        REMOVE = static_cast<unsigned>(std::filesystem::perm_options::remove),
+        NO_FOLLOW = static_cast<unsigned>(std::filesystem::perm_options::nofollow)
     };
 
     [[nodiscard]]
@@ -261,7 +261,7 @@ export namespace stdlib::fs {
 
     class FileStatus: public std::filesystem::file_status {
     public:
-        explicit FileStatus(FileType ft, Permissions perms = Permissions::Unknown) noexcept:
+        explicit FileStatus(FileType ft, Permissions perms = Permissions::UNKNOWN) noexcept:
             std::filesystem::file_status(static_cast<std::filesystem::file_type>(ft), static_cast<std::filesystem::perms>(perms)) {}
 
         FileType type() const noexcept {
@@ -282,9 +282,9 @@ export namespace stdlib::fs {
     };
 
     enum class DirectoryOptions: unsigned char {
-        None = static_cast<unsigned char>(std::filesystem::directory_options::none),
-        FollowDirectorySymlink = static_cast<unsigned char>(std::filesystem::directory_options::follow_directory_symlink),
-        SkipPermissionDenied = static_cast<unsigned char>(std::filesystem::directory_options::skip_permission_denied)
+        NONE = static_cast<unsigned char>(std::filesystem::directory_options::none),
+        FOLLOW_DIRECTORY_SYMLINK = static_cast<unsigned char>(std::filesystem::directory_options::follow_directory_symlink),
+        SKIP_PERMISSION_DENIED = static_cast<unsigned char>(std::filesystem::directory_options::skip_permission_denied)
     };
 
     [[nodiscard]]
@@ -398,7 +398,7 @@ export namespace stdlib::fs {
         return exists(static_cast<std::filesystem::file_status>(s));
     }
 
-    inline void permissions(const Path& path, Permissions perms, PermissionOptions opts = PermissionOptions::Replace) {
+    inline void permissions(const Path& path, Permissions perms, PermissionOptions opts = PermissionOptions::REPLACE) {
         permissions(path, static_cast<std::filesystem::perms>(perms), static_cast<std::filesystem::perm_options>(opts));
     }
 

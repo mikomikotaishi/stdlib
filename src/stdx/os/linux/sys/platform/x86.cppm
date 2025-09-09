@@ -31,10 +31,10 @@ export namespace stdlibx::os::linux::sys::platform {
     #ifdef __linux__
     using CpuIdFeature = ::cpuid_feature;
     enum class CpuIdRegisterIndex {
-        IndexEAX = static_cast<int>(cpuid_register_index::cpuid_register_index_eax),
-        IndexEBX = static_cast<int>(cpuid_register_index::cpuid_register_index_ebx),
-        IndexECX = static_cast<int>(cpuid_register_index::cpuid_register_index_ecx),
-        IndexEDX = static_cast<int>(cpuid_register_index::cpuid_register_index_edx)
+        INDEX_EAX = static_cast<int>(cpuid_register_index::cpuid_register_index_eax),
+        INDEX_EBX = static_cast<int>(cpuid_register_index::cpuid_register_index_ebx),
+        INDEX_ECX = static_cast<int>(cpuid_register_index::cpuid_register_index_ecx),
+        INDEX_EDX = static_cast<int>(cpuid_register_index::cpuid_register_index_edx)
     };
 
     inline bool x86_cpu_present(unsigned int index) {

@@ -8,8 +8,6 @@
 
 module;
 
-#include <Poco/Crypto/Cipher.h>
-
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.crypto.Cipher;
 #else
@@ -25,5 +23,5 @@ export namespace stdx::crypto {
 #else
 export namespace stdlibx::crypto {
 #endif
-    using Poco::Crypto::Cipher;
+    
 }
