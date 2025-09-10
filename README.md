@@ -49,18 +49,47 @@ import std;
 import stdx;
 
 using std::collections::Vector;
+using std::fs::DirectoryEntry;
+using std::fs::DirectoryIterator;
+using std::fs::Path;
 using stdx::linq::Query;
 
 int main(int argc, char* argv[]) {
-    Vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    Path dir = std::fs::current_path();
 
-    // Create a Query from the vector
-    int result = Query<Vector<int>>::from(numbers)
-        .where([](int x) -> bool { return x % 2 == 1; })
-        .select([](int x) -> int { return x * x; })
-        .order_by([](int x) -> int { return -x; })
-        .first();
+    Vector<DirectoryEntry> files;
+    for (const DirectoryEntry& entry : DirectoryIterator(dir)) {
+        if (std::fs::is_regular_file(entry)) {
+            files.push_back(entry);
+        }
+    }
 
-    std::io::println("The largest squared odd number in this list is {}", result);
+    // Use LINQ-style query to find the largest .txt file
+    DirectoryEntry result = Query<Vector<DirectoryEntry>>::from(files)
+        .where([](const DirectoryEntry& entry) -> bool { return entry.path().extension() == ".txt"; })
+        .order_by([](const DirectoryEntry& entry) -> i64 { return -std::fs::file_size(entry); })
+        .select([](const DirectoryEntry& entry) -> Tuple<Path, u64> { return Tuple{entry.path(), std::fs::file_size(entry)}; })
+        .first_or_default();
+
+    if (result) {
+        const auto& [path, size] = *result;
+        std::io::println("Largest .txt file: {} ({} bytes)", path.string(), size);
+    } else {
+        std::io::println("No .txt files found in directory: {}", dir.string());
+    }
 }
+```
+
+## Build
+This supports building using CMake and XMake.
+
+CMake:
+```sh
+cmake -S . -B build -G Ninja
+cmake --build build
+```
+
+XMake:
+```sh
+xmake
 ```

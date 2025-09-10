@@ -15,5 +15,5 @@ export module stdlibx.linq;
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export import stdx.linq.Query;
 #else
-export import stdx.linq.Query;
+export import stdlibx.linq.Query;
 #endif
