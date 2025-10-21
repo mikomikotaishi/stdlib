@@ -6,6 +6,8 @@
  * This file contains the implementation of the utility operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.util.utility;
 #else

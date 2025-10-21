@@ -6,6 +6,8 @@
  * This file contains the implementation of the unordered map operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.collections.unordered_map;
 #else

@@ -69,10 +69,10 @@ export namespace alloc::mem {
     #endif
 
     template <typename Smart, typename Pointer, typename... Args>
-    using OutputPointer_t = std::out_ptr_t<Smart, Pointer, Args...>;
+    using OutputPointer = std::out_ptr_t<Smart, Pointer, Args...>;
 
     template <typename Smart, typename Pointer, typename... Args>
-    using InOutPointer_t = std::inout_ptr_t<Smart, Pointer, Args...>;
+    using InOutPointer = std::inout_ptr_t<Smart, Pointer, Args...>;
 
     using BadWeakPointerException = std::bad_weak_ptr;
 

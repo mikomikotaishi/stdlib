@@ -6,6 +6,8 @@
  * This file contains the implementation of the bit manipulation operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.math.bit;
 #else
@@ -13,7 +15,7 @@ export module stdlib.math.bit;
 #endif
 
 import core.math.bit;
- 
+
 /**
  * @namespace std::math
  * @brief Wrapper namespace for standard library mathematical operations.

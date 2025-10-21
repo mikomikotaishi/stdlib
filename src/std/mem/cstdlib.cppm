@@ -8,13 +8,13 @@
 
 module;
 
-#include <cstdlib>
-
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.mem.cstdlib;
 #else
 export module stdlib.mem.cstdlib;
 #endif
+
+import alloc.mem.cstdlib;
 
 /**
  * @namespace std::mem
@@ -25,9 +25,9 @@ export namespace std::mem {
 #else 
 export namespace stdlib::mem {
 #endif
-    using std::malloc;
-    using std::aligned_alloc;
-    using std::calloc;
-    using std::realloc;
-    using std::free;
+    using alloc::mem::malloc;
+    using alloc::mem::aligned_alloc;
+    using alloc::mem::calloc;
+    using alloc::mem::realloc;
+    using alloc::mem::free;
 }

@@ -6,6 +6,8 @@
  * This file imports the modules for the mathematics library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.math;
 #else

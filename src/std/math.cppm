@@ -6,6 +6,8 @@
  * This file contains the imports for the mathematical operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.math;
 #else

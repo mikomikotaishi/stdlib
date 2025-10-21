@@ -6,6 +6,8 @@
  * This file imports all the standard library extension modules.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx;
 #else

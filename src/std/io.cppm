@@ -6,6 +6,8 @@
  * This file contains the imports for the input/output operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.io;
 #else

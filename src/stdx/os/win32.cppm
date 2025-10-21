@@ -6,6 +6,8 @@
  * This file contains the implementation of the Windows operations from the Windows API libraries.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.os.win32;
 #else

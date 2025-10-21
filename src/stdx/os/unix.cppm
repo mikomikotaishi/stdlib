@@ -6,6 +6,8 @@
  * This file contains the implementation of the Unix operations from the POSIX libraries.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.os.unix;
 #else

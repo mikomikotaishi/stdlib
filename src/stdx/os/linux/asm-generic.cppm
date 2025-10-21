@@ -7,6 +7,8 @@
  * located in all <asm-generic/*.h> files.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.asmgeneric;
 #else

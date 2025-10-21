@@ -6,6 +6,8 @@
  * This file contains the implementation of the string view operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.text.string.string_view;
 #else

@@ -6,6 +6,8 @@
  * This file contains the implementation of the set operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.collections.set;
 #else

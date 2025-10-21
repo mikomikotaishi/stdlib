@@ -9,13 +9,13 @@
 
 module;
 
-#include <new>
-
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.mem.new_header;
 #else
 export module stdlib.mem.new_header;
 #endif
+
+import alloc.mem.new_header;
 
 /**
  * @namespace std::mem
@@ -27,29 +27,29 @@ export namespace std::mem {
 export namespace stdlib::mem {
 #endif
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
-    using AlignVal_t = std::align_val_t;
-    using AlignValue_t = std::align_val_t;
-    using NoThrow_t = std::nothrow_t;
-    using DestroyingDelete_t = std::destroying_delete_t;
+    using alloc::mem::AlignVal_t;
+    using alloc::mem::AlignValue_t;
+    using alloc::mem::NoThrow_t;
+    using alloc::mem::DestroyingDelete_t;
     #endif
 
-    using AlignValue = std::align_val_t;
-    using NewHandler = std::new_handler;
-    using NoThrow = std::nothrow_t;
-    using DestroyingDelete = std::destroying_delete_t;
+    using alloc::mem::AlignValue;
+    using alloc::mem::NewHandler;
+    using alloc::mem::NoThrow;
+    using alloc::mem::DestroyingDelete;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
-    using BadAllocException = std::bad_alloc;
+    using alloc::mem::BadAllocException;
     #endif
 
-    inline constexpr std::size_t HARDWARE_CONSTRUCTIVE_INTERFERENCE_SIZE = std::hardware_constructive_interference_size;
-    inline constexpr std::size_t HARDWARE_DESTRUCTIVE_INTERFERENCE_SIZE = std::hardware_destructive_interference_size;
+    using alloc::mem::HARDWARE_CONSTRUCTIVE_INTERFERENCE_SIZE;
+    using alloc::mem::HARDWARE_DESTRUCTIVE_INTERFERENCE_SIZE;
 
-    using BadAllocationException = std::bad_alloc;
-    using BadArrayNewLengthException = std::bad_array_new_length;
+    using alloc::mem::BadAllocationException;
+    using alloc::mem::BadArrayNewLengthException;
 
-    using std::get_new_handler;
-    using std::set_new_handler;
+    using alloc::mem::get_new_handler;
+    using alloc::mem::set_new_handler;
     
-    using std::launder;
+    using alloc::mem::launder;
 }

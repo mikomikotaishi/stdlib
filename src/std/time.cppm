@@ -6,6 +6,8 @@
  * This file contains the imports for the time operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.time;
 #else

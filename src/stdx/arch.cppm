@@ -6,6 +6,8 @@
  * This file contains the imports for the architecture-specific intrinsic operations.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.arch;
 #else

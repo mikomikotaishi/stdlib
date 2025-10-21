@@ -6,6 +6,8 @@
  * This file contains the implementation of the C-style algorithm operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.util.cstdlib;
 #else

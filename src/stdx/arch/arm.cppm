@@ -6,6 +6,8 @@
  * This file contains the implementation of all arm header modules
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.arch.arm;
 #else

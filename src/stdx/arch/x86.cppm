@@ -6,6 +6,8 @@
  * This file contains the implementation of all x86 header modules
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.arch.x86;
 #else

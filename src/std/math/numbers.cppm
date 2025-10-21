@@ -6,6 +6,8 @@
  * This file contains the implementation of the mathematical constants in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.math.numbers;
 #else

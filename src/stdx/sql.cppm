@@ -6,6 +6,8 @@
  * This file imports the modules for the SQL handling library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.sql;
 #else

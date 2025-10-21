@@ -8,13 +8,13 @@
 
 module;
 
-#include <scoped_allocator>
-
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.mem.scoped_allocator;
 #else
 export module stdlib.mem.scoped_allocator;
 #endif
+
+import alloc.mem.scoped_allocator;
 
 /**
  * @namespace std::mem
@@ -25,6 +25,5 @@ export namespace std::mem {
 #else 
 export namespace stdlib::mem {
 #endif
-    template <typename OuterAlloc, typename... InnerAllocs>
-    using ScopedAllocatorAdaptor = std::scoped_allocator_adaptor<OuterAlloc, InnerAllocs...>;
+    using alloc::mem::ScopedAllocatorAdaptor;
 }

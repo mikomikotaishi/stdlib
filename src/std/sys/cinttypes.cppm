@@ -6,6 +6,8 @@
  * This file contains the implementation of the constants of the C-style integer formatting constant operations in the standard library.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.sys.cinttypes;
 #else

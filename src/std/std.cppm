@@ -6,6 +6,8 @@
  * This file imports all the standard library modules.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std;
 #else

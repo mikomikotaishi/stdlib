@@ -6,6 +6,8 @@
  * This file contains the implementation of the CommandEnvs class, which is used to
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.process.CommandEnvs;
 

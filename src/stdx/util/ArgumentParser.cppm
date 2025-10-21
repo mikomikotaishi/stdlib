@@ -7,6 +7,8 @@
  * the actual argument parser.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.util.ArgumentParser;
 

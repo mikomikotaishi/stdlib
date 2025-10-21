@@ -7,6 +7,8 @@
  * located in all <net/*.h> files.
  */
 
+module;
+
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.net;
 #else

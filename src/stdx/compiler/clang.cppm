@@ -1,7 +1,3 @@
-#if defined(__GNUC__) || defined(__clang__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wcomment"
-#endif
 /**
  * @file clang.cppm
  * @module stdx.compiler.clang
@@ -10,9 +6,8 @@
  * This file contains the imports for the Clang operations,
  * located in all <clang/*.h> files.
  */
-#if defined(__GNUC__) || defined(__clang__)
-#pragma GCC diagnostic pop
-#endif
+
+module;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.compiler.clang;
