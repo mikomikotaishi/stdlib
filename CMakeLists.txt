@@ -198,3 +198,9 @@ if(COMMAND configure_cpp_module_target)
 endif()
 
 add_library(stdlib::stdlib ALIAS stdlib)
+
+if(STDLIB_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+

@@ -8,9 +8,7 @@
 
 module;
 
-#define reference Reference
 #include <bitset>
-#undef reference
 
 export module core.collections.bitset;
 
