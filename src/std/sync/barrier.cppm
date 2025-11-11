@@ -25,6 +25,12 @@ export namespace std::sync {
 #else 
 export namespace stdlib::sync {
 #endif
-    template <typename CompletionFunction>
+    struct EmptyCompletion {
+        void operator()() noexcept {
+
+        }
+    };
+
+    template <typename CompletionFunction = EmptyCompletion>
     using Barrier = std::barrier<CompletionFunction>;
 }
