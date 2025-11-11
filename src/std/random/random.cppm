@@ -76,13 +76,15 @@ export namespace stdlib::random {
     using Ranlux24 = std::ranlux24;
     using Ranlux48 = std::ranlux48;
     using KnuthB = std::knuth_b;
+    using MersenneTwister19937 = std::mt19937;
+    using MersenneTwister19937_64 = std::mt19937_64;
     #endif
 
     // Predefined Generators
-    using MinimalStandardRand0 = std::minstd_rand0;
-    using MinimalStandardRand = std::minstd_rand;
-    using MersenneTwister19937 = std::mt19937;
-    using MersenneTwister19937_64 = std::mt19937_64;
+    using MinimalStandardRandom0 = std::minstd_rand0;
+    using MinimalStandardRandom = std::minstd_rand;
+    using MersenneTwister = std::mt19937;
+    using MersenneTwister64 = std::mt19937_64;
     using Ranlux24BaseEngine = std::ranlux24_base;
     using Ranlux48BaseEngine = std::ranlux48_base;
     using Ranlux24Engine = std::ranlux24;
