@@ -42,10 +42,10 @@ export namespace stdlib::math {
         using RANDOM::SubtractWithCarryEngine;
         using RANDOM::DiscardBlockEngine;
         using RANDOM::ShuffleOrderEngine;
-        using RANDOM::MinimalStandardRand0;
-        using RANDOM::MinimalStandardRand;
-        using RANDOM::MersenneTwister19937;
-        using RANDOM::MersenneTwister19937_64;
+        using RANDOM::MinimalStandardRandom0;
+        using RANDOM::MinimalStandardRandom;
+        using RANDOM::MersenneTwister;
+        using RANDOM::MersenneTwister64;
         using RANDOM::Ranlux24BaseEngine;
         using RANDOM::Ranlux48BaseEngine;
         using RANDOM::Ranlux24Engine;
@@ -80,6 +80,8 @@ export namespace stdlib::math {
         using RANDOM::MinStdRand;
         using RANDOM::Mt19937;
         using RANDOM::Mt19937_64;
+        using RANDOM::MersenneTwister19937;
+        using RANDOM::MersenneTwister19937_64;
         using RANDOM::Ranlux24Base;
         using RANDOM::Ranlux48Base;
         using RANDOM::Ranlux24;
