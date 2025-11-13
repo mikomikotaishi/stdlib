@@ -1,9 +1,9 @@
 /**
  * @file cstddef.cppm
  * @module std.core.cstddef
- * @brief Module file for importing the byte type from the standard library.
+ * @brief Module file for importing various aliases from the standard library.
  * 
- * This file exports the byte type in the standard library.
+ * This file exports various aliases in the standard library.
  */
 
 module;
@@ -107,11 +107,15 @@ export namespace stdlib::core {
     using ::core::LongDiv_t;
     using ::core::LongLongDiv_t;
     using ::core::IntegerMaxDiv_t;
+    using ::core::MaxAlign;
+    using ::core::MaxAlign_t;
+    using ::core::MaximumAlignment_t;
     #endif
     using ::core::Div;
     using ::core::LongDiv;
     using ::core::LongLongDiv;
     using ::core::IntegerMaxDiv;
+    using ::core::MaximumAlignment;
 
     using ::core::EXIT_SUCCESS;
     using ::core::EXIT_FAILURE;

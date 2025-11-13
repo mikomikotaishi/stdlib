@@ -1,9 +1,9 @@
 /**
  * @file cstddef.cppm
  * @module core.cstddef
- * @brief Module file for importing the byte type from the standard library.
+ * @brief Module file for importing various aliases from the standard library.
  * 
- * This file exports the byte type in the standard library.
+ * This file exports various aliases in the standard library.
  */
 
 module;
@@ -13,10 +13,7 @@ module;
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
-
-#ifdef __GNUC__
 #include <stdfloat>
-#endif
 
 #include "Macros.hpp"
 
@@ -131,11 +128,15 @@ export namespace core {
     using LongDiv_t = std::ldiv_t;
     using LongLongDiv_t = std::lldiv_t;
     using IntegerMaxDiv_t = std::imaxdiv_t;
+    using MaxAlign = std::max_align_t;
+    using MaxAlign_t = std::max_align_t;
+    using MaximumAlignment_t = std::max_align_t;
     #endif
     using Div = std::div_t;
     using LongDiv = std::ldiv_t;
     using LongLongDiv = std::lldiv_t;
     using IntegerMaxDiv = std::imaxdiv_t;
+    using MaximumAlignment = std::max_align_t;
 
     constexpr auto EXIT_SUCCESS = _detail::core::ExitSuccess;
     constexpr auto EXIT_FAILURE = _detail::core::ExitFailure;
