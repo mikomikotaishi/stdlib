@@ -29,9 +29,12 @@ export namespace alloc::mem {
     template <typename Ptr, typename Alloc>
     using UsesAllocator = std::uses_allocator<Ptr, Alloc>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename T>
-    using UniquePtr = std::unique_ptr<T>;
+    using DefaultDelete = std::default_delete<T>;
+
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    template <typename T, typename Deleter = DefaultDelete<T>>
+    using UniquePtr = std::unique_ptr<T, Deleter>;
 
     template <typename T>
     using SharedPtr = std::shared_ptr<T>;
@@ -40,8 +43,8 @@ export namespace alloc::mem {
     using WeakPtr = std::weak_ptr<T>;
     #endif
 
-    template <typename T>
-    using UniquePointer = std::unique_ptr<T>;
+    template <typename T, typename Deleter = DefaultDelete<T>>
+    using UniquePointer = std::unique_ptr<T, Deleter>;
 
     template <typename T>
     using SharedPointer = std::shared_ptr<T>;
@@ -54,9 +57,6 @@ export namespace alloc::mem {
 
     template <typename T>
     using EnableSharedFromThis = std::enable_shared_from_this<T>;
-
-    template <typename T>
-    using DefaultDelete = std::default_delete<T>;
 
     using std::hash;
 
