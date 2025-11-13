@@ -46,7 +46,7 @@ public:
      * @brief Constructor that initialises the exception with a message.
      * @param msg The exception message.
      */
-    explicit InvalidOperationException(const String& msg):
+    explicit InvalidOperationException(const String& msg = ""):
         RuntimeException(msg) {}
 };
 

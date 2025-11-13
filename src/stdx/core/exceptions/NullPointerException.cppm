@@ -50,7 +50,7 @@ public:
      * @brief Constructor that initialises the exception with a message.
      * @param msg The exception message.
      */
-    explicit NullPointerException(const String& msg):
+    explicit NullPointerException(const String& msg = ""):
         InvalidArgumentException(msg) {}
 };
 

@@ -49,7 +49,7 @@ public:
      * @brief Constructor that initialises the exception with a message.
      * @param msg The exception message.
      */
-    explicit NotImplementedException(const String& msg):
+    explicit NotImplementedException(const String& msg = ""):
         UnsupportedOperationException(msg) {}
 };
 

@@ -46,7 +46,7 @@ public:
      * @brief Constructor that initialises the exception with a message.
      * @param msg The exception message.
      */
-    explicit ArithmeticException(const String& msg):
+    explicit ArithmeticException(const String& msg = ""):
         RuntimeException(msg) {}
 };
 
