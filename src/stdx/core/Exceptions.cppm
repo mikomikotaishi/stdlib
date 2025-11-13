@@ -16,5 +16,6 @@ export module stdlibx.core.Exceptions;
 
 export import :ArithmeticException;
 export import :InvalidOperationException;
+export import :NotImplementedException;
 export import :NullPointerException;
 export import :UnsupportedOperationException;
