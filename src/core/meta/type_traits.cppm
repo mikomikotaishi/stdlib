@@ -474,6 +474,9 @@ export namespace core::meta {
     using MakeUnsigned_t = std::make_unsigned_t<T>;
 
     template <typename T>
+    using RemoveExtent_t = std::remove_extent_t<T>;
+
+    template <typename T>
     using RemoveAllExtents_t = std::remove_all_extents_t<T>;
     #endif
 

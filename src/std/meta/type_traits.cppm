@@ -178,6 +178,7 @@ export namespace stdlib::meta {
     using core::meta::AddPointer_t;
     using core::meta::MakeSigned_t;
     using core::meta::MakeUnsigned_t;
+    using core::meta::RemoveExtent_t;
     using core::meta::RemoveAllExtents_t;
     #endif
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
@@ -186,25 +187,40 @@ export namespace stdlib::meta {
     using core::meta::RemoveConstVolatile_t;
     #endif
     using core::meta::RemoveConstVolatile;
+    using core::meta::RemoveConstVolatileType;
     using core::meta::RemoveConst;
+    using core::meta::RemoveConstType;
     using core::meta::RemoveVolatile;
+    using core::meta::RemoveVolatileType;
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using core::meta::AddCV;
     using core::meta::AddCV_t;
     using core::meta::AddConstVolatile_t;
     #endif
     using core::meta::AddConstVolatile;
+    using core::meta::AddConstVolatileType;
     using core::meta::AddConst;
+    using core::meta::AddConstType;
     using core::meta::AddVolatile;
+    using core::meta::AddVolatileType;
     using core::meta::RemoveReference;
+    using core::meta::RemoveReferenceType;
     using core::meta::AddLvalueReference;
+    using core::meta::AddLvalueReferenceType;
     using core::meta::AddRvalueReference;
+    using core::meta::AddRvalueReferenceType;
     using core::meta::RemovePointer;
+    using core::meta::RemovePointerType;
     using core::meta::AddPointer;
+    using core::meta::AddPointerType;
     using core::meta::MakeSigned;
+    using core::meta::MakeSignedType;
     using core::meta::MakeUnsigned;
+    using core::meta::MakeUnsignedType;
     using core::meta::RemoveExtent;
+    using core::meta::RemoveExtentType;
     using core::meta::RemoveAllExtents;
+    using core::meta::RemoveAllExtentsType;
     using core::meta::Decay;
     using core::meta::DecayType;
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
