@@ -30,6 +30,10 @@ export namespace stdlib::core {
     using ::core::Tuple;
     using ::core::TupleSize;
     using ::core::TupleElement;
+    using ::core::TupleElementType;
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    using ::core::TupleElement_t;
+    #endif
 
     using ::core::operator==;
     using ::core::operator<=>;
