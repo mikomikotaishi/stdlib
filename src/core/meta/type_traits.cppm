@@ -379,8 +379,8 @@ export namespace core::meta {
     template <typename T>
     using Rank = std::rank<T>;
 
-    template <typename T>
-    using Extent = std::extent<T>;
+    template <typename T, unsigned int Index = 0>
+    using Extent = std::extent<T, Index>;
 
     template <typename T, typename U>
     using IsSame = std::is_same<T, U>;
@@ -444,58 +444,150 @@ export namespace core::meta {
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename T>
+    using RemoveConst_t = std::remove_const_t<T>;
+
+    template <typename T>
+    using RemoveVolatile_t = std::remove_volatile_t<T>;
+
+    template <typename T>
+    using AddConst_t = std::add_const_t<T>;
+
+    template <typename T>
+    using AddVolatile_t = std::add_volatile_t<T>;
+
+    template <typename T>
+    using RemoveReference_t = std::remove_reference_t<T>;
+
+    template <typename T>
+    using AddLvalueReference_t = std::add_lvalue_reference_t<T>;
+
+    template <typename T>
+    using AddRvalueReference_t = std::add_rvalue_reference_t<T>;
+
+    template <typename T>
+    using AddPointer_t = std::add_pointer_t<T>;
+
+    template <typename T>
+    using MakeSigned_t = std::make_signed_t<T>;
+
+    template <typename T>
+    using MakeUnsigned_t = std::make_unsigned_t<T>;
+
+    template <typename T>
+    using RemoveAllExtents_t = std::remove_all_extents_t<T>;
+    #endif
+
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    template <typename T>
     using RemoveCV = std::remove_cv<T>;
+
+    template <typename T>
+    using RemoveCV_t = std::remove_cv_t<T>;
+
+    template <typename T>
+    using RemoveConstVolatile_t = std::remove_cv_t<T>;
     #endif
 
     template <typename T>
     using RemoveConstVolatile = std::remove_cv<T>;
 
     template <typename T>
+    using RemoveConstVolatileType = std::remove_cv_t<T>;
+
+    template <typename T>
     using RemoveConst = std::remove_const<T>;
+
+    template <typename T>
+    using RemoveConstType = std::remove_const_t<T>;
 
     template <typename T>
     using RemoveVolatile = std::remove_volatile<T>;
 
+    template <typename T>
+    using RemoveVolatileType = std::remove_volatile_t<T>;
+
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename T>
     using AddCV = std::add_cv<T>;
+
+    template <typename T>
+    using AddCV_t = std::add_cv_t<T>;
+
+    template <typename T>
+    using AddConstVolatile_t = std::add_cv_t<T>;
     #endif
 
     template <typename T>
     using AddConstVolatile = std::add_cv<T>;
 
     template <typename T>
+    using AddConstVolatileType = std::add_cv_t<T>;
+
+    template <typename T>
     using AddConst = std::add_const<T>;
+
+    template <typename T>
+    using AddConstType = std::add_const_t<T>;
 
     template <typename T>
     using AddVolatile = std::add_volatile<T>;
 
     template <typename T>
+    using AddVolatileType = std::add_volatile_t<T>;
+
+    template <typename T>
     using RemoveReference = std::remove_reference<T>;
+
+    template <typename T>
+    using RemoveReferenceType = std::remove_reference_t<T>;
 
     template <typename T>
     using AddLvalueReference = std::add_lvalue_reference<T>;
 
     template <typename T>
+    using AddLvalueReferenceType = std::add_lvalue_reference_t<T>;
+
+    template <typename T>
     using AddRvalueReference = std::add_rvalue_reference<T>;
+
+    template <typename T>
+    using AddRvalueReferenceType = std::add_lvalue_reference_t<T>;
 
     template <typename T>
     using RemovePointer = std::remove_pointer<T>;
 
     template <typename T>
+    using RemovePointerType = std::remove_pointer_t<T>;
+
+    template <typename T>
     using AddPointer = std::add_pointer<T>;
+
+    template <typename T>
+    using AddPointerType = std::add_pointer_t<T>;
 
     template <typename T>
     using MakeSigned = std::make_signed<T>;
 
     template <typename T>
+    using MakeSignedType = std::make_signed_t<T>;
+
+    template <typename T>
     using MakeUnsigned = std::make_unsigned<T>;
+
+    template <typename T>
+    using MakeUnsignedType = std::make_unsigned_t<T>;
 
     template <typename T>
     using RemoveExtent = std::remove_extent<T>;
 
     template <typename T>
+    using RemoveExtentType = std::remove_extent_t<T>;
+
+    template <typename T>
     using RemoveAllExtents = std::remove_all_extents<T>;
+
+    template <typename T>
+    using RemoveAllExtentsType = std::remove_all_extents_t<T>;
 
     template <typename T>
     using Decay = std::decay<T>;

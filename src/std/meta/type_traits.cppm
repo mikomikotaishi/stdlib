@@ -168,13 +168,30 @@ export namespace stdlib::meta {
     using core::meta::IsNothrowInvocableReturn;
     using core::meta::IsNothrowInvocableReturnValue;
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    using core::meta::RemoveConst_t;
+    using core::meta::RemoveVolatile_t;
+    using core::meta::AddConst_t;
+    using core::meta::AddVolatile_t;
+    using core::meta::RemoveReference_t;
+    using core::meta::AddLvalueReference_t;
+    using core::meta::AddRvalueReference_t;
+    using core::meta::AddPointer_t;
+    using core::meta::MakeSigned_t;
+    using core::meta::MakeUnsigned_t;
+    using core::meta::RemoveAllExtents_t;
+    #endif
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using core::meta::RemoveCV;
+    using core::meta::RemoveCV_t;
+    using core::meta::RemoveConstVolatile_t;
     #endif
     using core::meta::RemoveConstVolatile;
     using core::meta::RemoveConst;
     using core::meta::RemoveVolatile;
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using core::meta::AddCV;
+    using core::meta::AddCV_t;
+    using core::meta::AddConstVolatile_t;
     #endif
     using core::meta::AddConstVolatile;
     using core::meta::AddConst;
