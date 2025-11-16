@@ -29,6 +29,7 @@ export namespace stdlib::core {
 #endif
     using ::core::Tuple;
     using ::core::TupleSize;
+    using ::core::TupleSizeValue;
     using ::core::TupleElement;
     using ::core::TupleElementType;
     #ifdef STDLIB_ENABLE_COMPAT_NAMES

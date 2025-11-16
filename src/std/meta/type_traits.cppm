@@ -147,8 +147,11 @@ export namespace stdlib::meta {
     using core::meta::IsNothrowSwappable;
     using core::meta::IsNothrowSwappableValue;
     using core::meta::AlignmentOf;
+    using core::meta::AlignmentOfValue;
     using core::meta::Rank;
+    using core::meta::RankValue;
     using core::meta::Extent;
+    using core::meta::ExtentValue;
     using core::meta::IsSame;
     using core::meta::IsSameValue;
     using core::meta::IsBaseOf;
@@ -248,8 +251,16 @@ export namespace stdlib::meta {
     using core::meta::UnwrapReference;
     using core::meta::UnwrapReferenceType;
     using core::meta::Conjunction;
+    using core::meta::ConjunctionValue;
     using core::meta::Disjunction;
+    using core::meta::DisjunctionValue;
     using core::meta::Negation;
+    using core::meta::NegationValue;
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    using core::meta::Conjunction_v;
+    using core::meta::Disjunction_v;
+    using core::meta::Negation_v;
+    #endif
 
     using core::meta::is_constant_evaluated;
 }

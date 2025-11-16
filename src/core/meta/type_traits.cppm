@@ -377,10 +377,19 @@ export namespace core::meta {
     using AlignmentOf = std::alignment_of<T>;
 
     template <typename T>
+    using AlignmentOfValue = AlignmentOf<T>::value;
+
+    template <typename T>
     using Rank = std::rank<T>;
+
+    template <typename T>
+    using RankValue = Rank<T>::value;
 
     template <typename T, unsigned int Index = 0>
     using Extent = std::extent<T, Index>;
+
+    template <typename T, unsigned int Index = 0>
+    using ExtentValue = Extent<T, Index>::value;
 
     template <typename T, typename U>
     using IsSame = std::is_same<T, U>;
@@ -669,10 +678,30 @@ export namespace core::meta {
     using Conjunction = std::conjunction<Bn>;
 
     template <typename Bn>
+    using ConjunctionValue = Conjunction<Bn>::value;
+
+    template <typename Bn>
     using Disjunction = std::disjunction<Bn>;
 
     template <typename Bn>
+    using DisjunctionValue = Disjunction<Bn>::value;
+
+    template <typename Bn>
     using Negation = std::negation<Bn>;
+
+    template <typename Bn>
+    using NegationValue = Negation<Bn>::value;
+
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    template <typename Bn>
+    using Conjunction_v = Conjunction<Bn>::value;
+
+    template <typename Bn>
+    using Disjunction_v = Disjunction<Bn>::value;
+
+    template <typename Bn>
+    using Negation_v = Negation<Bn>::value;
+    #endif
 
     using std::is_constant_evaluated;
 }
