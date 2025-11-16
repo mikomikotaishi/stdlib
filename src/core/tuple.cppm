@@ -24,7 +24,7 @@ export namespace core {
     using TupleSize = std::tuple_size<T>;
 
     template <typename T>
-    using TupleSizeValue = std::tuple_size<T>::value;
+    constexpr bool TupleSizeValue = std::tuple_size_v<T>;
 
     template <std::size_t I, typename T>
     using TupleElement = std::tuple_element<I, T>;
@@ -34,7 +34,7 @@ export namespace core {
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename T>
-    using TupleSize_v = std::tuple_size<T>::value;
+    constexpr bool TupleSize_v = std::tuple_size_v<T>;
 
     template <std::size_t I, typename T>
     using TupleElement_t = std::tuple_element_t<I, T>;
