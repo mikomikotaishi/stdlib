@@ -43,8 +43,10 @@ export namespace core::util {
 
     inline constexpr PiecewiseConstructTag PiecewiseConstruct = std::piecewise_construct;
     inline constexpr InPlaceTag InPlace = std::in_place;
+
     template <typename T>
     inline constexpr InPlaceTypeTag InPlaceType = std::in_place_type<T>;
+
     template <std::size_t I>
     inline constexpr InPlaceIndexTag InPlaceIndex = std::in_place_index<I>;
 }

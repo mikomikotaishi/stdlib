@@ -27,6 +27,7 @@ export import core.meta;
 export import core.optional;
 export import core.pair;
 export import core.ranges;
+export import core.sequence;
 export import core.span;
 export import core.string_view;
 export import core.sys;
