@@ -377,19 +377,19 @@ export namespace core::meta {
     using AlignmentOf = std::alignment_of<T>;
 
     template <typename T>
-    using AlignmentOfValue = AlignmentOf<T>::value;
+    using AlignmentOfValue = std::alignment_of<T>::value;
 
     template <typename T>
     using Rank = std::rank<T>;
 
     template <typename T>
-    using RankValue = Rank<T>::value;
+    using RankValue = std::rank<T>::value;
 
     template <typename T, unsigned int Index = 0>
     using Extent = std::extent<T, Index>;
 
     template <typename T, unsigned int Index = 0>
-    using ExtentValue = Extent<T, Index>::value;
+    using ExtentValue = std::extent<T, Index>::value;
 
     template <typename T, typename U>
     using IsSame = std::is_same<T, U>;
@@ -678,29 +678,29 @@ export namespace core::meta {
     using Conjunction = std::conjunction<Bn>;
 
     template <typename Bn>
-    using ConjunctionValue = Conjunction<Bn>::value;
+    using ConjunctionValue = std::conjunction<Bn>::value;
 
     template <typename Bn>
     using Disjunction = std::disjunction<Bn>;
 
     template <typename Bn>
-    using DisjunctionValue = Disjunction<Bn>::value;
+    using DisjunctionValue = std::disjunction<Bn>::value;
 
     template <typename Bn>
     using Negation = std::negation<Bn>;
 
     template <typename Bn>
-    using NegationValue = Negation<Bn>::value;
+    using NegationValue = std::negation<Bn>::value;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename Bn>
-    using Conjunction_v = Conjunction<Bn>::value;
+    using Conjunction_v = std::conjunction<Bn>::value;
 
     template <typename Bn>
-    using Disjunction_v = Disjunction<Bn>::value;
+    using Disjunction_v = std::disjunction<Bn>::value;
 
     template <typename Bn>
-    using Negation_v = Negation<Bn>::value;
+    using Negation_v = std::negation<Bn>::value;
     #endif
 
     using std::is_constant_evaluated;
