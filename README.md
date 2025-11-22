@@ -41,7 +41,7 @@ Disabled by default - enabled when `STDLIB_EXTENSIONS` is enabled.
 
 > **NOTE:** Some parts of this library may be third-party or re-exports of existing libraries, and thus not entirely original code. Code that originates from third party will be adequately attributed, but if there are any issues or concerns, please do not hesitate to contact me.
 Some third-party libraries used here include:
-* POCO C++ libraries
+* TinyXML-2
 
 ## Example
 ```cpp

@@ -12,18 +12,14 @@ module;
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.util.ParsedArguments;
 
-import std.core;
-import std.collections.vector;
-import std.collections.unordered_map;
+import std;
 
 using std::collections::HashMap;
 using std::collections::Vector;
 #else
 export module stdlibx.util.ParsedArguments;
 
-import stdlib.core;
-import stdlib.collections.vector;
-import stdlib.collections.unordered_map;
+import stdlib;
 
 using stdlib::collections::HashMap;
 using stdlib::collections::Vector;

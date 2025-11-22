@@ -15,7 +15,9 @@ export module stdlibx.xml;
 #endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-
+export import stdx.xml.Document;
+export import stdx.xml.Node;
 #else
-
+export import stdlibx.xml.Document;
+export import stdlibx.xml.Node;
 #endif

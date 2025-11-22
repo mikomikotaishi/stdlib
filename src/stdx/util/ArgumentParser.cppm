@@ -12,11 +12,11 @@ module;
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.util.ArgumentParser;
 
-import std.core;
+import std;
 #else
 export module stdlibx.util.ArgumentParser;
 
-import stdlib.core;
+import stdlib;
 #endif
 
 /**

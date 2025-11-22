@@ -15,12 +15,7 @@ module;
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.util.Argument;
 
-import std.core;
-import std.collections.vector;
-import std.fmt;
-import std.meta.type_traits;
-import std.ranges;
-import std.text;
+import std;
 
 using std::collections::Vector;
 using std::meta::IsSameValue;
@@ -31,12 +26,7 @@ namespace text = std::text;
 #else
 export module stdlibx.util.Argument;
 
-import stdlib.core;
-import stdlib.collections.vector;
-import stdlib.fmt;
-import stdlib.meta.type_traits;
-import stdlib.ranges;
-import stdlib.text;
+import stdlib;
 
 using stdlib::collections::Vector;
 using stdlib::meta::IsSameValue;

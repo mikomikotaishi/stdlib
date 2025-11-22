@@ -18,20 +18,10 @@ export module stdlibx.linq.Query;
 #endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-import std.core;
-import std.collections;
-import std.mem;
-import std.meta;
-import std.ranges;
-import std.util;
+import std;
 import stdx.core;
 #else
-import stdlib.core;
-import stdlib.collections;
-import stdlib.mem;
-import stdlib.meta;
-import stdlib.ranges;
-import stdlib.util;
+import stdlib;
 import stdlibx.core;
 #endif
 

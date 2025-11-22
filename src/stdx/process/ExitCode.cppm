@@ -11,12 +11,12 @@ module;
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module stdx.process.ExitCode;
 
-import std.core;
+import std;
 import stdx.os;
 #else
 export module stdlibx.process.ExitCode;
 
-import stdlib.core;
+import stdlib;
 import stdlibx.os;
 #endif
 

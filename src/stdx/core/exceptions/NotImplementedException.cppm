@@ -17,9 +17,9 @@ export module stdlibx.core.Exceptions:NotImplementedException;
 #endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-import std.core;
+import std;
 #else
-import stdlib.core;
+import stdlib;
 #endif
 
 import :UnsupportedOperationException;
