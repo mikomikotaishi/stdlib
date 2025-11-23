@@ -1,10 +1,10 @@
 /**
- * @file xml.cppm
- * @module stdx.xml
- * @brief Import of XML modules.
+ * @file StringPair.cppm
+ * @module stdx.xml:StringPair
+ * @brief Implementation of the StringPair class
  *
- * This file imports the modules for the XML handling library.
- * Adapted from TinyXML2 (https://github.com/leethomason/tinyxml2)
+ * This file contains the implementation of the StringPair class.
+ * Adapted from tinyxml2 (https://github.com/leethomason/tinyxml2)
  */
 
 /*
@@ -33,16 +33,14 @@ distribution.
 module;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-export module stdx.xml;
+export module stdx.xml:StringPair;
 
 import std;
 #else
-export module stdlibx.xml;
+export module stdlibx.xml:StringPair;
 
 import stdlib;
 #endif
-
-import :StringPair;
 
 /**
  * @namespace stdx::xml
@@ -54,26 +52,40 @@ export namespace stdx::xml {
 export namespace stdlibx::xml {
 #endif
 
-class Attr;
-class Comment;
-class ConstHandle;
-class Declaration;
-class Document;
-class Element;
-class Handle;
-class Node;
-class Printer;
-class Text;
-class Unknown;
-class Visitor;
-
-class Node {
+class StringPair {
 private:
-    friend class Document;
-    friend class Element;
+    i32 flags = 0;
+    char* start = nullptr;
+    char* end = nullptr;
+
+    void collapse_whitespace();
+
+    enum class Notices: u16 {
+        NEEDS_FLUSH = 0x100,
+        NEEDS_DELETE = 0x200
+    };
+public:
+    enum class Mode {
+        NEEDS_ENTITY_PROCESSING = 0x01,
+        NEEDS_NEWLINE_NORMALIZATION = 0x02,
+        NEEDS_WHITESPACE_COLLAPSING = 0x04,
+        TEXT_ELEMENT = NEEDS_ENTITY_PROCESSING | NEEDS_NEWLINE_NORMALIZATION,
+        TEXT_ELEMENT_LEAVE_ENTITIES = NEEDS_NEWLINE_NORMALIZATION,
+        ATTRIBUTE_NAME = 0,
+        ATTRIBUTE_VALUE = NEEDS_ENTITY_PROCESSING | NEEDS_NEWLINE_NORMALIZATION,
+        ATTRIBUTE_VALUE_LEAVE_ENTITIES = NEEDS_NEWLINE_NORMALIZATION,
+        COMMENT = NEEDS_NEWLINE_NORMALIZATION
+    };
+
+    StringPair() = default;
+
+    ~StringPair() {
+        reset();
+    }
+
+    void reset() {
+
+    }
 };
 
-
-
 }
-

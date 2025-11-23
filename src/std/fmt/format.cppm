@@ -25,6 +25,8 @@ export namespace std::fmt {
 #else 
 export namespace stdlib::fmt {
 #endif
+    using std::formatter;
+
     template <typename T, typename CharT>
     concept Formattable = std::formattable<T, CharT>;
 
