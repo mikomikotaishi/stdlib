@@ -14,8 +14,9 @@ module;
 
 export module core.expected;
 
-import core.meta.type_traits;
-import core.util.utility;
+import core.meta;
+import core.string_view;
+import core.util;
 import core.variant;
 
 using core::meta::DecayType;
@@ -40,23 +41,48 @@ export namespace core {
     template <typename E>
     using BadExpectedAccessException = std::bad_expected_access<E>;
 
+    template <typename E>
+    class Error {
+    private:
+        E err;
+        StringView msg;
+    public:
+        constexpr Error(E err, StringView msg = ""):
+            err{err}, msg{msg} {}
+        constexpr ~Error() = default;
+        constexpr Error(const Error& other) = default;
+        constexpr Error(Error&& other) = default;
+        constexpr Error& operator=(const Error& other) = default;
+        constexpr Error& operator=(Error&& other) = default;
+
+        [[nodiscard]]
+        constexpr E error() const noexcept {
+            return err;
+        }
+
+        [[nodiscard]]
+        constexpr StringView message() const noexcept {
+            return msg;
+        }
+    };
+
     using std::swap;
 
-    template <typename T>
+    template <typename T, typename E = void>
     [[nodiscard]]
-    constexpr Expected<DecayType<T>, void> Ok(T&& value) {
-        return Expected<DecayType<T>, void>{core::util::forward<T>(value)};
+    constexpr Expected<DecayType<T>, E> Ok(T&& value) {
+        return Expected<DecayType<T>, E>(core::util::forward<T>(value));
     }
 
     template <typename E = void>
     [[nodiscard]]
     constexpr Expected<void, E> Ok() {
-        return Expected<void, E>{};
+        return Expected<void, E>();
     }
 
     template <typename E>
     constexpr Unexpected<DecayType<E>> Err(E&& error) {
-        return Unexpected<DecayType<E>>{core::util::forward<E>(error)};
+        return Unexpected<DecayType<E>>(core::util::forward<E>(error));
     }
 }
 
