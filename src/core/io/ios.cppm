@@ -25,6 +25,64 @@ export namespace core::io {
     using IOSBase = std::ios_base;
     using IOS = std::ios;
 
+    enum class OpenMode {
+        APPEND = std::ios::app,
+        BINARY = std::ios::binary,
+        IN = std::ios::in,
+        READ = std::ios::in,
+        OUT = std::ios::out,
+        WRITE = std::ios::out,
+        TRUNCATE = std::ios::trunc,
+        AT_END = std::ios::ate,
+        NO_REPLACE = std::ios::noreplace
+    };
+
+    enum class FormatFlags {
+        DECIMAL = std::ios::dec,
+        OCTAL = std::ios::oct,
+        HEXADECIMAL = std::ios::hex,
+        BASE_FIELD = std::ios::basefield,
+        LEFT = std::ios::left,
+        RIGHT = std::ios::right,
+        INTERNAL = std::ios::internal,
+        ADJUST_FIELD = std::ios::adjustfield,
+        SCIENTIFIC = std::ios::scientific,
+        FIXED = std::ios::fixed,
+        FLOAT_FIELD = std::ios::floatfield,
+        BOOL_ALPHA = std::ios::boolalpha,
+        SHOW_BASE = std::ios::showbase,
+        SHOW_DECIMAL = std::ios::showpoint,
+        SHOW_POLARITY = std::ios::showpos,
+        SKIP_WHITESPACE = std::ios::skipws,
+        UNIT_BUFFER = std::ios::unitbuf,
+        UPPERCASE = std::ios::uppercase
+    };
+
+    enum class IOState {
+        GOOD_BIT = std::ios::goodbit,
+        BAD_BIT = std::ios::badbit,
+        FAIL_BIT = std::ios::failbit,
+        EOF_BIT = std::ios::eofbit,
+        NO_ERROR = std::ios::goodbit,
+        STREAM_ERROR = std::ios::badbit,
+        IO_OPERATION_FAIL = std::ios::failbit,
+        END_OF_FILE = std::ios::eofbit
+    };
+
+    enum class SeekingDirection {
+        BEGINNING = std::ios::beg,
+        ENDING = std::ios::end,
+        CURRENT = std::ios::cur
+    };
+
+    enum class IOEvent {
+        ERASE_EVENT = std::ios::event::erase_event,
+        IMBUE_EVENT = std::ios::event::imbue_event,
+        COPY_FORMAT_EVENT = std::ios::event::copyfmt_event
+    };
+    
+    using IOEventCallback = std::ios::event_callback;
+
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using WIOS = std::wios;
 

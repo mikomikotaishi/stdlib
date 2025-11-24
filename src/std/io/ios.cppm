@@ -34,6 +34,13 @@ export namespace stdlib::io {
     using core::io::IOSBase;
     using core::io::IOS;
 
+    using core::io::OpenMode;
+    using core::io::FormatFlags;
+    using core::io::IOState;
+    using core::io::SeekingDirection;
+    using core::io::IOEvent;
+    using core::io::IOEventCallback;
+
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using core::io::WIOS;
     using core::io::FPos;
