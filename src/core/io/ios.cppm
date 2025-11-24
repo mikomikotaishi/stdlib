@@ -103,6 +103,14 @@ export namespace core::io {
     
     using IOEventCallback = std::ios::event_callback;
 
+    using std::operator&;
+    using std::operator|;
+    using std::operator^;
+    using std::operator~;
+    using std::operator|=;
+    using std::operator&=;
+    using std::operator^=;
+
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using WIOS = std::wios;
 

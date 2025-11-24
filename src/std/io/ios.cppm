@@ -41,6 +41,14 @@ export namespace stdlib::io {
     using core::io::IOEvent;
     using core::io::IOEventCallback;
 
+    using core::io::operator&;
+    using core::io::operator|;
+    using core::io::operator^;
+    using core::io::operator~;
+    using core::io::operator|=;
+    using core::io::operator&=;
+    using core::io::operator^=;
+
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using core::io::WIOS;
     using core::io::FPos;
