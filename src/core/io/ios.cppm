@@ -25,57 +25,77 @@ export namespace core::io {
     using IOSBase = std::ios_base;
     using IOS = std::ios;
 
-    enum OpenMode {
-        APPEND = std::ios::app,
-        BINARY = std::ios::binary,
-        IN = std::ios::in,
-        READ = std::ios::in,
-        OUT = std::ios::out,
-        WRITE = std::ios::out,
-        TRUNCATE = std::ios::trunc,
-        AT_END = std::ios::ate,
-        NO_REPLACE = std::ios::noreplace
+    class OpenMode {
+    private:
+        using InternalOpenMode = std::ios::openmode;
+    public:
+        OpenMode() = delete;
+
+        static constexpr InternalOpenMode APPEND = std::ios::app;
+        static constexpr InternalOpenMode BINARY = std::ios::binary;
+        static constexpr InternalOpenMode IN = std::ios::in;
+        static constexpr InternalOpenMode READ = std::ios::in;
+        static constexpr InternalOpenMode OUT = std::ios::out;
+        static constexpr InternalOpenMode WRITE = std::ios::out;
+        static constexpr InternalOpenMode TRUNCATE = std::ios::trunc;
+        static constexpr InternalOpenMode AT_END = std::ios::ate;
+        static constexpr InternalOpenMode NO_REPLACE = std::ios::noreplace;
     };
 
-    enum FormatFlags {
-        DECIMAL = std::ios::dec,
-        OCTAL = std::ios::oct,
-        HEXADECIMAL = std::ios::hex,
-        BASE_FIELD = std::ios::basefield,
-        LEFT = std::ios::left,
-        RIGHT = std::ios::right,
-        INTERNAL = std::ios::internal,
-        ADJUST_FIELD = std::ios::adjustfield,
-        SCIENTIFIC = std::ios::scientific,
-        FIXED = std::ios::fixed,
-        FLOAT_FIELD = std::ios::floatfield,
-        BOOL_ALPHA = std::ios::boolalpha,
-        SHOW_BASE = std::ios::showbase,
-        SHOW_DECIMAL = std::ios::showpoint,
-        SHOW_POLARITY = std::ios::showpos,
-        SKIP_WHITESPACE = std::ios::skipws,
-        UNIT_BUFFER = std::ios::unitbuf,
-        UPPERCASE = std::ios::uppercase
+    class FormatFlags {
+    private:
+        using InternalFormatFlags = std::ios::fmtflags;
+    public:
+        FormatFlags() = delete;
+
+        static constexpr InternalFormatFlags DECIMAL = std::ios::dec;
+        static constexpr InternalFormatFlags OCTAL = std::ios::oct;
+        static constexpr InternalFormatFlags HEXADECIMAL = std::ios::hex;
+        static constexpr InternalFormatFlags BASE_FIELD = std::ios::basefield;
+        static constexpr InternalFormatFlags LEFT = std::ios::left;
+        static constexpr InternalFormatFlags RIGHT = std::ios::right;
+        static constexpr InternalFormatFlags INTERNAL = std::ios::internal;
+        static constexpr InternalFormatFlags ADJUST_FIELD = std::ios::adjustfield;
+        static constexpr InternalFormatFlags SCIENTIFIC = std::ios::scientific;
+        static constexpr InternalFormatFlags FIXED = std::ios::fixed;
+        static constexpr InternalFormatFlags FLOAT_FIELD = std::ios::floatfield;
+        static constexpr InternalFormatFlags BOOL_ALPHA = std::ios::boolalpha;
+        static constexpr InternalFormatFlags SHOW_BASE = std::ios::showbase;
+        static constexpr InternalFormatFlags SHOW_DECIMAL = std::ios::showpoint;
+        static constexpr InternalFormatFlags SHOW_POLARITY = std::ios::showpos;
+        static constexpr InternalFormatFlags SKIP_WHITESPACE = std::ios::skipws;
+        static constexpr InternalFormatFlags UNIT_BUFFER = std::ios::unitbuf;
+        static constexpr InternalFormatFlags UPPERCASE = std::ios::uppercase;
     };
 
-    enum IOState {
-        GOOD_BIT = std::ios::goodbit,
-        BAD_BIT = std::ios::badbit,
-        FAIL_BIT = std::ios::failbit,
-        EOF_BIT = std::ios::eofbit,
-        NO_ERROR = std::ios::goodbit,
-        STREAM_ERROR = std::ios::badbit,
-        IO_OPERATION_FAIL = std::ios::failbit,
-        END_OF_FILE = std::ios::eofbit
+    class IOState {
+    private:
+        using InternalIOState = std::ios::iostate;
+    public:
+        IOState() = delete;
+
+        static constexpr InternalIOState GOOD_BIT = std::ios::goodbit;
+        static constexpr InternalIOState BAD_BIT = std::ios::badbit;
+        static constexpr InternalIOState FAIL_BIT = std::ios::failbit;
+        static constexpr InternalIOState EOF_BIT = std::ios::eofbit;
+        static constexpr InternalIOState NO_ERROR = std::ios::goodbit;
+        static constexpr InternalIOState STREAM_ERROR = std::ios::badbit;
+        static constexpr InternalIOState IO_OPERATION_FAIL = std::ios::failbit;
+        static constexpr InternalIOState END_OF_FILE = std::ios::eofbit;
     };
 
-    enum SeekingDirection {
-        BEGINNING = std::ios::beg,
-        ENDING = std::ios::end,
-        CURRENT = std::ios::cur
+    class SeekingDirection {
+    private:
+        using InternalSeekingDirection = std::ios::seekdir;
+    public:
+        SeekingDirection() = delete;
+
+        static constexpr InternalSeekingDirection BEGINNING = std::ios::beg;
+        static constexpr InternalSeekingDirection ENDING = std::ios::end;
+        static constexpr InternalSeekingDirection  CURRENT = std::ios::cur;
     };
 
-    enum IOEvent {
+    enum class IOEvent {
         ERASE_EVENT = std::ios::event::erase_event,
         IMBUE_EVENT = std::ios::event::imbue_event,
         COPY_FORMAT_EVENT = std::ios::event::copyfmt_event
