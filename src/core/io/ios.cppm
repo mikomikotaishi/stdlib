@@ -25,7 +25,7 @@ export namespace core::io {
     using IOSBase = std::ios_base;
     using IOS = std::ios;
 
-    enum class OpenMode {
+    enum OpenMode {
         APPEND = std::ios::app,
         BINARY = std::ios::binary,
         IN = std::ios::in,
@@ -37,7 +37,7 @@ export namespace core::io {
         NO_REPLACE = std::ios::noreplace
     };
 
-    enum class FormatFlags {
+    enum FormatFlags {
         DECIMAL = std::ios::dec,
         OCTAL = std::ios::oct,
         HEXADECIMAL = std::ios::hex,
@@ -58,7 +58,7 @@ export namespace core::io {
         UPPERCASE = std::ios::uppercase
     };
 
-    enum class IOState {
+    enum IOState {
         GOOD_BIT = std::ios::goodbit,
         BAD_BIT = std::ios::badbit,
         FAIL_BIT = std::ios::failbit,
@@ -69,13 +69,13 @@ export namespace core::io {
         END_OF_FILE = std::ios::eofbit
     };
 
-    enum class SeekingDirection {
+    enum SeekingDirection {
         BEGINNING = std::ios::beg,
         ENDING = std::ios::end,
         CURRENT = std::ios::cur
     };
 
-    enum class IOEvent {
+    enum IOEvent {
         ERASE_EVENT = std::ios::event::erase_event,
         IMBUE_EVENT = std::ios::event::imbue_event,
         COPY_FORMAT_EVENT = std::ios::event::copyfmt_event
