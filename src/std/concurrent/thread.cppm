@@ -32,7 +32,7 @@ export namespace stdlib::concurrent {
     using JThread = ::std::jthread;
     #endif
 
-    using JoinThread = ::std::jthread;
+    using JoiningThread = ::std::jthread;
 
     /**
      * @brief Namespace for operations on the current thread.
