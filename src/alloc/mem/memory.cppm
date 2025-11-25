@@ -32,6 +32,9 @@ export namespace alloc::mem {
     template <typename T>
     using DefaultDelete = std::default_delete<T>;
 
+    using AllocatorArgumentTag = std::allocator_arg_t;
+    inline constexpr AllocatorArgumentTag AllocatorArgument = std::allocator_arg;
+
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename T, typename Deleter = DefaultDelete<T>>
     using UniquePtr = std::unique_ptr<T, Deleter>;

@@ -35,7 +35,8 @@ export namespace stdlib::concurrent {
     using NoStopState_t = ::std::nostopstate_t;
     #endif
 
-    using NoStopState = ::std::nostopstate_t;
+    using NoStopStateTag = ::std::nostopstate_t;
+    inline constexpr NoStopStateTag NoStopState = ::std::nostopstate;
 
     using ::std::swap;
 }

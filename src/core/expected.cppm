@@ -36,7 +36,8 @@ export namespace core {
     using Unexpect_t = std::unexpect_t;
     #endif
 
-    using Unexpect = std::unexpect_t;
+    using UnexpectTag = std::unexpect_t;
+    inline constexpr UnexpectTag Unexpect = std::unexpect;
     
     template <typename E>
     using BadExpectedAccessException = std::bad_expected_access<E>;

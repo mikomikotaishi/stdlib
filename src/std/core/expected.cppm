@@ -32,8 +32,10 @@ export namespace stdlib::core {
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using ::core::Unexpect_t;
     #endif
+    using ::core::UnexpectTag;
     using ::core::Unexpect;
     using ::core::BadExpectedAccessException;
+    using ::core::Error;
 
     using ::core::swap;
 

@@ -1,0 +1,62 @@
+/**
+ * @file tags.cppm
+ * @module core.tags
+ * @brief Module file for standard library tags aggregation class.
+ *
+ * This file contains the implementation of the tags aggregation class in the standard library.
+ */
+
+module;
+
+export module core.tags;
+
+import core.cstddef;
+import core.expected;
+import core.ranges.ranges;
+import core.util.utility;
+
+using core::Unexpect;
+using core::ranges::FromRange;
+using core::util::InPlace;
+using core::util::InPlaceIndex;
+using core::util::InPlaceType;
+using core::util::PiecewiseConstruct;
+
+/**
+ * @namespace core
+ * @brief Wrapper namespace for the core objects of the standard library.
+ */
+export namespace core {
+    /**
+     * @class Tags
+     * @brief A utility class containing standard library tags.
+     */
+    class Tags {
+    private:
+        using usize = ::core::usize;
+    public:
+        Tags() = delete;
+
+        using UnexpectTag = ::core::UnexpectTag;
+        using FromRangeTag = ::core::ranges::FromRangeTag;
+        template <usize I>
+        using InPlaceIndexTag = ::core::util::InPlaceIndexTag<I>;
+        using InPlaceTag = ::core::util::InPlaceTag;
+        template <typename T>
+        using InPlaceTypeTag = ::core::util::InPlaceTypeTag<T>;
+        using PiecewiseConstructTag = ::core::util::PiecewiseConstructTag;
+
+        static constexpr UnexpectTag UNEXPECT = Unexpect;
+        static constexpr FromRangeTag FROM_RANGE = FromRange;
+        static constexpr InPlaceTag IN_PLACE = InPlace;
+        template <usize I>
+        static constexpr InPlaceIndexTag IN_PLACE_INDEX = InPlaceIndex<I>;
+        template <typename T>
+        static constexpr InPlaceTypeTag IN_PLACE_TYPE = InPlaceType<T>;
+        static constexpr PiecewiseConstructTag PIECEWISE_CONSTRUCT = PiecewiseConstruct;
+    };
+}
+
+#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
+STDLIB_CORE_MODULE_EXPORT_CORE();
+#endif

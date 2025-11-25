@@ -12,6 +12,10 @@ module;
 
 export module core.util.utility;
 
+import core.cstddef;
+
+using core::usize;
+
 /**
  * @namespace core::util
  * @brief Wrapper namespace for standard library utility operations.
@@ -38,7 +42,7 @@ export namespace core::util {
     using InPlaceTag = std::in_place_t;
     template <typename T>
     using InPlaceTypeTag = std::in_place_type_t<T>;
-    template <std::size_t I>
+    template <usize I>
     using InPlaceIndexTag = std::in_place_index_t<I>;
 
     inline constexpr PiecewiseConstructTag PiecewiseConstruct = std::piecewise_construct;
@@ -47,6 +51,6 @@ export namespace core::util {
     template <typename T>
     inline constexpr InPlaceTypeTag InPlaceType = std::in_place_type<T>;
 
-    template <std::size_t I>
+    template <usize I>
     inline constexpr InPlaceIndexTag InPlaceIndex = std::in_place_index<I>;
 }

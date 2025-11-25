@@ -139,7 +139,8 @@ export namespace stdlib::time {
      * @brief Wrapper namespace for standard library chronological operations
      */
     namespace chrono {
-        using _detail::std::time::chrono::LastSpec;
+        using _detail::std::time::chrono::LastSpecifier;
+        using _detail::std::time::chrono::Last;
         using _detail::std::time::chrono::WeekdayIndexed;
         using _detail::std::time::chrono::WeekdayLast;
         using _detail::std::time::chrono::MonthDayLast;

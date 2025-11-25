@@ -27,8 +27,10 @@ export namespace alloc::mem {
 
     using AlignValue = std::align_val_t;
     using NewHandler = std::new_handler;
-    using NoThrow = std::nothrow_t;
-    using DestroyingDelete = std::destroying_delete_t;
+    using NoThrowTag = std::nothrow_t;
+    using DestroyingDeleteTag = std::destroying_delete_t;
+    inline constexpr NoThrowTag NoThrow = std::nothrow;
+    inline constexpr DestroyingDeleteTag DestroyingDelete = std::destroying_delete;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using BadAllocException = std::bad_alloc;

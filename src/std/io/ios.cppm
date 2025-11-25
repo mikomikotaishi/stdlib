@@ -8,6 +8,8 @@
 
 module;
 
+#include <ios>
+
 #include "Macros.hpp"
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
@@ -21,6 +23,16 @@ import core.system_error;
 
 using core::ErrorCode;
 using core::ErrorCondition;
+
+export {
+    using std::operator|;
+    using std::operator&;
+    using std::operator^;
+    using std::operator~;
+    using std::operator|=;
+    using std::operator&=;
+    using std::operator^=;
+}
 
 /**
  * @namespace std::io

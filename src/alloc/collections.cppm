@@ -9,6 +9,8 @@
 export module alloc.collections;
 
 export import alloc.collections.deque;
+export import alloc.collections.flat_map;
+export import alloc.collections.flat_set;
 export import alloc.collections.forward_list;
 export import alloc.collections.list;
 export import alloc.collections.map;

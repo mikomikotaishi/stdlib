@@ -41,4 +41,13 @@ export namespace stdlib::util {
     using core::util::cmp_less_equal;
     using core::util::cmp_greater_equal;
     using core::util::in_range;
+
+    using core::util::PiecewiseConstructTag;
+    using core::util::InPlaceTag;
+    using core::util::InPlaceTypeTag;
+    using core::util::InPlaceIndexTag;
+    using core::util::PiecewiseConstruct;
+    using core::util::InPlace;
+    using core::util::InPlaceType;
+    using core::util::InPlaceIndex;
 }

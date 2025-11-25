@@ -33,6 +33,7 @@ export import std.core.span;
 export import std.core.string;
 export import std.core.string_view;
 export import std.core.system_error;
+export import std.core.tags;
 export import std.core.tuple;
 export import std.core.variant;
 #else
@@ -54,6 +55,7 @@ export import stdlib.core.span;
 export import stdlib.core.string;
 export import stdlib.core.string_view;
 export import stdlib.core.system_error;
+export import stdlib.core.tags;
 export import stdlib.core.tuple;
 export import stdlib.core.variant;
 #endif

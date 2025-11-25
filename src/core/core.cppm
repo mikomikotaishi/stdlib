@@ -32,6 +32,7 @@ export import core.span;
 export import core.string_view;
 export import core.sys;
 export import core.system_error;
+export import core.tags;
 export import core.text;
 export import core.tuple;
 export import core.util;

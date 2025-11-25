@@ -30,14 +30,14 @@ export namespace stdlib::sync {
     using RecursiveMutex = std::recursive_mutex;
     using RecursiveTimedMutex = std::recursive_timed_mutex;
 
-    template <typename _Mutex>
-    using LockGuard = std::lock_guard<_Mutex>;
+    template <typename Mtx>
+    using LockGuard = std::lock_guard<Mtx>;
 
-    template <typename _Mutex>
-    using UniqueLock = std::unique_lock<_Mutex>;
+    template <typename Mtx>
+    using UniqueLock = std::unique_lock<Mtx>;
 
-    template <typename... _MutexTypes>
-    using ScopedLock = std::scoped_lock<_MutexTypes...>;
+    template <typename... MtxTypes>
+    using ScopedLock = std::scoped_lock<MtxTypes...>;
 
     using OnceFlag = std::once_flag;
     

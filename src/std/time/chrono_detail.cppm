@@ -158,7 +158,8 @@ export namespace _detail::std::time {
      * @brief Wrapper namespace for standard library chronological operations
      */
     namespace chrono {
-        using LastSpec = ::std::chrono::last_spec;
+        using LastSpecifier = ::std::chrono::last_spec;
+        inline constexpr LastSpecifier Last = ::std::chrono::last;
         using WeekdayIndexed = ::std::chrono::weekday_indexed;
         using WeekdayLast = ::std::chrono::weekday_last;
         using MonthDayLast = ::std::chrono::month_day_last;

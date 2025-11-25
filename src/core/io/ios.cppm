@@ -17,6 +17,16 @@ import core.meta.type_traits;
 
 using core::meta::TrueType;
 
+export {
+    using std::operator|;
+    using std::operator&;
+    using std::operator^;
+    using std::operator~;
+    using std::operator|=;
+    using std::operator&=;
+    using std::operator^=;
+}
+
 /**
  * @namespace core::io
  * @brief Wrapper namespace for standard library IO operations.
@@ -26,9 +36,9 @@ export namespace core::io {
     using IOS = std::ios;
 
     class OpenMode {
-    private:
-        using InternalOpenMode = std::ios::openmode;
     public:
+        using InternalOpenMode = std::ios::openmode;
+
         OpenMode() = delete;
 
         static constexpr InternalOpenMode APPEND = std::ios::app;
@@ -43,9 +53,9 @@ export namespace core::io {
     };
 
     class FormatFlags {
-    private:
-        using InternalFormatFlags = std::ios::fmtflags;
     public:
+        using InternalFormatFlags = std::ios::fmtflags;
+
         FormatFlags() = delete;
 
         static constexpr InternalFormatFlags DECIMAL = std::ios::dec;
@@ -69,9 +79,9 @@ export namespace core::io {
     };
 
     class IOState {
-    private:
-        using InternalIOState = std::ios::iostate;
     public:
+        using InternalIOState = std::ios::iostate;
+
         IOState() = delete;
 
         static constexpr InternalIOState GOOD_BIT = std::ios::goodbit;
@@ -85,14 +95,14 @@ export namespace core::io {
     };
 
     class SeekingDirection {
-    private:
-        using InternalSeekingDirection = std::ios::seekdir;
     public:
+        using InternalSeekingDirection = std::ios::seekdir;
+
         SeekingDirection() = delete;
 
         static constexpr InternalSeekingDirection BEGINNING = std::ios::beg;
         static constexpr InternalSeekingDirection ENDING = std::ios::end;
-        static constexpr InternalSeekingDirection  CURRENT = std::ios::cur;
+        static constexpr InternalSeekingDirection CURRENT = std::ios::cur;
     };
 
     enum class IOEvent {

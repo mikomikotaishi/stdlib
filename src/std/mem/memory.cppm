@@ -42,6 +42,8 @@ export namespace stdlib::mem {
     using alloc::mem::OwnerLess;
     using alloc::mem::EnableSharedFromThis;
     using alloc::mem::DefaultDelete;
+    using alloc::mem::AllocatorArgumentTag;
+    using alloc::mem::AllocatorArgument;
 
     using alloc::mem::hash;
 
