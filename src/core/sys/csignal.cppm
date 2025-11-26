@@ -51,7 +51,7 @@ export namespace core::sys {
     constexpr int SIGPWR = _detail::core::sys::C_SIGPWR; ///< Power failure imminent.
     constexpr int SIGSYS = _detail::core::sys::C_SIGSYS; ///< Bad system call.
 
-    /* Historical signals and archaic names for compatibility */
+    // Historical signals and archaic names for compatibility
     constexpr int SIGIO = _detail::core::sys::C_SIGIO; ///< I/O now possible (4.2 BSD).
     constexpr int SIGIOT = _detail::core::sys::C_SIGIOT; ///< IOT instruction, abort() on a PDP-11.
     constexpr int SIGCLD = _detail::core::sys::C_SIGCLD; ///< Old System V name for SIGCHLD.
@@ -96,9 +96,9 @@ export namespace core::sys {
         static constexpr int BUS_ERROR = SIGBUS; ///< Bus error.
         static constexpr int FLOATING_POINT_EXCEPTION = SIGFPE; ///< Erroneous arithmetic operation.
         static constexpr int KILL = SIGKILL; ///< Killed.
-        static constexpr int USER1 = SIGUSR1; ///< User-defined signal 1.
+        static constexpr int USER_DEFINED_1 = SIGUSR1; ///< User-defined signal 1.
         static constexpr int SEGMENTATION_VIOLATION = SIGSEGV; ///< Invalid access to storage.
-        static constexpr int USER2 = SIGUSR2; ///< User-defined signal 2.
+        static constexpr int USER_DEFINED_2 = SIGUSR2; ///< User-defined signal 2.
         static constexpr int BROKEN_PIPE = SIGPIPE; ///< Broken pipe.
         static constexpr int ALARM = SIGALRM; ///< Alarm clock.
         static constexpr int TERMINATE = SIGTERM; ///< Termination request.
