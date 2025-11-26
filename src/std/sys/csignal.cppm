@@ -36,6 +36,12 @@ export namespace stdlib::sys {
     using core::sys::signal;
     using core::sys::raise;
 
+    using core::sys::Signal;
+
+    using core::sys::SIG_DFL; ///< Default signal handler.
+    using core::sys::SIG_IGN; ///< Ignore signal handler.
+    using core::sys::SIG_ERR; ///< Error return value.
+
     using core::sys::SIGHUP; ///< Hangup.
     using core::sys::SIGINT; ///< Interactive attention signal.
     using core::sys::SIGQUIT; ///< Quit.

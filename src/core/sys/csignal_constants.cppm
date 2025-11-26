@@ -6,47 +6,70 @@
  * This file contains the implementation of the constants of the C-style signal operations in the standard library.
  */
 
+module;
+
+#include <csignal>
+
 export module core.sys.csignal:constants;
 
 /**
- * @namespace core::sys
+ * @internal
+ * @namespace _detail::core::sys
  * @brief Wrapper namespace for standard library system operations.
+ * Detail namespace - not to be exported for external use
  */
-export namespace core::sys {
-    constexpr int SIGHUP = 1; ///< Hangup.
-    constexpr int SIGINT = 2; ///< Interactive attention signal.
-    constexpr int SIGQUIT = 3; ///< Quit.
-    constexpr int SIGILL = 4; ///< Illegal instruction.
-    constexpr int SIGTRAP = 5; ///< Trace/breakpoint trap.
-    constexpr int SIGABRT = 6; ///< Abnormal termination.
-    constexpr int SIGBUS = 7; ///< Bus error.
-    constexpr int SIGFPE = 8; ///< Erroneous arithmetic operation.
-    constexpr int SIGKILL = 9; ///< Killed.
-    constexpr int SIGUSR1 = 10; ///< User-defined signal 1.
-    constexpr int SIGSEGV = 11; ///< Invalid access to storage.
-    constexpr int SIGUSR2 = 12; ///< User-defined signal 2.
-    constexpr int SIGPIPE = 13; ///< Broken pipe.
-    constexpr int SIGALRM = 14; ///< Alarm clock.
-    constexpr int SIGTERM = 15; ///< Termination request.
-    constexpr int SIGSTKFLT = 16; ///< Stack fault (obsolete).
-    constexpr int SIGCHLD = 17; ///< Child terminated or stopped.
-    constexpr int SIGCONT = 18; ///< Continue.
-    constexpr int SIGSTOP = 19; ///< Stop, unblockable.
-    constexpr int SIGTSTP = 20; ///< Keyboard stop.
-    constexpr int SIGTTIN = 21; ///< Background read from control terminal.
-    constexpr int SIGTTOU = 22; ///< Background write to control terminal.
-    constexpr int SIGURG = 23; ///< Urgent data is available at a socket.
-    constexpr int SIGXCPU = 24; ///< CPU time limit exceeded.
-    constexpr int SIGXFSZ = 25; ///< File size limit exceeded.
-    constexpr int SIGVTALRM = 26; ///< Virtual timer expired.
-    constexpr int SIGPROF = 27; ///< Profiling timer expired.
-    constexpr int SIGWINCH = 28; ///< Window size change (4.3 BSD, Sun).
-    constexpr int SIGPOLL = 29; ///< Pollable event occurred (System V).
-    constexpr int SIGPWR = 30; ///< Power failure imminent.
-    constexpr int SIGSYS = 31; ///< Bad system call.
+export namespace _detail::core::sys {
+    using Handler = void (*)(int);
+    
+    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    using SigAtomic = std::sig_atomic_t;
+    using SigAtomic_t = std::sig_atomic_t;
+    using SignalAtomic_t = std::sig_atomic_t;
+    #endif 
+    
+    using SignalAtomic = std::sig_atomic_t;
+
+    using std::signal;
+    using std::raise;
+
+    constexpr int C_SIGHUP = SIGHUP; ///< Hangup.
+    constexpr int C_SIGINT = SIGINT; ///< Interactive attention signal.
+    constexpr int C_SIGQUIT = SIGQUIT; ///< Quit.
+    constexpr int C_SIGILL = SIGILL; ///< Illegal instruction.
+    constexpr int C_SIGTRAP = SIGTRAP; ///< Trace/breakpoint trap.
+    constexpr int C_SIGABRT = SIGABRT; ///< Abnormal termination.
+    constexpr int C_SIGBUS = SIGBUS; ///< Bus error.
+    constexpr int C_SIGFPE = SIGFPE; ///< Erroneous arithmetic operation.
+    constexpr int C_SIGKILL = SIGKILL; ///< Killed.
+    constexpr int C_SIGUSR1 = SIGUSR1; ///< User-defined signal 1.
+    constexpr int C_SIGSEGV = SIGSEGV; ///< Invalid access to storage.
+    constexpr int C_SIGUSR2 = SIGUSR2; ///< User-defined signal 2.
+    constexpr int C_SIGPIPE = SIGPIPE; ///< Broken pipe.
+    constexpr int C_SIGALRM = SIGALRM; ///< Alarm clock.
+    constexpr int C_SIGTERM = SIGTERM; ///< Termination request.
+    constexpr int C_SIGSTKFLT = SIGSTKFLT; ///< Stack fault (obsolete).
+    constexpr int C_SIGCHLD = SIGCHLD; ///< Child terminated or stopped.
+    constexpr int C_SIGCONT = SIGCONT; ///< Continue.
+    constexpr int C_SIGSTOP = SIGSTOP; ///< Stop, unblockable.
+    constexpr int C_SIGTSTP = SIGTSTP; ///< Keyboard stop.
+    constexpr int C_SIGTTIN = SIGTTIN; ///< Background read from control terminal.
+    constexpr int C_SIGTTOU = SIGTTOU; ///< Background write to control terminal.
+    constexpr int C_SIGURG = SIGURG; ///< Urgent data is available at a socket.
+    constexpr int C_SIGXCPU = SIGXCPU; ///< CPU time limit exceeded.
+    constexpr int C_SIGXFSZ = SIGXFSZ; ///< File size limit exceeded.
+    constexpr int C_SIGVTALRM = SIGVTALRM; ///< Virtual timer expired.
+    constexpr int C_SIGPROF = SIGPROF; ///< Profiling timer expired.
+    constexpr int C_SIGWINCH = SIGWINCH; ///< Window size change (4.3 BSD, Sun).
+    constexpr int C_SIGPOLL = SIGPOLL; ///< Pollable event occurred (System V).
+    constexpr int C_SIGPWR = SIGPWR; ///< Power failure imminent.
+    constexpr int C_SIGSYS = SIGSYS; ///< Bad system call.
 
     /* Historical signals and archaic names for compatibility */
-    constexpr int SIGIO = SIGPOLL; ///< I/O now possible (4.2 BSD).
-    constexpr int SIGIOT = SIGABRT; ///< IOT instruction, abort() on a PDP-11.
-    constexpr int SIGCLD = SIGCHLD; ///< Old System V name for SIGCHLD.
+    constexpr int C_SIGIO = SIGIO; ///< I/O now possible (4.2 BSD).
+    constexpr int C_SIGIOT = SIGIOT; ///< IOT instruction, abort() on a PDP-11.
+    constexpr int C_SIGCLD = SIGCLD; ///< Old System V name for SIGCHLD.
+
+    inline const Handler C_SIG_DFL = SIG_DFL; ///< Default signal handler.
+    inline const Handler C_SIG_IGN = SIG_IGN; ///< Ignore signal handler.
+    inline const Handler C_SIG_ERR = SIG_ERR; ///< Error return value.
 }
