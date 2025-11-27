@@ -69,21 +69,54 @@ export namespace core {
 
     using std::swap;
 
-    template <typename T, typename E = void>
-    [[nodiscard]]
-    constexpr Expected<DecayType<T>, E> Ok(T&& value) {
-        return Expected<DecayType<T>, E>(core::util::forward<T>(value));
+    /**
+     * @brief Explicitly constructs a successful Expected value.
+     *
+     * @tparam T The success value type.
+     * @tparam Args The types of arguments to construct the value.
+     * @param args Arguments forwarded to construct the value.
+     * @return The constructed value (relies on implicit conversion to Expected).
+     */
+    template <typename T, typename... Args>
+    inline constexpr T Ok(Args&&... args) {
+        return T(std::forward<Args>(args)...);
     }
 
-    template <typename E = void>
-    [[nodiscard]]
-    constexpr Expected<void, E> Ok() {
-        return Expected<void, E>();
+    /**
+     * @brief Explicitly constructs a successful Expected value (deduced type).
+     *
+     * @tparam T The type of the success value.
+     * @param x The success value.
+     * @return The value (relies on implicit conversion to Expected).
+     */
+    template <typename T>
+    inline constexpr DecayType<T> Ok(T&& x) {
+        return std::forward<T>(x);
     }
 
+    /**
+     * @brief Constructs an error Expected value.
+     *
+     * @tparam E The error type.
+     * @tparam Args The types of arguments to construct the error.
+     * @param args Arguments forwarded to construct the error.
+     * @return An Unexpected<E> containing the error.
+     */
+    template <typename E, typename... Args>
+    inline constexpr Unexpected<E> Err(Args&&... args) {
+        return Unexpected<E>(E(std::forward<Args>(args)...));
+    }
+
+    /**
+     * @brief Constructs an error Expected value with single argument (type deduced).
+     *
+     * @tparam E The type of the error argument.
+     * @param err The error value.
+     * @return An Unexpected containing the error.
+     */
     template <typename E>
-    constexpr Unexpected<DecayType<E>> Err(E&& error) {
-        return Unexpected<DecayType<E>>(core::util::forward<E>(error));
+    inline constexpr Unexpected<DecayType<E>> Err(E&& err) {
+        return Unexpected<DecayType<E>>(std::forward<E>(err));
     }
 }
 
