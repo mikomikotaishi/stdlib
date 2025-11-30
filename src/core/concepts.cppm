@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<concepts>)
 #include <concepts>
+#endif
 
 #include "Macros.hpp"
 
@@ -19,6 +21,7 @@ export module core.concepts;
  * @brief Wrapper namespace for the core objects of the standard library.
  */
 export namespace core {
+    #if __has_include(<concepts>)
     template <typename T, typename U>
     concept SameAs = std::same_as<T, U>;
 
@@ -111,6 +114,7 @@ export namespace core {
 
     template <typename Rel, typename T, typename U>
     concept StrictWeakOrder = std::strict_weak_order<Rel, T, U>;
+    #endif
 }
 
 #if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)

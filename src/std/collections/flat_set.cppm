@@ -25,6 +25,7 @@ export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
+    #if __has_include(<flat_set>)
     using alloc::collections::FlatSet;
     using alloc::collections::FlatMultiset;
 
@@ -34,4 +35,5 @@ export namespace stdlib::collections {
     using alloc::collections::SortedEquivalent;
 
     using alloc::collections::erase_if;
+    #endif
 }

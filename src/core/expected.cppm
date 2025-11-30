@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<span>)
 #include <expected>
+#endif
 
 #include "Macros.hpp"
 
@@ -26,6 +28,7 @@ using core::meta::DecayType;
  * @brief Wrapper namespace for the core objects of the standard library.
  */
 export namespace core {
+    #if __has_include(<expected>)
     template <typename T, typename E>
     using Expected = std::expected<T, E>;
 
@@ -118,6 +121,7 @@ export namespace core {
     inline constexpr Unexpected<DecayType<E>> Err(E&& err) {
         return Unexpected<DecayType<E>>(std::forward<E>(err));
     }
+    #endif
 }
 
 #if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)

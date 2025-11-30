@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<stop_token>)
 #include <stop_token>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.concurrent.stop_token;
@@ -25,6 +27,7 @@ export namespace std::concurrent {
 #else 
 export namespace stdlib::concurrent {
 #endif
+    #if __has_include(<stop_token>)
     using StopToken = ::std::stop_token;
     using StopSource = ::std::stop_source;
 
@@ -39,4 +42,5 @@ export namespace stdlib::concurrent {
     inline constexpr NoStopStateTag NoStopState = ::std::nostopstate;
 
     using ::std::swap;
+    #endif
 }

@@ -13,7 +13,9 @@ module;
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
+#if __has_include(<stdfloat>)
 #include <stdfloat>
+#endif
 
 #include "Macros.hpp"
 

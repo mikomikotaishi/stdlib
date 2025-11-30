@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<format>)
 #include <format>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.fmt.format;
@@ -25,6 +27,7 @@ export namespace std::fmt {
 #else 
 export namespace stdlib::fmt {
 #endif
+    #if __has_include(<format>)
     using std::formatter;
 
     template <typename T, typename CharT>
@@ -93,4 +96,5 @@ export namespace stdlib::fmt {
     using std::vformat_to;
     using std::make_format_args;
     using std::make_wformat_args;
+    #endif
 }

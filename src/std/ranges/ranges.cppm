@@ -26,6 +26,7 @@ export namespace std::ranges {
 #else 
 export namespace stdlib::ranges {
 #endif
+    #if __has_include(<ranges>)
     namespace access {
         using ::core::ranges::access::Begin;
         using ::core::ranges::access::End;
@@ -252,6 +253,7 @@ export namespace stdlib::ranges {
 
     using ::core::ranges::tuple_size;
     using ::core::ranges::tuple_element;
+    #endif
 }
 
 #if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)

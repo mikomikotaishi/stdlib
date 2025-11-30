@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<numbers>)
 #include <numbers>
+#endif
 
 export module core.math.numbers;
 
@@ -17,6 +19,7 @@ export module core.math.numbers;
  * @brief Wrapper namespace for standard library mathematical operations.
  */
 export namespace core::math {
+    #if __has_include(<numbers>)
     /**
      * @namespace numbers
      * @brief Wrapper namespace for standard library numerical constants (for compatibility).
@@ -36,4 +39,5 @@ export namespace core::math {
         constexpr double E_GAMMA = std::numbers::egamma; ///< Euler-Mascheroni constant
         constexpr double PHI = std::numbers::phi; ///< Golden ratio (1+sqrt(5))/2
     }
+    #endif
 }

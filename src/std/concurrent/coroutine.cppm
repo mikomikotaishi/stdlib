@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<coroutine>)
 #include <coroutine>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.concurrent.coroutine;
@@ -25,6 +27,7 @@ export namespace std::concurrent {
 #else 
 export namespace stdlib::concurrent {
 #endif
+    #if __has_include(<coroutine>)
     // template <typename R, typename... Args>
     // using CoroutineTraits = ::std::coroutine_traits<R(Args...)>;
 
@@ -45,4 +48,5 @@ export namespace stdlib::concurrent {
     using ::std::noop_coroutine;
 
     using ::std::hash;
+    #endif
 }

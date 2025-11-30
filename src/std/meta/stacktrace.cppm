@@ -25,6 +25,7 @@ export namespace std::meta {
 #else 
 export namespace stdlib::meta {
 #endif
+    #if __has_include(<stacktrace>)
     using core::meta::StackTraceEntry;
     using core::meta::BasicStackTrace;
     using core::meta::StackTrace;
@@ -43,4 +44,5 @@ export namespace stdlib::meta {
 
     using core::meta::to_string;
     using core::meta::operator<<;
+    #endif
 }

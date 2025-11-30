@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<stacktrace>)
 #include <stacktrace>
+#endif
 
 export module core.meta.stacktrace;
 
@@ -17,6 +19,7 @@ export module core.meta.stacktrace;
  * @brief Wrapper namespace for standard library metaprogramming operations.
  */
 export namespace core::meta {
+    #if __has_include(<stacktrace>)
     using StackTraceEntry = std::stacktrace_entry;
 
     template <typename Allocator>
@@ -38,4 +41,5 @@ export namespace core::meta {
 
     using std::to_string;
     using std::operator<<;
+    #endif
 }

@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<source_location>)
 #include <source_location>
+#endif
 
 export module core.meta.source_location;
 
@@ -17,5 +19,7 @@ export module core.meta.source_location;
  * @brief Wrapper namespace for standard library metaprogramming operations.
  */
 export namespace core::meta {
+    #if __has_include(<source_location>)
     using SourceLocation = std::source_location;
+    #endif
 }

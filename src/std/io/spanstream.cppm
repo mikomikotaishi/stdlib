@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<spanstream>)
 #include <spanstream>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.io.spanstream;
@@ -25,6 +27,7 @@ export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
+    #if __has_include(<spanstream>)
     template <typename CharT>
     using BasicSpanBuf = std::basic_spanbuf<CharT>;
 
@@ -70,4 +73,5 @@ export namespace stdlib::io {
     using WideSpanStream = std::wspanstream;
 
     using std::swap;
+    #endif
 }

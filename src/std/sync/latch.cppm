@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<latch>)
 #include <latch>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.sync.latch;
@@ -25,5 +27,7 @@ export namespace std::sync {
 #else 
 export namespace stdlib::sync {
 #endif
+    #if __has_include(<latch>)
     using Latch = std::latch;
+    #endif
 }

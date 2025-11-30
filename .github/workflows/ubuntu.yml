@@ -1,0 +1,75 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    name: Ubuntu
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          - { name: GCC, cc: gcc-15, cxx: g++-15 }
+          - { name: Clang, cc: clang-19, cxx: clang++-19 }
+        build_type: [Debug, Release]
+    
+    steps:
+    - uses: actions/checkout@v4
+  
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ninja-build wget software-properties-common cmake
+        
+        # Install compilers
+        if [[ "${{ matrix.compiler.cxx }}" == g++* ]]; then
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+          sudo apt-get update
+          sudo apt-get install -y ${{ matrix.compiler.cc }} ${{ matrix.compiler.cxx }}
+        elif [[ "${{ matrix.compiler.cxx }}" == clang++* ]]; then
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 19
+          sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-19 100
+          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-19 100
+        fi
+        
+        # Verify installations
+        echo "CMake version:"
+        cmake --version
+        echo "Compiler version:"
+        ${{ matrix.compiler.cxx }} --version || echo "Compiler not found"
+        which ${{ matrix.compiler.cxx }} || echo "Compiler not in PATH"
+    
+    - name: Configure CMake
+      env:
+        CC: ${{ matrix.compiler.cc }}
+        CXX: ${{ matrix.compiler.cxx }}
+      run: |
+        which $CC || echo "CC not found"
+        which $CXX || echo "CXX not found"
+        cmake -S . -B build \
+          -G Ninja \
+          -DCMAKE_C_COMPILER=$CC \
+          -DCMAKE_CXX_COMPILER=$CXX \
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+          -DSTDLIB_BUILD_TESTS=OFF
+    
+    - name: Build
+      run: cmake --build build
+    
+    - name: Upload build artifacts
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-logs-${{ matrix.compiler.name }}-${{ matrix.build_type }}
+        path: |
+          build/CMakeFiles/*.log
+          build/compile_commands.json

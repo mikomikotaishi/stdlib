@@ -1,14 +1,16 @@
 /**
- * @file set.cppm
- * @module alloc.collections.set
- * @brief Module file for standard library set operations.
+ * @file flat_map.cppm
+ * @module alloc.collections.flat_map
+ * @brief Module file for standard library flat map operations.
  *
- * This file contains the implementation of the set operations in the standard library.
+ * This file contains the implementation of the flat set operations in the standard library.
  */
 
 module;
 
+#if __has_include(<flat_map>)
 #include <flat_map>
+#endif
 
 export module alloc.collections.flat_map;
 
@@ -36,6 +38,7 @@ using alloc::mem::Allocator;
  * @brief Wrapper namespace for standard library collection operations.
  */
 export namespace alloc::collections {
+    #if __has_include(<flat_map>)
     template <typename Key, typename Value, typename Compare = Less<Key>, typename KeyContainer = Vector<Key>, typename ValueContainer = Vector<Value>>
         requires
             IsSameValue<Key, typename KeyContainer::value_type> && 
@@ -58,4 +61,5 @@ export namespace alloc::collections {
     inline constexpr SortedUniqueTag SortedUnique = std::sorted_unique;
     using SortedEquivalentTag = std::sorted_equivalent_t;
     inline constexpr SortedEquivalentTag SortedEquivalent = std::sorted_equivalent;
+    #endif
 }

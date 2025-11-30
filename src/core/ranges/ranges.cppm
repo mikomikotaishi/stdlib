@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<ranges>)
 #include <ranges>
+#endif
 
 export module core.ranges.ranges;
 
@@ -28,6 +30,7 @@ using core::iter::WeaklyIncrementable;
  * @brief Wrapper namespace for standard library ranges operations.
  */
 export namespace core::ranges {
+    #if __has_include(<ranges>)
     namespace access {
         using Begin = decltype(std::ranges::begin);
         using End = decltype(std::ranges::end);
@@ -421,8 +424,11 @@ export namespace core::ranges {
     using std::ranges::get;
     using FromRangeTag = std::from_range_t;
     inline constexpr FromRangeTag FromRange = std::from_range;
+    #endif
 }
 
 export namespace core {
+    #if __has_include(<ranges>)
     namespace views = core::ranges;
+    #endif
 }

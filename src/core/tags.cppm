@@ -16,7 +16,9 @@ import core.ranges.ranges;
 import core.util.utility;
 
 using core::Unexpect;
+#if __has_include(<ranges>)
 using core::ranges::FromRange;
+#endif
 using core::util::InPlace;
 using core::util::InPlaceIndex;
 using core::util::InPlaceType;
@@ -38,7 +40,9 @@ export namespace core {
         Tags() = delete;
 
         using UnexpectTag = ::core::UnexpectTag;
+        #if __has_include(<ranges>)
         using FromRangeTag = ::core::ranges::FromRangeTag;
+        #endif
         template <usize I>
         using InPlaceIndexTag = ::core::util::InPlaceIndexTag<I>;
         using InPlaceTag = ::core::util::InPlaceTag;
@@ -47,7 +51,9 @@ export namespace core {
         using PiecewiseConstructTag = ::core::util::PiecewiseConstructTag;
 
         static constexpr UnexpectTag UNEXPECT = Unexpect;
+        #if __has_include(<ranges>)
         static constexpr FromRangeTag FROM_RANGE = FromRange;
+        #endif
         static constexpr InPlaceTag IN_PLACE = InPlace;
         template <usize I>
         static constexpr InPlaceIndexTag IN_PLACE_INDEX = InPlaceIndex<I>;

@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<barrier>)
 #include <barrier>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.sync.barrier;
@@ -25,6 +27,7 @@ export namespace std::sync {
 #else 
 export namespace stdlib::sync {
 #endif
+    #if __has_include(<barrier>)
     struct EmptyCompletion {
         void operator()() noexcept {
 
@@ -33,4 +36,5 @@ export namespace stdlib::sync {
 
     template <typename CompletionFunction = EmptyCompletion>
     using Barrier = std::barrier<CompletionFunction>;
+    #endif
 }

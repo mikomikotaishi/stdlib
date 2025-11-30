@@ -25,5 +25,7 @@ export namespace std::meta {
 #else 
 export namespace stdlib::meta {
 #endif
+    #if __has_include(<source_location>)
     using core::meta::SourceLocation;
+    #endif
 }

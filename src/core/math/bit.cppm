@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<bit>)
 #include <bit>
+#endif
 
 export module core.math.bit;
 
@@ -17,6 +19,7 @@ export module core.math.bit;
  * @brief Wrapper namespace for standard library mathematical operations.
  */
 export namespace core::math {
+    #if __has_include(<bit>)
     using Endian = std::endian;
 
     using std::bit_cast;
@@ -32,5 +35,5 @@ export namespace core::math {
     using std::countr_zero;
     using std::countr_one;
     using std::popcount;
+    #endif
 }
- 

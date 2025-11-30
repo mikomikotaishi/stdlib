@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<semaphore>)
 #include <semaphore>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.sync.semaphore;
@@ -25,7 +27,9 @@ export namespace std::sync {
 #else 
 export namespace stdlib::sync {
 #endif
+    #if __has_include(<semaphore>)
     using CountingSemaphore = std::counting_semaphore<>;
 
     using BinarySemaphore = std::binary_semaphore;
+    #endif
 }

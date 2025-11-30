@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<generator>)
 #include <generator>
+#endif
 
 export module core.ranges.generator;
 
@@ -17,6 +19,7 @@ export module core.ranges.generator;
  * @brief Wrapper namespace for standard library ranges operations.
  */
 export namespace core::ranges {
+    #if __has_include(<generator>)
     template <typename Ref, typename V = void, typename Allocator = void>
     using Generator = std::generator<Ref, V, Allocator>;
 
@@ -28,4 +31,5 @@ export namespace core::ranges {
         template <typename Ref, typename V = void>
         using Generator = std::pmr::generator<Ref, V>;
     }
+    #endif
 }

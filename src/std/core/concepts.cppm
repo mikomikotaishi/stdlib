@@ -27,6 +27,7 @@ export namespace std::core {
 #else 
 export namespace stdlib::core {
 #endif
+    #if __has_include(<concepts>)
     using ::core::SameAs;
     using ::core::DerivedFrom;
     using ::core::ConvertibleTo;
@@ -58,6 +59,7 @@ export namespace stdlib::core {
     using ::core::Relation;
     using ::core::EquivalenceRelation;
     using ::core::StrictWeakOrder;
+    #endif
 }
 
 #if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)

@@ -25,6 +25,7 @@ export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
+    #if __has_include(<flat_map>)
     using alloc::collections::FlatMap;
     using alloc::collections::FlatMultimap;
 
@@ -34,4 +35,5 @@ export namespace stdlib::collections {
     using alloc::collections::SortedEquivalent;
 
     using alloc::collections::erase_if;
+    #endif
 }

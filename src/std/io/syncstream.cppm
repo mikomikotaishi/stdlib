@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<syncstream>)
 #include <syncstream>
+#endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export module std.io.syncstream;
@@ -25,6 +27,7 @@ export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
+    #if __has_include(<syncstream>)
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename CharT>
     using BasicSyncBuf = std::basic_syncbuf<CharT>;
@@ -50,4 +53,5 @@ export namespace stdlib::io {
     using WideOutputSyncStream = std::wosyncstream;
 
     using std::swap;
+    #endif
 }

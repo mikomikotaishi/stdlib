@@ -2,6 +2,9 @@
 
 > **WARNING:** As this library is still under development, many features do not yet work, or requires inelegant workarounds or even inclusion of headers to resolve. These issues will only be resolved as development continues.
 
+> **WARNING:** This library has only been tested for Clang, and may not work with GCC or MSVC. 
+> Recent tests with GCC caused compiler crashes, likely due to poor module support. As such we only recommend using Clang.
+
 ## Overview
 This is a project that re-exports the entire C++ standard library as modules. The motivation for creating this was that at the time, support for `import std;` was very poor, a personal dislike of ISO C++'s usage of snake_case for class names, and a dislike of the flat `std::` namespace.
 

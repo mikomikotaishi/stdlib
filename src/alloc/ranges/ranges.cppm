@@ -1,6 +1,6 @@
 /**
  * @file ranges.cppm
- * @module core.ranges.ranges
+ * @module alloc.ranges.ranges
  * @brief Module file for standard library ranges operations.
  *
  * This file contains the implementation of the ranges operations in the standard library.
@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<ranges>)
 #include <ranges>
+#endif
 
 export module alloc.ranges.ranges;
 
@@ -19,7 +21,9 @@ import alloc.string;
 import alloc.mem.memory;
 
 using core::Movable;
+#if __has_include(<ranges>)
 using core::ranges::Range;
+#endif
 
 using alloc::CharTraits;
 using alloc::mem::Allocator;
@@ -29,6 +33,7 @@ using alloc::mem::Allocator;
  * @brief Wrapper namespace for standard library ranges operations.
  */
 export namespace alloc::ranges {
+    #if __has_include(<ranges>)
     template <Range R, typename Alloc = Allocator<std::byte>>
     using ElementsOf = std::ranges::elements_of<R, Alloc>;
 
@@ -53,8 +58,11 @@ export namespace alloc::ranges {
         template <typename T>
         inline constexpr types::InputStream<T> InputStream = std::ranges::views::istream<T>;
     }
+    #endif
 }
 
 export namespace alloc {
+    #if __has_include(<ranges>)
     namespace views = alloc::ranges;
+    #endif
 }

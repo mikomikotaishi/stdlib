@@ -25,6 +25,7 @@ export namespace std::ranges {
 #else 
 export namespace stdlib::ranges {
 #endif
+    #if __has_include(<generator>)
     using core::ranges::Generator;
 
     /**
@@ -34,4 +35,5 @@ export namespace stdlib::ranges {
     namespace pmr {
         using core::ranges::pmr::Generator;
     }
+    #endif
 }

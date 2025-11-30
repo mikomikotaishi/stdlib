@@ -1,6 +1,6 @@
 /**
- * @file set.cppm
- * @module alloc.collections.set
+ * @file flat_set.cppm
+ * @module alloc.collections.flat_set
  * @brief Module file for standard library set operations.
  *
  * This file contains the implementation of the set operations in the standard library.
@@ -8,7 +8,9 @@
 
 module;
 
+#if __has_include(<flat_set>)
 #include <flat_set>
+#endif
 
 export module alloc.collections.flat_set;
 
