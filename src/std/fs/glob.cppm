@@ -4,7 +4,7 @@
  * @brief Module file for standard library file system globbing operations.
  *
  * This file contains the implementation of the file system globbing operations in the standard library.
- * Adapted from tinyxml2 (https://github.com/leethomason/tinyxml2)
+ * Adapted from p-ranav/glob (https://github.com/p-ranav/glob/tree/master)
  */
 
 module;
@@ -38,6 +38,8 @@ using alloc::String;
 using alloc::text::Regex;
 
 using core::ranges::views::Filter;
+using core::ranges::views::Join;
+using core::ranges::views::Transform;
 
 using namespace core;
 
@@ -181,7 +183,7 @@ namespace stdlib::fs {
     static Vector<Path> filter(const Vector<Path>& names, const String& pattern) noexcept {
         return names |
             Filter([&pattern](const Path& name) -> bool {
-                filename_match(name, pattern);
+                return filename_match(name, pattern);
             }) |
             core::ranges::to<Vector<Path>>();
     }
@@ -240,10 +242,7 @@ namespace stdlib::fs {
             try {
                 for (const DirectoryEntry& entry: DirectoryIterator(
                     current,
-                    // annoying hack with casting
-                    static_cast<std::filesystem::directory_options>(
-                        DirectoryOptions::FOLLOW_DIRECTORY_SYMLINK | DirectoryOptions::SKIP_PERMISSION_DENIED
-                    )
+                    DirectoryOptions::FOLLOW_DIRECTORY_SYMLINK | DirectoryOptions::SKIP_PERMISSION_DENIED
                 )) {
                     if (!dironly || entry.is_directory()) {
                         result.emplace_back(dir.is_absolute() ? entry.path() : relative(entry.path()));
@@ -253,6 +252,7 @@ namespace stdlib::fs {
                 // do nothing
             }
         }
+        return result;
     }
 
     [[nodiscard]]
@@ -391,24 +391,22 @@ export namespace stdlib::fs {
 
     [[nodiscard]]
     Vector<Path> glob(const Vector<String>& paths) noexcept {
-        Vector<Path> result;
-        for (const String& path: paths) {
-            for (Path& match: glob_impl(path, false)) {
-                result.emplace_back(core::util::move(match));
-            }
-        }
-        return result;
+        return paths |
+            Transform([](const String& path) -> Vector<Path> {
+                return glob_impl(path, false);
+            }) | 
+            Join |
+            core::ranges::to<Vector<Path>>();
     }
 
     [[nodiscard]]
     Vector<Path> glob_recursive(const Vector<String>& paths) noexcept {
-        Vector<Path> result;
-        for (const String& path: paths) {
-            for (Path& match: glob_impl(path, true)) {
-                result.emplace_back(core::util::move(match));
-            }
-        }
-        return result;
+        return paths |
+            Transform([](const String& path) -> Vector<Path> {
+                return glob_impl(path, true);
+            }) | 
+            Join |
+            core::ranges::to<Vector<Path>>();
     }
 
     [[nodiscard]]

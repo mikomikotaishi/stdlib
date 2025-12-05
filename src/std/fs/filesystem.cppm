@@ -22,6 +22,16 @@ import core.meta.type_traits;
 using core::ErrorCode;
 using core::meta::UnderlyingTypeType;
 
+export {
+    using std::operator|;
+    using std::operator&;
+    using std::operator^;
+    using std::operator~;
+    using std::operator|=;
+    using std::operator&=;
+    using std::operator^=;
+}
+
 /**
  * @namespace std::fs
  * @brief Wrapper namespace for standard library file system operations.
@@ -37,309 +47,98 @@ export namespace stdlib::fs {
     using RecursiveDirectoryIterator = std::filesystem::recursive_directory_iterator;
     using SpaceInfo = std::filesystem::space_info;
 
-    enum class FileType: signed char {
-        NONE = static_cast<signed char>(std::filesystem::file_type::none),
-        NOT_FOUND = static_cast<signed char>(std::filesystem::file_type::not_found),
-        REGULAR = static_cast<signed char>(std::filesystem::file_type::regular),
-        DIRECTORY = static_cast<signed char>(std::filesystem::file_type::directory),
-        SYMLINK = static_cast<signed char>(std::filesystem::file_type::symlink),
-        BLOCK = static_cast<signed char>(std::filesystem::file_type::block),
-        CHARACTER = static_cast<signed char>(std::filesystem::file_type::character),
-        FIFO = static_cast<signed char>(std::filesystem::file_type::fifo),
-        SOCKET = static_cast<signed char>(std::filesystem::file_type::socket),
-        UNKNOWN = static_cast<signed char>(std::filesystem::file_type::unknown)
+    class FileType {
+    public:
+        using InternalFileType = std::filesystem::file_type;
+
+        FileType() = delete;
+
+        static constexpr InternalFileType NONE = std::filesystem::file_type::none;
+        static constexpr InternalFileType NOT_FOUND = std::filesystem::file_type::not_found;
+        static constexpr InternalFileType REGULAR = std::filesystem::file_type::regular;
+        static constexpr InternalFileType DIRECTORY = std::filesystem::file_type::directory;
+        static constexpr InternalFileType SYMLINK = std::filesystem::file_type::symlink;
+        static constexpr InternalFileType BLOCK = std::filesystem::file_type::block;
+        static constexpr InternalFileType CHARACTER = std::filesystem::file_type::character;
+        static constexpr InternalFileType FIFO = std::filesystem::file_type::fifo;
+        static constexpr InternalFileType SOCKET = std::filesystem::file_type::socket;
+        static constexpr InternalFileType UNKNOWN = std::filesystem::file_type::unknown;
     };
 
-    enum class CopyOptions: unsigned short {
-        NONE = static_cast<unsigned short>(std::filesystem::copy_options::none),
-        SKIP_EXISTING = static_cast<unsigned short>(std::filesystem::copy_options::skip_existing),
-        OVERWRITE_EXISTING = static_cast<unsigned short>(std::filesystem::copy_options::overwrite_existing),
-        UPDATE_EXISTING = static_cast<unsigned short>(std::filesystem::copy_options::update_existing),
-        RECURSIVE = static_cast<unsigned short>(std::filesystem::copy_options::recursive),
-        COPY_SYMLINKS = static_cast<unsigned short>(std::filesystem::copy_options::copy_symlinks),
-        SKIP_SYMLINKS = static_cast<unsigned short>(std::filesystem::copy_options::skip_symlinks),
-        DIRECTORIES_ONLY = static_cast<unsigned short>(std::filesystem::copy_options::directories_only),
-        CREATE_SYMLINKS = static_cast<unsigned short>(std::filesystem::copy_options::create_symlinks),
-        CREATE_HARD_LINKS = static_cast<unsigned short>(std::filesystem::copy_options::create_hard_links)
+    class CopyOptions {
+    public:
+        using InternalCopyOptions = std::filesystem::copy_options;
+
+        CopyOptions() = delete;
+
+        static constexpr InternalCopyOptions NONE = std::filesystem::copy_options::none;
+        static constexpr InternalCopyOptions SKIP_EXISTING = std::filesystem::copy_options::skip_existing;
+        static constexpr InternalCopyOptions OVERWRITE_EXISTING = std::filesystem::copy_options::overwrite_existing;
+        static constexpr InternalCopyOptions UPDATE_EXISTING = std::filesystem::copy_options::update_existing;
+        static constexpr InternalCopyOptions RECURSIVE = std::filesystem::copy_options::recursive;
+        static constexpr InternalCopyOptions COPY_SYMLINKS = std::filesystem::copy_options::copy_symlinks;
+        static constexpr InternalCopyOptions SKIP_SYMLINKS = std::filesystem::copy_options::skip_symlinks;
+        static constexpr InternalCopyOptions DIRECTORIES_ONLY = std::filesystem::copy_options::directories_only;
+        static constexpr InternalCopyOptions CREATE_SYMLINKS = std::filesystem::copy_options::create_symlinks;
+        static constexpr InternalCopyOptions CREATE_HARD_LINKS = std::filesystem::copy_options::create_hard_links;
     };
 
-    [[nodiscard]]
-    constexpr CopyOptions operator&(CopyOptions x, CopyOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return static_cast<CopyOptions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
+    class Permissions {
+    public:
+        using InternalPermissions = std::filesystem::perms;
 
-    [[nodiscard]]
-    constexpr CopyOptions operator|(CopyOptions x, CopyOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return static_cast<CopyOptions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
+        Permissions() = delete;
 
-    [[nodiscard]]
-    constexpr CopyOptions operator^(CopyOptions x, CopyOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return static_cast<CopyOptions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
-    
-    [[nodiscard]]
-    constexpr CopyOptions operator~(CopyOptions x) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return static_cast<CopyOptions>(~static_cast<Underlying>(x));
-    }
-
-    [[nodiscard]]
-    constexpr CopyOptions& operator&=(CopyOptions x, CopyOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return x = static_cast<CopyOptions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr CopyOptions& operator|=(CopyOptions x, CopyOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return x = static_cast<CopyOptions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr CopyOptions& operator^=(CopyOptions x, CopyOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::copy_options>;
-        return x = static_cast<CopyOptions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
-
-    enum class Permissions: unsigned {
-        NONE = static_cast<unsigned>(std::filesystem::perms::none),
-        OWNER_READ = static_cast<unsigned>(std::filesystem::perms::owner_read),
-        OWNER_WRITE = static_cast<unsigned>(std::filesystem::perms::owner_write),
-        OWNER_EXEC = static_cast<unsigned>(std::filesystem::perms::owner_exec),
-        OWNER_ALL = static_cast<unsigned>(std::filesystem::perms::owner_all),
-        GROUP_READ = static_cast<unsigned>(std::filesystem::perms::group_read),
-        GROUP_WRITE = static_cast<unsigned>(std::filesystem::perms::group_write),
-        GROUP_EXEC = static_cast<unsigned>(std::filesystem::perms::group_exec),
-        GROUP_ALL = static_cast<unsigned>(std::filesystem::perms::group_all),
-        OTHERS_READ = static_cast<unsigned>(std::filesystem::perms::others_read),
-        OTHERS_WRITE = static_cast<unsigned>(std::filesystem::perms::others_write),
-        OTHERS_EXEC = static_cast<unsigned>(std::filesystem::perms::others_exec),
-        OTHERS_ALL = static_cast<unsigned>(std::filesystem::perms::others_all),
-        ALL = static_cast<unsigned>(std::filesystem::perms::all),
-        SET_UID = static_cast<unsigned>(std::filesystem::perms::set_uid),
-        SET_GID = static_cast<unsigned>(std::filesystem::perms::set_gid),
-        STICKY_BIT = static_cast<unsigned>(std::filesystem::perms::sticky_bit),
-        MASK = static_cast<unsigned>(std::filesystem::perms::mask),
-        UNKNOWN = static_cast<unsigned>(std::filesystem::perms::unknown)
+        static constexpr InternalPermissions NONE = std::filesystem::perms::none;
+        static constexpr InternalPermissions OWNER_READ = std::filesystem::perms::owner_read;
+        static constexpr InternalPermissions OWNER_WRITE = std::filesystem::perms::owner_write;
+        static constexpr InternalPermissions OWNER_EXEC = std::filesystem::perms::owner_exec;
+        static constexpr InternalPermissions OWNER_ALL = std::filesystem::perms::owner_all;
+        static constexpr InternalPermissions GROUP_READ = std::filesystem::perms::group_read;
+        static constexpr InternalPermissions GROUP_WRITE = std::filesystem::perms::group_write;
+        static constexpr InternalPermissions GROUP_EXEC = std::filesystem::perms::group_exec;
+        static constexpr InternalPermissions GROUP_ALL = std::filesystem::perms::group_all;
+        static constexpr InternalPermissions OTHERS_READ = std::filesystem::perms::others_read;
+        static constexpr InternalPermissions OTHERS_WRITE = std::filesystem::perms::others_write;
+        static constexpr InternalPermissions OTHERS_EXEC = std::filesystem::perms::others_exec;
+        static constexpr InternalPermissions OTHERS_ALL = std::filesystem::perms::others_all;
+        static constexpr InternalPermissions ALL = std::filesystem::perms::all;
+        static constexpr InternalPermissions SET_UID = std::filesystem::perms::set_uid;
+        static constexpr InternalPermissions SET_GID = std::filesystem::perms::set_gid;
+        static constexpr InternalPermissions STICKY_BIT = std::filesystem::perms::sticky_bit;
+        static constexpr InternalPermissions MASK = std::filesystem::perms::mask;
+        static constexpr InternalPermissions UNKNOWN = std::filesystem::perms::unknown;
     };
 
-    [[nodiscard]]
-    constexpr Permissions operator&(Permissions x, Permissions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return static_cast<Permissions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
+    class PermissionOptions {
+    public:
+        using InternalPermissionOptions = std::filesystem::perm_options;
 
-    [[nodiscard]]
-    constexpr Permissions operator|(Permissions x, Permissions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return static_cast<Permissions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
+        PermissionOptions() = delete;
 
-    [[nodiscard]]
-    constexpr Permissions operator^(Permissions x, Permissions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return static_cast<Permissions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
-    
-    [[nodiscard]]
-    constexpr Permissions operator~(Permissions x) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return static_cast<Permissions>(~static_cast<Underlying>(x));
-    }
-
-    [[nodiscard]]
-    constexpr Permissions& operator&=(Permissions x, Permissions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return x = static_cast<Permissions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr Permissions& operator|=(Permissions x, Permissions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return x = static_cast<Permissions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr Permissions& operator^=(Permissions x, Permissions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perms>;
-        return x = static_cast<Permissions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
-
-    enum class PermissionOptions: unsigned {
-        REPLACE = static_cast<unsigned>(std::filesystem::perm_options::replace),
-        ADD = static_cast<unsigned>(std::filesystem::perm_options::add),
-        REMOVE = static_cast<unsigned>(std::filesystem::perm_options::remove),
-        NO_FOLLOW = static_cast<unsigned>(std::filesystem::perm_options::nofollow)
+        static constexpr InternalPermissionOptions REPLACE = std::filesystem::perm_options::replace;
+        static constexpr InternalPermissionOptions ADD = std::filesystem::perm_options::add;
+        static constexpr InternalPermissionOptions REMOVE = std::filesystem::perm_options::remove;
+        static constexpr InternalPermissionOptions NO_FOLLOW = std::filesystem::perm_options::nofollow;
     };
-
-    [[nodiscard]]
-    constexpr PermissionOptions operator&(PermissionOptions x, PermissionOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return static_cast<PermissionOptions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr PermissionOptions operator|(PermissionOptions x, PermissionOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return static_cast<PermissionOptions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr PermissionOptions operator^(PermissionOptions x, PermissionOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return static_cast<PermissionOptions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
-    
-    [[nodiscard]]
-    constexpr PermissionOptions operator~(PermissionOptions x) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return static_cast<PermissionOptions>(~static_cast<Underlying>(x));
-    }
-
-    [[nodiscard]]
-    constexpr PermissionOptions& operator&=(PermissionOptions x, PermissionOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return x = static_cast<PermissionOptions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr PermissionOptions& operator|=(PermissionOptions x, PermissionOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return x = static_cast<PermissionOptions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr PermissionOptions& operator^=(PermissionOptions x, PermissionOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::perm_options>;
-        return x = static_cast<PermissionOptions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     using Perms = Permissions;
-    using PermOptions = PermissionsOptions;
+    using PermOptions = PermissionOptions;
     #endif
 
-    class FileStatus: public std::filesystem::file_status {
+    using FileStatus = std::filesystem::file_status;
+
+    class DirectoryOptions {
     public:
-        explicit FileStatus(FileType ft, Permissions perms = Permissions::UNKNOWN) noexcept:
-            std::filesystem::file_status(static_cast<std::filesystem::file_type>(ft), static_cast<std::filesystem::perms>(perms)) {}
+        using InternalDirectoryOptions = std::filesystem::directory_options;
 
-        FileType type() const noexcept {
-            return static_cast<FileType>(std::filesystem::file_status::type());
-        }
+        DirectoryOptions() = delete;
 
-        Permissions permissions() const noexcept {
-            return static_cast<Permissions>(std::filesystem::file_status::permissions());
-        }
-
-        void type(FileType ft) noexcept {
-            std::filesystem::file_status::type(static_cast<std::filesystem::file_type>(ft));
-        }
-
-        void permissions(Permissions perms) noexcept {
-            std::filesystem::file_status::permissions(static_cast<std::filesystem::perms>(perms));
-        }
+        static constexpr InternalDirectoryOptions NONE = std::filesystem::directory_options::none;
+        static constexpr InternalDirectoryOptions FOLLOW_DIRECTORY_SYMLINK = std::filesystem::directory_options::follow_directory_symlink;
+        static constexpr InternalDirectoryOptions SKIP_PERMISSION_DENIED = std::filesystem::directory_options::skip_permission_denied;
     };
-
-    enum class DirectoryOptions: unsigned char {
-        NONE = static_cast<unsigned char>(std::filesystem::directory_options::none),
-        FOLLOW_DIRECTORY_SYMLINK = static_cast<unsigned char>(std::filesystem::directory_options::follow_directory_symlink),
-        SKIP_PERMISSION_DENIED = static_cast<unsigned char>(std::filesystem::directory_options::skip_permission_denied)
-    };
-
-    [[nodiscard]]
-    constexpr DirectoryOptions operator&(DirectoryOptions x, DirectoryOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return static_cast<DirectoryOptions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr DirectoryOptions operator|(DirectoryOptions x, DirectoryOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return static_cast<DirectoryOptions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr DirectoryOptions operator^(DirectoryOptions x, DirectoryOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return static_cast<DirectoryOptions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
-    
-    [[nodiscard]]
-    constexpr DirectoryOptions operator~(DirectoryOptions x) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return static_cast<DirectoryOptions>(~static_cast<Underlying>(x));
-    }
-
-    [[nodiscard]]
-    constexpr DirectoryOptions& operator&=(DirectoryOptions x, DirectoryOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return x = static_cast<DirectoryOptions>(
-            static_cast<Underlying>(x) & static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr DirectoryOptions& operator|=(DirectoryOptions x, DirectoryOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return x = static_cast<DirectoryOptions>(
-            static_cast<Underlying>(x) | static_cast<Underlying>(y)
-        );
-    }
-
-    [[nodiscard]]
-    constexpr DirectoryOptions& operator^=(DirectoryOptions x, DirectoryOptions y) noexcept {
-        using Underlying = UnderlyingTypeType<std::filesystem::directory_options>;
-        return x = static_cast<DirectoryOptions>(
-            static_cast<Underlying>(x) ^ static_cast<Underlying>(y)
-        );
-    }
 
     using FileTimeType = std::filesystem::file_time_type;
 
@@ -385,75 +184,6 @@ export namespace stdlib::fs {
     using std::filesystem::is_socket;
     using std::filesystem::is_symlink;
     using std::filesystem::status_known;
-
-    inline bool copy_file(const Path& from, const Path& to, CopyOptions options) {
-        return copy_file(from, to, static_cast<std::filesystem::copy_options>(options));
-    }
-    
-    inline bool copy_file(const Path& from, const Path& to, CopyOptions options, ErrorCode& ec) {
-        return copy_file(from, to, static_cast<std::filesystem::copy_options>(options), ec);
-    }
-
-    inline bool exists(FileStatus s) noexcept {
-        return exists(static_cast<std::filesystem::file_status>(s));
-    }
-
-    inline void permissions(const Path& path, Permissions perms, PermissionOptions opts = PermissionOptions::REPLACE) {
-        permissions(path, static_cast<std::filesystem::perms>(perms), static_cast<std::filesystem::perm_options>(opts));
-    }
-
-    inline void permissions(const Path& path, Permissions perms, ErrorCode& ec) noexcept {
-        permissions(path, static_cast<std::filesystem::perms>(perms), ec);
-    }
-
-    inline void permissions(const Path& path, Permissions perms, PermissionOptions opts, ErrorCode& ec) {
-        permissions(path, static_cast<std::filesystem::perms>(perms), static_cast<std::filesystem::perm_options>(opts), ec);
-    }
-
-    [[nodiscard]]
-    inline bool is_block_file(FileStatus s) noexcept {
-        return is_block_file(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_character_file(FileStatus s) noexcept {
-        return is_character_file(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_directory(FileStatus s) noexcept {
-        return is_directory(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_fifo(FileStatus s) noexcept {
-        return is_fifo(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_other(FileStatus s) noexcept {
-        return is_other(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_regular_file(FileStatus s) noexcept {
-        return is_regular_file(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_socket(FileStatus s) noexcept {
-        return is_socket(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool is_symlink(FileStatus s) noexcept {
-        return is_symlink(static_cast<std::filesystem::file_status>(s));
-    }
-
-    [[nodiscard]]
-    inline bool status_known(FileStatus s) noexcept {
-        return status_known(static_cast<std::filesystem::file_status>(s));
-    }
 
     using std::hash;
     using std::swap;
