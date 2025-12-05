@@ -18,8 +18,10 @@ export module stdlibx.util;
 export import stdx.util.Argument;
 export import stdx.util.ArgumentParser;
 export import stdx.util.ParsedArguments;
+export import stdx.util.logging;
 #else
 export import stdlibx.util.Argument;
 export import stdlibx.util.ArgumentParser;
 export import stdlibx.util.ParsedArguments;
+export import stdlibx.util.logging;
 #endif
