@@ -66,9 +66,6 @@ export namespace stdlibx::util::logging {
  * @brief Named logger instance that writes to configured sinks.
  */
 class Logger final {
-public:
-    static constexpr StringView PATH_DEBUGFILE = "./userdata/debug.txt"; ///< The debug file path.
-    static constexpr StringView USERDATA_DIR = "./userdata"; ///< The user data directory path.
 private:
     String loggerName;
     Vector<SharedPointer<ILogSink>> sinks;
