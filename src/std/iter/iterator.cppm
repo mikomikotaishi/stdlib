@@ -97,6 +97,7 @@ export namespace stdlib::iter {
     using core::iter::BidirectionalIteratorTag;
     using core::iter::RandomAccessIteratorTag;
     using core::iter::ContiguousIteratorTag;
+    using core::iter::IIterator;
     using core::iter::Iterator;
     using core::iter::ReverseIterator;
     using core::iter::MoveIterator;

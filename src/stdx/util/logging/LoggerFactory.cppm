@@ -1,0 +1,201 @@
+/**
+ * @file LoggerFactory.cppm
+ * @module stdx.util.logging.LoggerFactory
+ * @brief Implementation of the LoggerFactory singleton.
+ *
+ * This file contains the LoggerFactory class which creates and manages
+ * logger instances.
+ */
+
+module;
+
+#include <string>
+
+#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+export module stdx.util.logging.LoggerFactory;
+
+export import stdx.util.logging.Level;
+export import stdx.util.logging.Logger;
+export import stdx.util.logging.Sinks;
+
+import std;
+
+using std::collections::HashMap;
+using std::collections::Vector;
+using std::io::OpenMode;
+using std::mem::SharedPointer;
+using std::sync::Mutex;
+using std::sync::ScopedLock;
+
+namespace fs = std::fs;
+namespace mem = std::mem;
+#else
+export module stdlibx.util.logging.LoggerFactory;
+
+export import stdlibx.util.logging.Level;
+export import stdlibx.util.logging.Logger;
+export import stdlibx.util.logging.Sinks;
+
+import stdlib;
+
+using stdlib::collections::HashMap;
+using stdlib::collections::Vector;
+using stdlib::io::OpenMode;
+using stdlib::mem::SharedPointer;
+using stdlib::sync::Mutex;
+using stdlib::sync::ScopedLock;
+
+namespace fs = stdlib::fs;
+namespace mem = stdlib::mem;
+#endif
+
+/**
+ * @namespace stdx::util::logging
+ * @brief Wrapper namespace for standard library extension utility operations.
+ */
+#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+export namespace stdx::util::logging {
+#else
+export namespace stdlibx::util::logging {
+#endif
+
+/**
+ * @class LoggerFactory
+ * @brief Factory for creating and managing logger instances.
+ * 
+ * The LoggerFactory is a singleton that creates logger instances by name
+ * and manages global sinks that all loggers can use.
+ */
+class LoggerFactory final {
+private:
+    HashMap<String, SharedPointer<Logger>> loggers;
+    Vector<SharedPointer<ILogSink>> globalSinks;
+    mutable Mutex mutex;
+    Level defaultLevel = Level::DEBUG;
+
+    /**
+     * @brief Private constructor for singleton pattern.
+     */
+    LoggerFactory() = default;
+
+    /**
+     * @brief Private destructor.
+     */
+    ~LoggerFactory() = default;
+public:
+    /**
+     * @brief Deleted copy constructor.
+     */
+    LoggerFactory(const LoggerFactory&) = delete;
+
+    /**
+     * @brief Deleted move constructor.
+     */
+    LoggerFactory(LoggerFactory&&) = delete;
+
+    /**
+     * @brief Deleted copy assignment operator.
+     */
+    LoggerFactory& operator=(const LoggerFactory&) = delete;
+
+    /**
+     * @brief Deleted move assignment operator.
+     */
+    LoggerFactory& operator=(LoggerFactory&&) = delete;
+
+    /**
+     * @brief Get the singleton instance.
+     * 
+     * @return Reference to the singleton instance
+     */
+    [[nodiscard]]
+    static LoggerFactory& instance() noexcept {
+        static LoggerFactory lf;
+        return lf;
+    }
+
+    /**
+     * @brief Add a global sink that all loggers will use.
+     * 
+     * @param sink The sink to add
+     */
+    LoggerFactory& add_global_sink(SharedPointer<ILogSink> sink) {
+        ScopedLock<Mutex> lock(mutex);
+        globalSinks.push_back(sink);
+        
+        for (auto& [_, logger]: loggers) {
+            logger->add_sink(sink);
+        }
+        return *this;
+    }
+
+    /**
+     * @brief Set the default log level for new loggers.
+     * 
+     * @param level The default level
+     */
+    LoggerFactory& of_default_level(Level level) noexcept {
+        ScopedLock<Mutex> lock(mutex);
+        defaultLevel = level;
+        return *this;
+    }
+
+    /**
+     * @brief Get or create a logger with the given name.
+     * 
+     * @param name The logger name (typically class name)
+     * @return Shared pointer to the logger
+     */
+    [[nodiscard]]
+    SharedPointer<Logger> of(StringView name) {
+        ScopedLock<Mutex> lock(mutex);
+        
+        String key(name);
+        if (auto it = loggers.find(key); it != loggers.end()) {
+            return it->second;
+        }
+
+        SharedPointer<Logger> logger = mem::make_shared<Logger>(key, defaultLevel);
+        
+        for (const SharedPointer<ILogSink>& sink: globalSinks) {
+            logger->add_sink(sink);
+        }
+
+        loggers[key] = logger;
+        return logger;
+    }
+
+    /**
+     * @brief Initialise the logging system with default file sink.
+     * 
+     * @param logFilePath Path to the log file
+     * @param enableConsole Whether to also log to console
+     */
+    void init(StringView logFilePath = "./userdata/debug.txt", bool enableConsole = false) {
+        fs::create_directories("./userdata");
+        SharedPointer<FileSink> fileSink = mem::make_shared<FileSink>(logFilePath, OpenMode::TRUNCATE);
+        add_global_sink(fileSink);
+
+        if (enableConsole) {
+            SharedPointer<ConsoleSink> consoleSink = mem::make_shared<ConsoleSink>(true);
+            add_global_sink(consoleSink);
+        }
+
+        SharedPointer<Logger> initLogger = of("LoggerFactory");
+        initLogger->log(Level::INFO, "====================BEGIN DEBUG LOG====================");
+        initLogger->log(Level::INFO, "Logging system initialised");
+        initLogger->log(Level::INFO, "=======================================================");
+    }
+
+    /**
+     * @brief Flush all loggers.
+     */
+    void flush_all() {
+        ScopedLock<Mutex> lock(mutex);
+        for (const SharedPointer<ILogSink>& sink : globalSinks) {
+            sink->flush();
+        }
+    }
+};
+
+}

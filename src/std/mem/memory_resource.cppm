@@ -32,7 +32,7 @@ export namespace stdlib::mem {
     namespace pmr {
         using alloc::mem::pmr::PolymorphicAllocator;
 
-        using alloc::mem::pmr::MemoryResource;
+        using alloc::mem::pmr::IMemoryResource;
         using alloc::mem::pmr::PoolOptions;
         using alloc::mem::pmr::SynchronizedPoolResource;
         using alloc::mem::pmr::UnsynchronizedPoolResource;

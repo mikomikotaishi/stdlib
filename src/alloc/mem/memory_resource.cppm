@@ -25,7 +25,7 @@ export namespace alloc::mem {
         template <typename T>
         using PolymorphicAllocator = std::pmr::polymorphic_allocator<T>;
 
-        using MemoryResource = std::pmr::memory_resource;
+        using IMemoryResource = std::pmr::memory_resource;
         using PoolOptions = std::pmr::pool_options;
         using SynchronizedPoolResource = std::pmr::synchronized_pool_resource;
         using UnsynchronizedPoolResource = std::pmr::unsynchronized_pool_resource;

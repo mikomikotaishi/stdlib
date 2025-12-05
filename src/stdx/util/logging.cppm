@@ -15,11 +15,13 @@ export module stdlibx.util.logging;
 #endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-// export import stdx.util.logging.Level;
-// export import stdx.util.logging.Logger;
-// export import stdx.util.logging.LoggerFactory;
+export import stdx.util.logging.Level;
+export import stdx.util.logging.Logger;
+export import stdx.util.logging.LoggerFactory;
+export import stdx.util.logging.Sinks;
 #else
-// export import stdlibx.util.logging.Level;
-// export import stdlibx.util.logging.Logger;
-// export import stdlibx.util.logging.LoggerFactory;
+export import stdlibx.util.logging.Level;
+export import stdlibx.util.logging.Logger;
+export import stdlibx.util.logging.LoggerFactory;
+export import stdlibx.util.logging.Sinks;
 #endif

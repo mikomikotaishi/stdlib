@@ -16,6 +16,8 @@ export module stdlib.fs;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export import std.fs.filesystem;
+export import std.fs.glob;
 #else
 export import stdlib.fs.filesystem;
+export import stdlib.fs.glob;
 #endif

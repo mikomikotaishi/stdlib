@@ -14,9 +14,23 @@ export module core.iter.iterator;
 
 import core.concepts;
 import core.functional;
+import core.meta.type_traits;
 
 using core::Identity;
 using core::Semiregular;
+using core::meta::ConditionalType;
+
+namespace {
+    template <typename T>
+    concept Has_iterator = requires {
+        typename T::iterator;
+    };
+
+    template <typename T>
+    concept Has_Iterator = requires {
+        typename T::Iterator;
+    };
+}
 
 /**
  * @namespace core::iter
@@ -209,7 +223,15 @@ export namespace core::iter {
     using ContiguousIteratorTag = std::contiguous_iterator_tag;
 
     template <typename Category, typename T, typename Distance = std::ptrdiff_t, typename Pointer = T*, typename Reference = T&>
-    using Iterator = std::iterator<Category, T, Distance, Pointer, Reference>;
+    using IIterator = std::iterator<Category, T, Distance, Pointer, Reference>;
+
+    template <typename Iterable>
+        requires Has_iterator<Iterable> || Has_Iterator<Iterable>
+    using Iterator = ConditionalType<
+        Has_Iterator<Iterable>,
+        typename Iterable::Iterator,
+        typename Iterable::iterator
+    >;
 
     template <typename Iter>
     using ReverseIterator = std::reverse_iterator<Iter>;

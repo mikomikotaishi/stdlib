@@ -30,9 +30,9 @@ using stdlib::collections::Vector;
  * @brief Wrapper namespace for standard library extension utility operations.
  */
 #if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
-export namespace stdx::process {
+export namespace stdx::util {
 #else
-export namespace stdlibx::process {
+export namespace stdlibx::util {
 #endif
 
 /**
