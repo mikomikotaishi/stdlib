@@ -1,20 +1,20 @@
 /**
- * @file list.cppm
- * @module std.collections.list
- * @brief Module file for standard library list operations.
+ * @file hash_map.cppm
+ * @module std.collections.hash_map
+ * @brief Module file for standard library hash map operations.
  *
- * This file contains the implementation of the list operations in the standard library.
+ * This file contains the implementation of the hash map operations in the standard library.
  */
 
 module;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-export module std.collections.list;
+export module std.collections.hash_map;
 #else
-export module stdlib.collections.list;
+export module stdlib.collections.hash_map;
 #endif
 
-import alloc.collections.list;
+import alloc.collections.hash_map;
 
 /**
  * @namespace std::collections
@@ -25,10 +25,12 @@ export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
-    using alloc::collections::LinkedList;
+    using alloc::collections::HashMap;
+    using alloc::collections::HashMultimap;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
-    using alloc::collections::List;
+    using alloc::collections::UnorderedMap;
+    using alloc::collections::UnorderedMultimap;
     #endif
 
     /**
@@ -36,14 +38,15 @@ export namespace stdlib::collections {
      * @brief Namespace for operations on polymorphic memory resources.
      */
     namespace pmr {
-        using alloc::collections::pmr::LinkedList;
+        using alloc::collections::pmr::HashMap;
+        using alloc::collections::pmr::HashMultimap;
 
         #ifdef STDLIB_ENABLE_COMPAT_NAMES
-        using alloc::collections::pmr::List;
+        using alloc::collections::pmr::UnorderedMap;
+        using alloc::collections::pmr::UnorderedMultimap;
         #endif
     }
 
-    using alloc::collections::erase;
     using alloc::collections::erase_if;
 
     using alloc::collections::operator==;
@@ -61,6 +64,7 @@ export namespace stdlib::collections {
     using alloc::collections::ssize;
     using alloc::collections::empty;
     using alloc::collections::data;
-    
+
+    using alloc::collections::hash;
     using alloc::collections::swap;
 }

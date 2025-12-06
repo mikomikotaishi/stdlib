@@ -1,33 +1,27 @@
 /**
- * @file unordered_map.cppm
- * @module alloc.collections.unordered_map
- * @brief Module file for standard library unordered map operations.
+ * @file hash_map.cppm
+ * @module alloc.collections.hash_map
+ * @brief Module file for standard library hash map operations.
  *
- * This file contains the implementation of the unordered map operations in the standard library.
+ * This file contains the implementation of the hash map operations in the standard library.
  */
 
 module;
 
 #include <unordered_map>
 
-export module alloc.collections.unordered_map;
+export module alloc.collections.hash_map;
 
 import core.functional;
 import core.pair;
 
 import alloc.mem.memory;
 
-#ifdef STDLIB_ALTERNATE_USING_SYNTAX
-using core::{EqualTo, Hash, Pair};
-
-using alloc::mem::Allocator;
-#else
 using core::EqualTo;
 using core::Hash;
 using core::Pair;
 
 using alloc::mem::Allocator;
-#endif
 
 /**
  * @namespace alloc::collections

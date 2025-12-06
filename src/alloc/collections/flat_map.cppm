@@ -20,18 +20,11 @@ import core.meta.type_traits;
 import alloc.collections.vector;
 import alloc.mem.memory;
 
-#ifdef STDLIB_ALTERNATE_USING_SYNTAX
-using core::Less;
-using core::meta::{IsNothrowSwappableValue, IsSameValue};
-
-using alloc::mem::Allocator;
-#else
 using core::Less;
 using core::meta::IsNothrowSwappableValue;
 using core::meta::IsSameValue;
 
 using alloc::mem::Allocator;
-#endif
 
 /**
  * @namespace alloc::collections

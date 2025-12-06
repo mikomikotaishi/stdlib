@@ -1,4 +1,5 @@
 /**
+ * @internal
  * @file csignal_constants.cppm
  * @module core.sys.csignal:constants
  * @brief Module file for constants of the standard library C-style signal operations.

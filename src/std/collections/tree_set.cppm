@@ -1,20 +1,20 @@
 /**
- * @file unordered_set.cppm
- * @module std.collections.unordered_set
- * @brief Module file for standard library unordered set operations.
+ * @file tree_set.cppm
+ * @module std.collections.tree_set
+ * @brief Module file for standard library tree set operations.
  *
- * This file contains the implementation of the unordered set operations in the standard library.
+ * This file contains the implementation of the tree set operations in the standard library.
  */
 
 module;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-export module std.collections.unordered_set;
+export module std.collections.tree_set;
 #else
-export module stdlib.collections.unordered_set;
+export module stdlib.collections.tree_set;
 #endif
 
-import alloc.collections.unordered_set;
+import alloc.collections.tree_set;
 
 /**
  * @namespace std::collections
@@ -25,12 +25,12 @@ export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
-    using alloc::collections::HashSet;
-    using alloc::collections::HashMultiset;
+    using alloc::collections::TreeSet;
+    using alloc::collections::TreeMultiset;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
-    using alloc::collections::UnorderedSet;
-    using alloc::collections::UnorderedMultiset;
+    using alloc::collections::Set;
+    using alloc::collections::Multiset;
     #endif
 
     /**
@@ -38,12 +38,12 @@ export namespace stdlib::collections {
      * @brief Namespace for operations on polymorphic memory resources.
      */
     namespace pmr {
-        using alloc::collections::pmr::HashSet;
-        using alloc::collections::pmr::HashMultiset;
+        using alloc::collections::pmr::TreeSet;
+        using alloc::collections::pmr::TreeMultiset;
 
         #ifdef STDLIB_ENABLE_COMPAT_NAMES
-        using alloc::collections::pmr::UnorderedSet;
-        using alloc::collections::pmr::UnorderedMultiset;
+        using alloc::collections::pmr::Set;
+        using alloc::collections::pmr::Multiset;
         #endif
     }
 
@@ -65,6 +65,5 @@ export namespace stdlib::collections {
     using alloc::collections::empty;
     using alloc::collections::data;
 
-    using alloc::collections::hash;
     using alloc::collections::swap;
 }

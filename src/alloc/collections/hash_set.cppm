@@ -1,31 +1,25 @@
 /**
- * @file unordered_set.cppm
- * @module alloc.collections.unordered_set
- * @brief Module file for standard library unordered set operations.
+ * @file hash_set.cppm
+ * @module alloc.collections.hash_set
+ * @brief Module file for standard library hash set operations.
  *
- * This file contains the implementation of the unordered set operations in the standard library.
+ * This file contains the implementation of the hash set operations in the standard library.
  */
 
 module;
 
 #include <unordered_set>
 
-export module alloc.collections.unordered_set;
+export module alloc.collections.hash_set;
 
 import core.functional;
 
 import alloc.mem.memory;
 
-#ifdef STDLIB_ALTERNATE_USING_SYNTAX
-using core::{EqualTo, Hash};
-
-using alloc::mem::Allocator;
-#else
 using core::EqualTo;
 using core::Hash;
 
 using alloc::mem::Allocator;
-#endif
 
 /**
  * @namespace alloc::collections

@@ -9,7 +9,7 @@ target_sources(stdlib_std
 
 configure_cpp_module_target(stdlib_std)
 
-target_link_libraries(stdlib_std PUBLIC stdlib_alloc)
+target_link_libraries(stdlib_std PUBLIC stdlib_core stdlib_alloc)
 
 target_include_directories(stdlib_std 
     PUBLIC 

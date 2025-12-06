@@ -1,4 +1,5 @@
 /**
+ * @internal
  * @file cinttypes_constants.cppm
  * @module core.fmt.cinttypes:constants
  * @brief Module file for constants of the standard library C-style integer formatting constant operations.

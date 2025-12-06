@@ -1,20 +1,20 @@
 /**
- * @file set.cppm
- * @module std.collections.set
- * @brief Module file for standard library set operations.
+ * @file linked_list.cppm
+ * @module std.collections.linked_list
+ * @brief Module file for standard library linked list operations.
  *
- * This file contains the implementation of the set operations in the standard library.
+ * This file contains the implementation of the linked list operations in the standard library.
  */
 
 module;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
-export module std.collections.set;
+export module std.collections.linked_list;
 #else
-export module stdlib.collections.set;
+export module stdlib.collections.linked_list;
 #endif
 
-import alloc.collections.set;
+import alloc.collections.linked_list;
 
 /**
  * @namespace std::collections
@@ -25,12 +25,10 @@ export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
-    using alloc::collections::TreeSet;
-    using alloc::collections::TreeMultiset;
+    using alloc::collections::LinkedList;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
-    using alloc::collections::Set;
-    using alloc::collections::Multiset;
+    using alloc::collections::List;
     #endif
 
     /**
@@ -38,15 +36,14 @@ export namespace stdlib::collections {
      * @brief Namespace for operations on polymorphic memory resources.
      */
     namespace pmr {
-        using alloc::collections::pmr::TreeSet;
-        using alloc::collections::pmr::TreeMultiset;
+        using alloc::collections::pmr::LinkedList;
 
         #ifdef STDLIB_ENABLE_COMPAT_NAMES
-        using alloc::collections::pmr::Set;
-        using alloc::collections::pmr::Multiset;
+        using alloc::collections::pmr::List;
         #endif
     }
 
+    using alloc::collections::erase;
     using alloc::collections::erase_if;
 
     using alloc::collections::operator==;
@@ -64,6 +61,6 @@ export namespace stdlib::collections {
     using alloc::collections::ssize;
     using alloc::collections::empty;
     using alloc::collections::data;
-
+    
     using alloc::collections::swap;
 }

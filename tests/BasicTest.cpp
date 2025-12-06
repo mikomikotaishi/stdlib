@@ -21,7 +21,7 @@ int main() {
     String s = "This is a test string";
     std::io::println("{}", s);
 
-    Vector<int> v{1, 2, 3, 4, 5};
+    Vector<i32> v{1, 2, 3, 4, 5};
     for (usize i = 0; i < v.size(); ++i) {
         std::io::println("v[{}] = {}", i, v[i]);
     }

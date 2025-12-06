@@ -1,31 +1,25 @@
 /**
- * @file list.cppm
- * @module alloc.collections.list
- * @brief Module file for standard library list operations.
+ * @file singly_linked_list.cppm
+ * @module alloc.collections.singly_linked_list
+ * @brief Module file for standard library singly-linked list operations.
  *
- * This file contains the implementation of the list operations in the standard library.
+ * This file contains the implementation of the singly-linked list operations in the standard library.
  */
 
 module;
 
-#include <list>
+#include <forward_list>
 
-export module alloc.collections.list;
+export module alloc.collections.singly_linked_list;
 
 import core.meta.type_traits;
 
 import alloc.mem.memory;
 
-#ifdef STDLIB_ALTERNATE_USING_SYNTAX
-using core::meta::{IsSameValue, RemoveConstVolatile};
-
-using alloc::mem::Allocator;
-#else
 using core::meta::IsSameValue;
 using core::meta::RemoveConstVolatile;
 
 using alloc::mem::Allocator;
-#endif
 
 /**
  * @namespace alloc::collections
@@ -36,11 +30,14 @@ export namespace alloc::collections {
         requires 
             IsSameValue<typename RemoveConstVolatile<T>::type, T> &&
             IsSameValue<typename Alloc::value_type, T>
-    using LinkedList = std::list<T, Alloc>;
+    using SinglyLinkedList = std::forward_list<T, Alloc>;
 
     #ifdef STDLIB_ENABLE_COMPAT_NAMES
     template <typename T, typename Alloc = Allocator<T>>
-    using List = LinkedList<T, Alloc>;
+        requires 
+            IsSameValue<typename RemoveConstVolatile<T>::type, T> &&
+            IsSameValue<typename Alloc::value_type, T>
+    using ForwardList = std::forward_list<T, Alloc>;
     #endif
 
     /**
@@ -49,11 +46,11 @@ export namespace alloc::collections {
      */
     namespace pmr {
         template <typename T>
-        using LinkedList = std::pmr::list<T>;
+        using SinglyLinkedList = std::pmr::forward_list<T>;
 
         #ifdef STDLIB_ENABLE_COMPAT_NAMES
         template <typename T>
-        using List = LinkedList<T>;
+        using ForwardList = std::pmr::forward_list<T>;
         #endif
     }
 
@@ -75,6 +72,6 @@ export namespace alloc::collections {
     using std::ssize;
     using std::empty;
     using std::data;
-    
+
     using std::swap;
 }

@@ -1,16 +1,16 @@
 /**
- * @file map.cppm
- * @module alloc.collections.map
- * @brief Module file for standard library map operations.
+ * @file tree_map.cppm
+ * @module alloc.collections.tree_map
+ * @brief Module file for standard library tree map operations.
  *
- * This file contains the implementation of the map operations in the standard library.
+ * This file contains the implementation of the tree map operations in the standard library.
  */
 
 module;
 
 #include <map>
 
-export module alloc.collections.map;
+export module alloc.collections.tree_map;
 
 import core.functional;
 import core.pair;
@@ -18,18 +18,11 @@ import core.meta.type_traits;
 
 import alloc.mem.memory;
 
-#ifdef STDLIB_ALTERNATE_USING_SYNTAX
-using core::{Less, Pair};
-using core::meta::IsSameValue;
-
-using alloc::mem::Allocator;
-#else
 using core::Less;
 using core::Pair;
 using core::meta::IsSameValue;
 
 using alloc::mem::Allocator;
-#endif
 
 /**
  * @namespace alloc::collections

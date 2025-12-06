@@ -1,0 +1,214 @@
+# stdlib Library Makefile
+# 
+# This Makefile provides convenient targets for building, testing, and managing
+# the stdlib C++ module library using CMake and Ninja.
+
+# Project configuration
+PROJECT_NAME := stdlib
+BUILD_DIR := build
+CMAKE_GENERATOR := Ninja
+CMAKE_BUILD_TYPE := Release
+
+# Build options
+BUILD_TESTS ?= OFF
+CMAKE_BUILD_FLAGS :=
+
+# Process build options
+ifneq ($(BUILD_TESTS),OFF)
+	CMAKE_BUILD_FLAGS += -DSTDLIB_BUILD_TESTS=ON
+endif
+
+# Sanitiser configuration (can be overridden with make SANITISERS="address undefined")
+SANITISERS ?=
+ENABLE_SANITISERS := OFF
+CMAKE_SANITISER_FLAGS :=
+
+# Process sanitiser flags
+ifneq ($(SANITISERS),)
+	ENABLE_SANITISERS := ON
+	CMAKE_BUILD_TYPE := Debug
+	
+	ifeq ($(findstring address,$(SANITISERS)),address)
+		CMAKE_SANITISER_FLAGS += -DUSE_SANITISER_ADDRESS=ON -DUSE_SANITISER_LEAK=ON
+	endif
+	
+	ifeq ($(findstring undefined,$(SANITISERS)),undefined)
+		CMAKE_SANITISER_FLAGS += -DUSE_SANITISER_UNDEFINED=ON
+	endif
+	
+	ifeq ($(findstring thread,$(SANITISERS)),thread)
+		CMAKE_SANITISER_FLAGS += -DUSE_SANITISER_THREAD=ON
+	endif
+	
+	ifeq ($(findstring memory,$(SANITISERS)),memory)
+		CMAKE_SANITISER_FLAGS += -DUSE_SANITISER_MEMORY=ON
+	endif
+	
+	ifeq ($(SANITISERS),all)
+		CMAKE_SANITISER_FLAGS := -DUSE_SANITISER_ADDRESS=ON -DUSE_SANITISER_UNDEFINED=ON -DUSE_SANITISER_LEAK=ON
+	endif
+endif
+
+# Colors for output
+BOLD := \033[1m
+RED := \033[31m
+GREEN := \033[32m
+YELLOW := \033[33m
+BLUE := \033[34m
+MAGENTA := \033[35m
+CYAN := \033[36m
+RESET := \033[0m
+
+# Check if required tools are available
+REQUIRED_TOOLS := cmake ninja
+$(foreach tool,$(REQUIRED_TOOLS),\
+	$(if $(shell command -v $(tool) 2> /dev/null),,\
+		$(error $(tool) is required but not found in PATH)))
+
+# Default target
+.PHONY: all
+all: build
+
+# Help target - shows available commands
+.PHONY: help
+help:
+	@printf "$(BOLD)$(CYAN)stdlib Library Makefile$(RESET)\n"
+	@printf "\n"
+	@printf "$(BOLD)Build Targets:$(RESET)\n"
+	@printf "  $(YELLOW)build$(RESET)         - Build the library (default)\n"
+	@printf "  $(YELLOW)test-build$(RESET)    - Build library with tests\n"
+	@printf "  $(YELLOW)clean$(RESET)         - Clean build directory\n"
+	@printf "  $(YELLOW)rebuild$(RESET)       - Clean and build\n"
+	@printf "  $(YELLOW)configure$(RESET)     - Configure CMake build system\n"
+	@printf "\n"
+	@printf "$(BOLD)Test Targets:$(RESET)\n"
+	@printf "  $(YELLOW)test$(RESET)          - Build and run tests\n"
+	@printf "\n"
+	@printf "$(BOLD)Build Options:$(RESET)\n"
+	@printf "  $(YELLOW)BUILD_TESTS$(RESET)   - Enable test building (OFF/ON)\n"
+	@printf "    Example: make build BUILD_TESTS=ON\n"
+	@printf "\n"
+	@printf "$(BOLD)Sanitiser Options:$(RESET)\n"
+	@printf "  $(YELLOW)SANITISERS$(RESET)    - Enable sanitisers (builds in Debug mode)\n"
+	@printf "    Values: address, undefined, thread, memory, all\n"
+	@printf "    Example: make build SANITISERS=\"address undefined\"\n"
+	@printf "    Example: make test SANITISERS=all\n"
+	@printf "\n"
+	@printf "$(BOLD)Utility Targets:$(RESET)\n"
+	@printf "  $(YELLOW)format$(RESET)        - Format code using clang-format\n"
+	@printf "  $(YELLOW)deps$(RESET)          - Check dependencies\n"
+	@printf "  $(YELLOW)info$(RESET)          - Show project information\n"
+	@printf "  $(YELLOW)help$(RESET)          - Show this help message\n"
+
+# Configure CMake build system
+.PHONY: configure
+configure:
+	@printf "$(BOLD)$(BLUE)Configuring CMake build system...$(RESET)\n"
+	@if [ "$(ENABLE_SANITISERS)" = "ON" ]; then \
+		printf "$(BOLD)$(MAGENTA)Sanitisers enabled:$(RESET) $(SANITISERS)\n"; \
+		printf "$(YELLOW)Building in Debug mode for sanitiser support$(RESET)\n"; \
+	fi
+	@if [ "$(BUILD_TESTS)" = "ON" ]; then \
+		printf "$(BOLD)$(CYAN)Tests enabled$(RESET)\n"; \
+	fi
+	cmake -S . -B $(BUILD_DIR) -G $(CMAKE_GENERATOR) \
+		-DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) \
+		-DENABLE_SANITISERS=$(ENABLE_SANITISERS) \
+		$(CMAKE_BUILD_FLAGS) \
+		$(CMAKE_SANITISER_FLAGS)
+	@printf "$(GREEN)✓ Configuration complete$(RESET)\n"
+
+# Build the library
+.PHONY: build
+build: configure
+	@printf "$(BOLD)$(BLUE)Building $(PROJECT_NAME) library...$(RESET)\n"
+	cmake --build $(BUILD_DIR)
+	@printf "$(GREEN)✓ Build complete$(RESET)\n"
+
+# Build with tests enabled
+.PHONY: test-build
+test-build:
+	@$(MAKE) build BUILD_TESTS=ON
+
+# Clean build directory
+.PHONY: clean
+clean:
+	@printf "$(BOLD)$(YELLOW)Cleaning build directory...$(RESET)\n"
+	@if [ -d "$(BUILD_DIR)" ]; then \
+		rm -rf $(BUILD_DIR); \
+		printf "$(GREEN)✓ Build directory cleaned$(RESET)\n"; \
+	else \
+		printf "$(YELLOW)Build directory doesn't exist$(RESET)\n"; \
+	fi
+
+# Clean and rebuild
+.PHONY: rebuild
+rebuild: clean build
+
+# Build and run tests
+.PHONY: test
+test:
+	@$(MAKE) build BUILD_TESTS=ON
+	@printf "$(BOLD)$(BLUE)Running tests...$(RESET)\n"
+	@cd $(BUILD_DIR) && ctest --output-on-failure
+	@printf "$(GREEN)✓ Tests complete$(RESET)\n"
+
+# Format code
+.PHONY: format
+format:
+	@printf "$(BOLD)$(BLUE)Formatting code...$(RESET)\n"
+	@if [ -f ".clang-format" ]; then \
+		find src include -name "*.cpp" -o -name "*.cppm" -o -name "*.hpp" 2>/dev/null | xargs clang-format -i; \
+		printf "$(GREEN)✓ Code formatted$(RESET)\n"; \
+	else \
+		printf "$(YELLOW).clang-format not found, skipping formatting$(RESET)\n"; \
+	fi
+
+# Check dependencies
+.PHONY: deps
+deps:
+	@printf "$(BOLD)$(BLUE)Checking dependencies...$(RESET)\n"
+	@printf "$(CYAN)Required tools:$(RESET)\n"
+	@for tool in $(REQUIRED_TOOLS); do \
+		if command -v $$tool > /dev/null 2>&1; then \
+			printf "  $(GREEN)✓$(RESET) $$tool\n"; \
+		else \
+			printf "  $(RED)✗$(RESET) $$tool (missing)\n"; \
+		fi; \
+	done
+	@printf "\n"
+	@printf "$(CYAN)Optional tools:$(RESET)\n"
+	@for tool in clang-format clang-tidy; do \
+		if command -v $$tool > /dev/null 2>&1; then \
+			printf "  $(GREEN)✓$(RESET) $$tool\n"; \
+		else \
+			printf "  $(YELLOW)○$(RESET) $$tool (optional)\n"; \
+		fi; \
+	done
+
+# Show project information
+.PHONY: info
+info:
+	@printf "$(BOLD)$(CYAN)Project Information$(RESET)\n"
+	@printf "\n"
+	@printf "$(BOLD)Project:$(RESET)      $(PROJECT_NAME) (C++ Module Library)\n"
+	@printf "$(BOLD)Build Dir:$(RESET)    $(BUILD_DIR)\n"
+	@printf "$(BOLD)Generator:$(RESET)    $(CMAKE_GENERATOR)\n"
+	@printf "$(BOLD)Build Type:$(RESET)   $(CMAKE_BUILD_TYPE)\n"
+	@printf "$(BOLD)Tests:$(RESET)        $(BUILD_TESTS)\n"
+	@printf "$(BOLD)Sanitisers:$(RESET)   $(if $(SANITISERS),$(SANITISERS),None)\n"
+	@printf "\n"
+	@printf "$(BOLD)Status:$(RESET)\n"
+	@if [ -d "$(BUILD_DIR)" ]; then \
+		printf "  $(GREEN)✓$(RESET) Build directory exists\n"; \
+	else \
+		printf "  $(YELLOW)○$(RESET) Build directory needs creation\n"; \
+	fi
+	@if [ -f "$(BUILD_DIR)/CMakeCache.txt" ]; then \
+		printf "  $(GREEN)✓$(RESET) CMake configured\n"; \
+	else \
+		printf "  $(YELLOW)○$(RESET) CMake needs configuration\n"; \
+	fi
+
+# Prevent make from treating file names as targets
+.PHONY: $(BUILD_DIR) src include

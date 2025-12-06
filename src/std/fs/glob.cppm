@@ -27,7 +27,7 @@ import stdlib.fs.filesystem;
 
 import core;
 
-import alloc.collections.map;
+import alloc.collections.tree_map;
 import alloc.collections.vector;
 import alloc.string;
 import alloc.text.regex;
@@ -58,6 +58,9 @@ namespace std::fs {
 #else 
 namespace stdlib::fs {
 #endif
+
+namespace {
+
     static bool string_replace(String& s, const String& from, const String& to) noexcept {
         usize start = s.find(from);
         if (start == String::npos) {
@@ -368,6 +371,9 @@ namespace stdlib::fs {
         }
         return result;
     }
+
+}
+
 }
 
 /**

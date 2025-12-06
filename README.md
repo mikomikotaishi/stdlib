@@ -13,7 +13,7 @@ The main features of this repackaging of the standard library are:
     - While I personally would have preferred methods to be in camelCase (like in Java), this would have been too much work to rename existing functions and methods, for very little gain
 - Splitting the standard library into sub-namespaces (in constrast to the ISO C++ `std::` namespace which is largely flat). 
     - The divisions try to follow the Rust standard library modules, but also take inspiration from the Java standard library.
-- Option to toggle between using `std::*`/`std.*` names for symbols/modules (disabled by default as `std` is a reserved name by ISO C++ and library implementations)
+- Option to toggle between using `std::*`/`std.*` or `stdlib::*`/`stdlib.*` names for symbols/modules (disabled by default as `std` is a reserved name by ISO C++ and library implementations)
 - Option to use only `core.*` and `alloc.*` modules instead of the full standard library, similar to Rust
 - Standard library extensions - features that (in my opinion) ought to be part of the C++ standard library, but are not. Currently largely unimplemented.
 
@@ -35,14 +35,19 @@ Disabled when `STDLIB_NO_ALLOC` is enabled.
 ### Standard library (module `std.*`, namespace `std::*`)
 The full C++ standard library, containing everything provided by `core.*` and `alloc.*`, as well as additional functionality depending on operating system and runtime.
 
+If `STDLIB_USE_RESERVED_STD_IDENTIFIERS` is disabled, `std.*` is `stdlib.*` and `std::*` is `stdlib::*`. `STDLIB_USE_RESERVED_STD_IDENTIFIERS` can further be more finely-controlled using `STDLIB_NO_RESERVED_STD_MODULE` (modules) and `STDLIB_NO_RESERVED_STD_NAMESPACE` (namespaces).
+
 Disabled when `STDLIB_NO_STD` (or `STDLIB_NO_ALLOC`) are enabled.
 
 ### Extensions library (module `stdx.*`, namespace `stdx::*`)
 Technically not "standard library" in the sense of the ISO C++ standard library, but contains features that (in my opinion) ought to be part of the C++ standard library, and are offered by standard libraries of other languages.
 
+If `STDLIB_USE_RESERVED_STD_IDENTIFIERS` is disabled, `stdx.*` is `stdlibx.*` and `stdx::*` is `stdlibx::*`. `STDLIB_USE_RESERVED_STD_IDENTIFIERS` can further be more finely-controlled using `STDLIB_NO_RESERVED_STD_MODULE` (modules) and `STDLIB_NO_RESERVED_STD_NAMESPACE` (namespaces).
+
 Disabled by default - enabled when `STDLIB_EXTENSIONS` is enabled. 
 
 > **NOTE:** Some parts of this library may be third-party or re-exports of existing libraries, and thus not entirely original code. Code that originates from third party will be adequately attributed, but if there are any issues or concerns, please do not hesitate to contact me.
+
 Some third-party libraries used here include:
 - TinyXML-2
 - [p-ranav/glob](https://github.com/p-ranav/glob)
@@ -87,6 +92,11 @@ int main(int argc, char* argv[]) {
 ## Build
 This supports building using CMake and XMake.
 
+Make (calls CMake):
+```sh
+make
+```
+
 CMake:
 ```sh
 cmake -S . -B build -G Ninja
@@ -97,3 +107,19 @@ XMake:
 ```sh
 xmake
 ```
+
+## Known issues
+Most of these issues are believed to be possible to resolve using header units, however at the current time header units are not supported by CMake.
+
+- The library is known to fail when trying to use foreach loops with containers such as `Vector`. It is not known why this happens. It can only be solved by including `<vector>`.
+```cpp
+import std;
+
+// ...
+Vector<i32> v{1, 2, 3, 4, 5};
+for (int i: v) {
+    std::io::println("{}", i);
+}
+```
+- A problem with `std::core::String` requiring inclusion of `<string>`
+- A problem with `std::fs::DirectoryIterator` requiring inclusion of `<filesystem>`

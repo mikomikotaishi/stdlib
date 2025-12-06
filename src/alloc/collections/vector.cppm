@@ -16,16 +16,10 @@ import core.meta.type_traits;
 
 import alloc.mem.memory;
 
-#ifdef STDLIB_ALTERNATE_USING_SYNTAX
-using core::meta::{IsSameValue, RemoveConstVolatile};
-
-using alloc::mem::Allocator;
-#else
 using core::meta::IsSameValue;
 using core::meta::RemoveConstVolatile;
 
 using alloc::mem::Allocator;
-#endif
 
 /**
  * @namespace alloc::collections
