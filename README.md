@@ -113,7 +113,11 @@ Most of these issues are believed to be possible to resolve using header units, 
 
 - The library is known to fail when trying to use foreach loops with containers such as `Vector`. It is not known why this happens. It can only be solved by including `<vector>`.
 ```cpp
+#include <vector> // necessary (for some reason?)
+
 import std;
+
+using std::collections::Vector;
 
 // ...
 Vector<i32> v{1, 2, 3, 4, 5};
