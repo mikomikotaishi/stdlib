@@ -101,6 +101,14 @@ export namespace stdlib::core {
     using alloc::swap;
 }
 
+#ifdef __GLIBCXX__
+export namespace __gnu_cxx {
+    using __gnu_cxx::__normal_iterator;
+    using __gnu_cxx::operator==;
+    using __gnu_cxx::operator<=>;
+}
+#endif
+
 #if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
 STDLIB_STD_MODULE_EXPORT_CORE();
 #endif

@@ -15,6 +15,7 @@ export module stdlib.math;
 #endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
+export import std.math.algorithm;
 export import std.math.bit;
 export import std.math.cmath;
 export import std.math.complex;
@@ -24,6 +25,7 @@ export import std.math.numeric;
 export import std.math.random;
 export import std.math.ratio;
 #else
+export import stdlib.math.algorithm;
 export import stdlib.math.bit;
 export import stdlib.math.cmath;
 export import stdlib.math.complex;

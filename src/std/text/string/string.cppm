@@ -83,3 +83,11 @@ export namespace stdlib::text {
         using alloc::text::string::swap;
     }
 }
+
+#ifdef __GLIBCXX__
+export namespace __gnu_cxx {
+    using __gnu_cxx::__normal_iterator;
+    using __gnu_cxx::operator==;
+    using __gnu_cxx::operator<=>;
+}
+#endif

@@ -8,6 +8,7 @@
 
 export module core.math;
 
+export import core.math.algorithm;
 export import core.math.bit;
 export import core.math.cmath;
 export import core.math.complex;

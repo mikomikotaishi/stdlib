@@ -101,7 +101,7 @@ concept Transformable = requires (const Ran& r, Func&& f) {
 
 /**
  * @concept Sortable
- * @brief Concept that checks if Sort can be applied to the range.
+ * @brief Concept that checks if sort() can be applied to the range.
  * 
  * @tparam Ran The range type.
  * @tparam KeySelector The key selector type.
@@ -109,55 +109,55 @@ concept Transformable = requires (const Ran& r, Func&& f) {
  */
 template <typename Ran, typename KeySelector, typename Collection = Vector<RangeValue<Ran>>>
 concept Sortable = ForwardRange<Ran> && requires (Collection c, KeySelector&& k) {
-    { Sort(c, Less<>{}, util::forward<KeySelector>(k)) };
+    { ranges::sort(c, Less<>{}, util::forward<KeySelector>(k)) };
 };
 
 /**
  * @concept Distinguishable
- * @brief Concept that checks if Unique can be applied to the range.
+ * @brief Concept that checks if unique() can be applied to the range.
  * 
  * @tparam Ran The range type.
  * @tparam Collection The collection type (defaults to Vector).
  */
 template <typename Ran, typename Collection = Vector<RangeValue<Ran>>>
 concept Distinguishable = ForwardRange<Ran> &&
-    requires (Collection c) { { Sort(c) }; } &&
-    requires (Collection c) { { Unique(c) }; };
+    requires (Collection c) { { ranges::sort(c) }; } &&
+    requires (Collection c) { { ranges::unique(c) }; };
 
 /**
  * @concept AnyOfQueryable
- * @brief Concept that checks if AnyOf can be applied to the range.
+ * @brief Concept that checks if any_of() can be applied to the range.
  * 
  * @tparam Ran The range type.
  * @tparam Pred The predicate type.
  */
 template <typename Ran, typename Pred>
 concept AnyOfQueryable = requires (const Ran& r, Pred&& p) {
-    { AnyOf(r, util::forward<Pred>(p)) };
+    { ranges::any_of(r, util::forward<Pred>(p)) };
 };
 
 /**
  * @concept AllOfQueryable
- * @brief Concept that checks if AllOf can be applied to the range.
+ * @brief Concept that checks if all_of() can be applied to the range.
  * 
  * @tparam Ran The range type.
  * @tparam Pred The predicate type.
  */
 template <typename Ran, typename Pred>
 concept AllOfQueryable = requires (const Ran& r, Pred&& p) {
-    { AllOf(r, util::forward<Pred>(p)) };
+    { ranges::all_of(r, util::forward<Pred>(p)) };
 };
 
 /**
  * @concept CountIfQueryable
- * @brief Concept that checks if CountIf can be applied to the range.
+ * @brief Concept that checks if count_if() can be applied to the range.
  * 
  * @tparam Ran The range type.
  * @tparam Pred The predicate type.
  */
 template <typename Ran, typename Pred>
 concept CountIfQueryable = requires (const Ran& r, Pred&& p) {
-    { CountIf(r, util::forward<Pred>(p)) };
+    { ranges::count_if(r, util::forward<Pred>(p)) };
 };
 
 /**
@@ -170,6 +170,8 @@ concept CountIfQueryable = requires (const Ran& r, Pred&& p) {
  */
 template <ViewableRange Ran>
 class Query {
+    template <ViewableRange>
+    friend class Query;
 private:
     SharedPointer<void> owner; ///< Shared pointer to the owner of the range, if applicable.
     Ran range; ///< The underlying range being queried.
@@ -184,7 +186,7 @@ private:
     template <typename T>
     static SharedPointer<RemoveConstVolatileReferenceType<T>> make_owner(T&& r) {
         using U = RemoveConstVolatileReferenceType<T>;
-        return mem::make_shared<U>(util::forward(r));
+        return mem::make_shared<U>(util::forward<T>(r));
     }
 public:
     template <typename T>
@@ -193,6 +195,13 @@ public:
         Query<T>,
         Query<T&>
     >;
+
+    /**
+     * @brief Constructs a Query from an lvalue range.
+     * @param r The range to query.
+     */
+    constexpr explicit Query(Ran& r) noexcept:
+        range{r} {}
 
     /**
      * @brief Constructs a Query from an rvalue range.
@@ -241,7 +250,7 @@ public:
      */
     template <typename Pred>
         requires Filterable<Ran, Pred>
-    constexpr auto where(Pred&& pred) const noexcept -> Query<decltype(Filter(range, util::forward<Pred>(pred)))> {
+    constexpr auto where(Pred&& pred) noexcept -> Query<decltype(Filter(range, util::forward<Pred>(pred)))> {
         auto newRange = Filter(range, util::forward<Pred>(pred));
         Query<decltype(newRange)> q(util::move(newRange));
         q.owner = owner;
@@ -257,7 +266,7 @@ public:
      */
     template <typename Func>
         requires Transformable<Ran, Func>
-    constexpr auto select(Func&& func) const noexcept -> Query<decltype(Transform(range, util::forward<Func>(func)))> {
+    constexpr auto select(Func&& func) noexcept -> Query<decltype(Transform(range, util::forward<Func>(func)))> {
         auto newRange = Transform(range, util::forward<Func>(func));
         Query<decltype(newRange)> q(util::move(newRange));
         q.owner = owner;
@@ -270,8 +279,11 @@ public:
      * @param n The number of elements to skip.
      * @return A Query representing the range after skipping.
      */
-    constexpr auto skip(RangeDifference<Ran> n) const noexcept -> Query<decltype(Drop(range, n))> {
-        return Query(Drop(range, n));
+    constexpr auto skip(RangeDifference<Ran> n) noexcept -> Query<decltype(Drop(range, n))> {
+        auto newRange = Drop(range, n);
+        Query<decltype(newRange)> q(util::move(newRange));
+        q.owner = owner;
+        return q;
     }
 
     /**
@@ -280,8 +292,11 @@ public:
      * @param n The number of elements to take.
      * @return A Query representing the range after taking.
      */
-    constexpr auto take(RangeDifference<Ran> n) const noexcept -> Query<decltype(Take(range, n))> {
-        return Query(Take(range, n));
+    constexpr auto take(RangeDifference<Ran> n) noexcept -> Query<decltype(Take(range, n))> {
+        auto newRange = Take(range, n);
+        Query<decltype(newRange)> q(util::move(newRange));
+        q.owner = owner;
+        return q;
     }
 
     /**
@@ -294,9 +309,9 @@ public:
      */
     template <typename KeySelector, typename Collection = Vector<RangeValue<Ran>>>
         requires Sortable<Ran, KeySelector, Collection>
-    constexpr auto order_by(KeySelector&& keySelector) const noexcept -> Query<Collection> {
+    constexpr auto order_by(KeySelector&& keySelector) noexcept -> Query<Collection> {
         Collection temp(begin(), end());
-        Sort(temp, Less<>{}, util::forward<KeySelector>(keySelector));
+        ranges::sort(temp, Less<>{}, util::forward<KeySelector>(keySelector));
         return Query<Collection>(util::move(temp), TrueType{});
     }
 
@@ -308,11 +323,11 @@ public:
      */
     template <typename Collection = Vector<RangeValue<Ran>>>
         requires Distinguishable<Ran, Collection>
-    constexpr auto distinct() const noexcept -> Query<Collection> {
+    constexpr auto distinct() noexcept -> Query<Collection> {
         Collection temp(begin(), end());
-        Sort(temp);
-        auto last = Unique(temp);
-        temp.erase(last, temp.end());
+        ranges::sort(temp);
+        auto last = ranges::unique(temp);
+        temp.erase(last.begin(), temp.end());
         return Query<Collection>(util::move(temp), TrueType{});
     }
 
@@ -359,7 +374,7 @@ public:
     template <typename Pred>
         requires AnyOfQueryable<Ran, Pred>
     constexpr bool any(Pred&& pred) const noexcept {
-        return AnyOf(range, util::forward<Pred>(pred));
+        return ranges::any_of(range, util::forward<Pred>(pred));
     }
 
     /**
@@ -372,7 +387,7 @@ public:
     template <typename Pred>
         requires AllOfQueryable<Ran, Pred>
     constexpr bool all(Pred&& pred) const noexcept {
-        return AllOf(range, util::forward<Pred>(pred));
+        return ranges::all_of(range, util::forward<Pred>(pred));
     }
 
     /**
@@ -394,7 +409,7 @@ public:
     template <typename Pred>
         requires CountIfQueryable<Ran, Pred>
     constexpr usize count(Pred&& pred) const noexcept {
-        return CountIf(range, util::forward<Pred>(pred));
+        return ranges::count_if(range, util::forward<Pred>(pred));
     }
 
     /**
@@ -402,7 +417,7 @@ public:
      * 
      * @return The reversed range.
      */
-    constexpr auto reverse() const noexcept -> Query<decltype(Reverse(range))> {
+    constexpr auto reverse() noexcept -> Query<decltype(Reverse(range))> {
         auto newRange = Reverse(range);
         Query<decltype(newRange)> q(util::move(newRange));
         q.owner = owner;
