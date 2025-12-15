@@ -16,7 +16,9 @@ export module stdlibx.compiler.llvm;
 #endif
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
+export import stdx.compiler.llvm.InitializePasses;
 export import stdx.compiler.llvm.Pass;
 #else
+export import stdlibx.compiler.llvm.InitializePasses;
 export import stdlibx.compiler.llvm.Pass;
 #endif
