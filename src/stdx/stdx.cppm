@@ -16,6 +16,7 @@ export module stdlibx;
 
 #ifdef STDLIB_NO_RESERVED_STD_MODULE
 export import stdx.core;
+export module stdx.arch;
 export import stdx.compiler;
 export import stdx.crypto;
 export import stdx.csv;
@@ -32,6 +33,7 @@ export import stdx.util;
 export import stdx.zip;
 #else
 export import stdlibx.core;
+export module stdlibx.arch;
 export import stdlibx.compiler;
 export import stdlibx.crypto;
 export import stdlibx.csv;
