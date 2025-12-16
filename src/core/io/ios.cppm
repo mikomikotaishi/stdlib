@@ -105,10 +105,15 @@ export namespace core::io {
         static constexpr InternalSeekingDirection CURRENT = std::ios::cur;
     };
 
-    enum class IOEvent {
-        ERASE_EVENT = std::ios::event::erase_event,
-        IMBUE_EVENT = std::ios::event::imbue_event,
-        COPY_FORMAT_EVENT = std::ios::event::copyfmt_event
+    class IOEvent {
+    public:
+        using InternalIOEvent = std::ios::event;
+
+        IOEvent() = delete;
+
+        static constexpr InternalIOEvent ERASE_EVENT = std::ios::event::erase_event;
+        static constexpr InternalIOEvent IMBUE_EVENT = std::ios::event::imbue_event;
+        static constexpr InternalIOEvent COPY_FORMAT_EVENT = std::ios::event::copyfmt_event;
     };
     
     using IOEventCallback = std::ios::event_callback;
@@ -133,8 +138,13 @@ export namespace core::io {
     template <typename StateT>
     using FilePosition = std::fpos<StateT>;
 
-    enum class IOErrc {
-        STREAM = static_cast<int>(std::io_errc::stream)
+    class IOErrc {
+    public:
+        using InternalIOErrc = std::io_errc;
+
+        IOErrc() = delete;
+
+        static constexpr InternalIOErrc STREAM = std::io_errc::stream;
     };
 
     template <typename T>
@@ -180,23 +190,7 @@ export namespace core::io {
     using std::scientific;
     using std::hexfloat;
     using std::defaultfloat;
-
-    [[nodiscard]]
-    inline ErrorCode make_error_code(IOErrc e) noexcept {
-        return std::make_error_code(static_cast<std::io_errc>(e));
-    }
-
-    [[nodiscard]]
-    inline ErrorCondition make_error_condition(IOErrc e) noexcept {
-        return std::make_error_condition(static_cast<std::io_errc>(e));
-    }
 }
-
-using core::io::IOErrc;
-using core::io::IsErrorCodeEnum;
-
-template <>
-struct std::is_error_code_enum<IOErrc>: TrueType {};
 
 /**
  * @namespace core
@@ -204,14 +198,4 @@ struct std::is_error_code_enum<IOErrc>: TrueType {};
  */
 export namespace core {
     using core::io::IOErrc;
-    
-    [[nodiscard]]
-    inline ErrorCode make_error_code(IOErrc e) noexcept {
-        return ::core::io::make_error_code(e);
-    }
-
-    [[nodiscard]]
-    inline ErrorCondition make_error_condition(IOErrc e) noexcept {
-        return ::core::io::make_error_condition(e);
-    }
 }

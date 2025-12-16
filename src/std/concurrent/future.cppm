@@ -44,49 +44,47 @@ export namespace stdlib::concurrent {
     template <typename T>
     using SharedFuture = ::std::shared_future<T>;
 
-    enum class Launch {
-        ASYNC = static_cast<int>(::std::launch::async),
-        DEFERRED = static_cast<int>(::std::launch::deferred)
-    };
-
-    enum class FutureStatus {
-        READY = static_cast<int>(::std::future_status::ready),
-        TIMEOUT = static_cast<int>(::std::future_status::timeout),
-        DEFERRED = static_cast<int>(::std::future_status::deferred)
-    };
-
-    enum class FutureErrc {
-        FUTURE_ALREADY_RETRIEVED = static_cast<int>(::std::future_errc::future_already_retrieved),
-        PROMISE_ALREADY_SATISFIED = static_cast<int>(::std::future_errc::promise_already_satisfied),
-        NO_STATE = static_cast<int>(::std::future_errc::no_state),
-        BROKEN_PROMISE = static_cast<int>(::std::future_errc::broken_promise)
-    };
-
-    class FutureException: public ::std::future_error {
+    class Launch {
     public:
-        explicit FutureException(FutureErrc errc): 
-            ::std::future_error(static_cast<::std::future_errc>(errc)) {}
+        using InternalLaunch = ::std::launch;
+
+        Launch() = delete;
+
+        static constexpr InternalLaunch ASYNC = ::std::launch::async;
+        static constexpr InternalLaunch DEFERRED = ::std::launch::deferred;
     };
+
+    class FutureStatus {
+    public:
+        using InternalFutureStatus = ::std::future_status;
+
+        FutureStatus() = delete;
+
+        static constexpr InternalFutureStatus READY = ::std::future_status::ready;
+        static constexpr InternalFutureStatus TIMEOUT = ::std::future_status::timeout;
+        static constexpr InternalFutureStatus DEFERRED = ::std::future_status::deferred;
+    };
+
+    class FutureErrc {
+    public:
+        using InternalFutureErrc = ::std::future_errc;
+
+        FutureErrc() = delete;
+
+        static constexpr InternalFutureErrc FUTURE_ALREADY_RETRIEVED = ::std::future_errc::future_already_retrieved;
+        static constexpr InternalFutureErrc PROMISE_ALREADY_SATISFIED = ::std::future_errc::promise_already_satisfied;
+        static constexpr InternalFutureErrc NO_STATE = ::std::future_errc::no_state;
+        static constexpr InternalFutureErrc BROKEN_PROMISE = ::std::future_errc::broken_promise;
+    };
+
+    using FutureException = ::std::future_error;
 
     template <typename T>
-    struct IsErrorCodeEnum: ::std::false_type { };
-
-    template <>
-    struct IsErrorCodeEnum<FutureErrc>: public ::std::true_type { };
+    using IsErrorCodeEnum = ::std::is_error_code_enum<T>;
 
     using ::std::future_category;
     using ::std::make_error_code;
     using ::std::make_error_condition;
-
-    [[nodiscard]]
-    inline ErrorCode make_error_code(FutureErrc errc) noexcept { 
-        return ErrorCode(static_cast<int>(errc), future_category()); 
-    }
-
-    [[nodiscard]]
-    inline ErrorCondition make_error_condition(FutureErrc errc) noexcept { 
-        return ErrorCondition(static_cast<int>(errc), future_category()); 
-    }
 
     using ::std::async;
     using ::std::swap;

@@ -33,7 +33,9 @@ export namespace stdlib::core {
     using ::core::Errc;
     using ::core::SystemException;
     using ::core::IsErrorCodeEnum;
+    using ::core::IsErrorCodeEnumValue;
     using ::core::IsErrorConditionEnum;
+    using ::core::IsErrorConditionEnumValue;
 
     using ::core::generic_category;
     using ::core::system_category;
