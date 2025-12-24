@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.math;
 #else
 export module stdlib.math;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import std.math.algorithm;
 export import std.math.bit;
 export import std.math.cmath;

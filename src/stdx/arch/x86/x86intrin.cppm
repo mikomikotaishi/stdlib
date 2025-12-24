@@ -10,7 +10,7 @@ module;
 
 #include <x86intrin.h>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.arch.x86.x86intrin;
 #else
 export module stdlibx.arch.x86.x86intrin;

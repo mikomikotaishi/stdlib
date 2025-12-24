@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.collections.singly_linked_list;
 #else
 export module stdlib.collections.singly_linked_list;
@@ -20,13 +20,13 @@ import alloc.collections.singly_linked_list;
  * @namespace std::collections
  * @brief Wrapper namespace for standard library collection operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
     using alloc::collections::SinglyLinkedList;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::collections::ForwardList;
     #endif
 
@@ -37,7 +37,7 @@ export namespace stdlib::collections {
     namespace pmr {
         using alloc::collections::pmr::SinglyLinkedList;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::collections::pmr::ForwardList;
         #endif
     }

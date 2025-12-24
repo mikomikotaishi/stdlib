@@ -37,13 +37,13 @@ export namespace alloc::text {
 
     using Regex = std::regex;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WRegex = std::wregex;
     #endif
 
     using WideRegex = std::wregex;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using SubMatch = std::sub_match<T>;
     #endif
@@ -51,7 +51,7 @@ export namespace alloc::text {
     template <typename T>
     using SubexpressionMatch = std::sub_match<T>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using CSubMatch = std::csub_match;
     using WCSubMatch = std::wcsub_match;
     using SSubMatch = std::ssub_match;
@@ -68,7 +68,7 @@ export namespace alloc::text {
 
     using CMatch = std::cmatch;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WCMatch = std::wcmatch;
     using SMatch = std::smatch;
     using WSMatch = std::wsmatch;
@@ -85,7 +85,7 @@ export namespace alloc::text {
     namespace pmr {
         using CMatch = std::pmr::cmatch;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using WCMatch = std::pmr::wcmatch;
         using SMatch = std::pmr::smatch;
         using WSMatch = std::pmr::wsmatch;
@@ -101,7 +101,7 @@ export namespace alloc::text {
 
     using CRegexIterator = std::cregex_iterator;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WCRegexIterator = std::wcregex_iterator;
     using SRegexIterator = std::sregex_iterator;
     using WSRegexIterator = std::wsregex_iterator;
@@ -116,7 +116,7 @@ export namespace alloc::text {
 
     using CRegexTokenIterator = std::cregex_token_iterator;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WCRegexTokenIterator = std::wcregex_token_iterator;
     using SRegexTokenIterator = std::sregex_token_iterator;
     using WSRegexTokenIterator = std::wsregex_token_iterator;
@@ -233,7 +233,7 @@ export namespace alloc::text {
         inline constexpr MatchFlagType MATCH_ANY = std::regex_constants::match_any;
         inline constexpr MatchFlagType MATCH_NOT_NULL = std::regex_constants::match_not_null;
         inline constexpr MatchFlagType MATCH_CONTINUOUS = std::regex_constants::match_continuous;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         inline constexpr MatchFlagType MATCH_PREV_AVAIL = std::regex_constants::match_prev_avail;
         #endif
         inline constexpr MatchFlagType MATCH_PREVIOUS_AVAILABLE = std::regex_constants::match_prev_avail;
@@ -298,7 +298,7 @@ export namespace alloc::text {
         inline constexpr ErrorType ERROR_COLLATE = std::regex_constants::error_collate;
         inline constexpr ErrorType ERROR_CTYPE = std::regex_constants::error_ctype;
         inline constexpr ErrorType ERROR_ESCAPE = std::regex_constants::error_escape;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         inline constexpr ErrorType ERROR_BACKREF = std::regex_constants::error_backref;
         inline constexpr ErrorType ERROR_BRACK = std::regex_constants::error_brack;
         inline constexpr ErrorType ERROR_PAREN = std::regex_constants::error_paren;

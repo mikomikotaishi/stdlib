@@ -19,7 +19,7 @@ export module core.meta.typeinfo;
 export namespace core::meta {
     using TypeInfo = std::type_info;
 
-    #ifndef STDLIB_NO_STD
+    #ifndef STDLIBX_NO_STD
     using BadCastException = std::bad_cast;
     using BadTypeIDException = std::bad_typeid;
     #endif

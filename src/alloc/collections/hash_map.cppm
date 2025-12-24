@@ -34,7 +34,7 @@ export namespace alloc::collections {
     template <typename Key, typename Value, typename HashFn = Hash<Key>, typename Predicate = EqualTo<Key>, typename Alloc = Allocator<Pair<const Key, Value>>>
     using HashMultimap = std::unordered_multimap<Key, Value, HashFn, Predicate, Alloc>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Key, typename Value, typename HashFn = Hash<Key>, typename Predicate = EqualTo<Key>, typename Alloc = Allocator<Pair<const Key, Value>>>
     using UnorderedMap = HashMap<Key, Value, HashFn, Predicate, Alloc>;
 
@@ -53,7 +53,7 @@ export namespace alloc::collections {
         template <typename Key, typename Value, typename HashFn = Hash<Key>, typename Predicate = EqualTo<Key>>
         using HashMultimap = std::pmr::unordered_multimap<Key, Value, HashFn, Predicate>;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         template <typename Key, typename Value, typename HashFn = Hash<Key>, typename Predicate = EqualTo<Key>>
         using UnorderedMap = HashMap<Key, Value, HashFn, Predicate>;
 

@@ -12,7 +12,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.concurrent.future;
 #else
 export module stdlib.concurrent.future;
@@ -27,7 +27,7 @@ using core::ErrorCondition;
  * @namespace std::concurrent
  * @brief Wrapper namespace for standard library concurrency operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::concurrent {
 #else 
 export namespace stdlib::concurrent {
@@ -94,7 +94,7 @@ export namespace stdlib::concurrent {
  * @namespace std::core
  * @brief Wrapper namespace for standard library core operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
     using std::concurrent::FutureErrc;
 
@@ -112,6 +112,6 @@ export namespace stdlib::core {
 }
 #endif
 
-#ifndef STDLIB_NO_STD
-STDLIB_STD_MODULE_EXPORT_CORE();
+#ifndef STDLIBX_NO_STD
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

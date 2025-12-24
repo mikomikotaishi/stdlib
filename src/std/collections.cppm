@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.collections;
 #else
 export module stdlib.collections;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import std.collections.bitset;
 export import std.collections.deque;
 export import std.collections.hash_map;

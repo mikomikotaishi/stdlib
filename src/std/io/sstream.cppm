@@ -10,7 +10,7 @@ module;
 
 #include <sstream>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.sstream;
 #else
 export module stdlib.io.sstream;
@@ -20,12 +20,12 @@ export module stdlib.io.sstream;
  * @namespace std::io
  * @brief Wrapper namespace for standard library input/output operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename CharT>
     using BasicStringBuf = std::basic_stringbuf<CharT>;
     #endif
@@ -36,7 +36,7 @@ export namespace stdlib::io {
     template <typename CharT>
     using BasicStringStream = std::basic_stringstream<CharT>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename CharT>
     using BasicIStringStream = std::basic_istringstream<CharT>;
 
@@ -58,7 +58,7 @@ export namespace stdlib::io {
 
     using StringStream = std::stringstream;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WStringStream = std::wstringstream;
     using IStringStream = std::istringstream;
     using WIStringStream = std::wistringstream;

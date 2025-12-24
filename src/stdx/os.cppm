@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os;
 #else
 export module stdlibx.os;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.linux;
 export import stdx.os.unix;
 export import stdx.os.win32;

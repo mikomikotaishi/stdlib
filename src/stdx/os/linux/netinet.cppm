@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.netinet;
 #else
 export module stdlibx.os.linux.netinet;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.linux.netinet.ether;
 export import stdx.os.linux.netinet.icmp6;
 export import stdx.os.linux.netinet.if_ether;

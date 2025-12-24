@@ -12,7 +12,7 @@ module;
 #include <format>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.fmt.format;
 #else
 export module stdlib.fmt.format;
@@ -22,7 +22,7 @@ export module stdlib.fmt.format;
  * @namespace std::fmt
  * @brief Wrapper namespace for standard library format operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::fmt {
 #else 
 export namespace stdlib::fmt {
@@ -43,7 +43,7 @@ export namespace stdlib::fmt {
 
     using FormatParseContext = std::format_parse_context;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WFormatParseContext = std::wformat_parse_context;
     #endif
     
@@ -54,7 +54,7 @@ export namespace stdlib::fmt {
 
     using FormatContext = std::format_context;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WFormatContext = std::wformat_context;
     #endif
 

@@ -22,7 +22,7 @@ export namespace core {
     using ::core::text::string::CharTraits;
     using ::core::text::string::BasicStringView;
     using ::core::text::string::StringView;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::text::string::U8StringView;
     using ::core::text::string::U16StringView;
     using ::core::text::string::U32StringView;
@@ -59,6 +59,6 @@ export namespace core {
     }
 }
 
-#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if (defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif

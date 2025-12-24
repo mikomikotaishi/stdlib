@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.fmt;
 #else
 export module stdlib.fmt;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import std.fmt.charconv;
 export import std.fmt.cinttypes;
 export import std.fmt.format;

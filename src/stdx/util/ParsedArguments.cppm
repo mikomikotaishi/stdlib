@@ -9,7 +9,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.util.ParsedArguments;
 
 import std;
@@ -29,7 +29,7 @@ using stdlib::collections::Vector;
  * @namespace stdx::util
  * @brief Wrapper namespace for standard library extension utility operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::util {
 #else
 export namespace stdlibx::util {

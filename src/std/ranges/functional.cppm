@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.ranges.functional;
 #else
 export module stdlib.ranges.functional;
@@ -20,7 +20,7 @@ import core.ranges.functional;
  * @namespace std::ranges
  * @brief Wrapper namespace for standard library ranges operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::ranges {
 #else 
 export namespace stdlib::ranges {

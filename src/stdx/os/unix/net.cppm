@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.net;
 #else
 export module stdlibx.os.unix.net;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.unix.net.if_header;
 #else
 export import stdlibx.os.unix.net.if_header;

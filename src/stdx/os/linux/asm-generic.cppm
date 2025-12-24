@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.asmgeneric;
 #else
 export module stdlibx.os.linux.asmgeneric;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.linux.asmgeneric.errno;
 #else
 export import stdlibx.os.linux.asmgeneric.errno;

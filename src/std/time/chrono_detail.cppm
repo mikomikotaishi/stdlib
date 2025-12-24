@@ -9,7 +9,7 @@ module;
 
 #include <chrono>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.time.chrono:detail;
 
 import std.math.ratio;
@@ -125,7 +125,7 @@ export namespace _detail::std::time {
     using TimeZoneDatabase = ::std::chrono::tzdb;
     using TimeZoneDatabaseList = ::std::chrono::tzdb_list;
     using TimeZone = ::std::chrono::time_zone;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using SysInfo = ::std::chrono::sys_info;
     #endif
     using SystemInfo = ::std::chrono::sys_info;

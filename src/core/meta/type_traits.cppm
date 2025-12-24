@@ -20,7 +20,7 @@ export namespace core::meta {
     template <typename T, T v>
     using IntegralConstant = std::integral_constant<T, v>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <bool B>
     using BoolConstant = std::bool_constant<B>;
     #endif
@@ -451,7 +451,7 @@ export namespace core::meta {
     template <typename R, typename Fn, typename... ArgTypes>
     constexpr bool IsNothrowInvocableReturnValue = std::is_nothrow_invocable_r_v<R, Fn, ArgTypes...>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using RemoveConst_t = std::remove_const_t<T>;
 
@@ -489,7 +489,7 @@ export namespace core::meta {
     using RemoveAllExtents_t = std::remove_all_extents_t<T>;
     #endif
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using RemoveCV = std::remove_cv<T>;
 
@@ -518,7 +518,7 @@ export namespace core::meta {
     template <typename T>
     using RemoveVolatileType = std::remove_volatile_t<T>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using AddCV = std::add_cv<T>;
 
@@ -607,7 +607,7 @@ export namespace core::meta {
     template <typename T>
     using DecayType = std::decay_t<T>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using RemoveCVRef = std::remove_cvref<T>;
 
@@ -692,7 +692,7 @@ export namespace core::meta {
     template <typename Bn>
     constexpr bool NegationValue = std::negation_v<Bn>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Bn>
     constexpr bool Conjunction_v = std::conjunction_v<Bn>;
 

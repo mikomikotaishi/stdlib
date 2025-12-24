@@ -9,7 +9,7 @@
 
 module;
 
-#ifdef STDLIB_EXPERIMENTAL_STD
+#ifdef STDLIBX_EXPERIMENTAL_STD
 #include <experimental/contract>
 #endif
 
@@ -22,7 +22,7 @@ export module core.contracts;
  * @brief Wrapper namespace for (experimental) standard library networking operations.
  */
 export namespace core {
-    #ifdef STDLIB_EXPERIMENTAL_STD
+    #ifdef STDLIBX_EXPERIMENTAL_STD
     enum class ContractViolationContinuationMode {
         NEVER_CONTINUE = static_cast<int>(std::experimental::contract_violation_continuation_mode::never_continue),
         MAYBE_CONTINUE = static_cast<int>(std::experimental::contract_violation_continuation_mode::maybe_continue)
@@ -32,7 +32,7 @@ export namespace core {
     #endif
 }
 
-#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if (defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif
 

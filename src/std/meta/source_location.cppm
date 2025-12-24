@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.meta.source_location;
 #else
 export module stdlib.meta.source_location;
@@ -20,7 +20,7 @@ import core.meta.source_location;
  * @namespace std::meta
  * @brief Wrapper namespace for standard library metaprogramming operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::meta {
 #else 
 export namespace stdlib::meta {

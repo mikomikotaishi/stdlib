@@ -121,7 +121,7 @@ export namespace core::iter {
     template <typename Iter, typename Comp = std::ranges::less, typename Proj = Identity>
     concept Sortable = std::sortable<Iter, Comp, Proj>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Fn, typename... Is>
     using IndirectResult_t = std::indirect_result_t<Fn, Is>;
     #endif
@@ -138,7 +138,7 @@ export namespace core::iter {
     template <typename T>
     using IndirectlyReadableTraits = std::indirectly_readable_traits<T>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using IterValue = std::iter_value_t<T>;
 
@@ -254,7 +254,7 @@ export namespace core::iter {
     template <InputOrOutputIterator Iter, SentinelFor<Iter> Sent>
     using CommonIterator = std::common_iterator<Iter, Sent>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using DefaultSentinel_t = std::default_sentinel_t;
     using UnreachableSentinel_t = std::unreachable_sentinel_t;
     #endif
@@ -274,7 +274,7 @@ export namespace core::iter {
     template <typename Container>
     using InsertIterator = std::insert_iterator<Container>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T, typename CharT = char, typename Traits = std::char_traits<CharT>, typename Distance = std::ptrdiff_t>
     using IStreamIterator = std::istream_iterator<T, CharT, Traits, Distance>;
 

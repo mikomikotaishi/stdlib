@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.mem.memory;
 #else
 export module stdlib.mem.memory;
@@ -20,7 +20,7 @@ import alloc.mem.memory;
  * @namespace std::mem
  * @brief Wrapper namespace for standard library memory operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::mem {
 #else 
 export namespace stdlib::mem {
@@ -30,7 +30,7 @@ export namespace stdlib::mem {
     using alloc::mem::AllocatorTraits;
     using alloc::mem::UsesAllocator;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::mem::UniquePtr;
     using alloc::mem::SharedPtr;
     using alloc::mem::WeakPtr;
@@ -47,7 +47,7 @@ export namespace stdlib::mem {
 
     using alloc::mem::hash;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::mem::OutPtr_t;
     using alloc::mem::InOutPtr_t;
     #endif

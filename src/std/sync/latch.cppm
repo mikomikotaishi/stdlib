@@ -12,7 +12,7 @@ module;
 #include <latch>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.sync.latch;
 #else
 export module stdlib.sync.latch;
@@ -22,7 +22,7 @@ export module stdlib.sync.latch;
  * @namespace std::sync
  * @brief Wrapper namespace for standard library synchronisation operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::sync {
 #else 
 export namespace stdlib::sync {

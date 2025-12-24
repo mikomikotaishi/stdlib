@@ -9,11 +9,11 @@
 
 module;
 
-#ifdef STDLIB_EXPERIMENTAL_STD
+#ifdef STDLIBX_EXPERIMENTAL_STD
 #include <experimental/socket>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.net.socket;
 #else
 export module stdlib.net.socket;
@@ -23,12 +23,12 @@ export module stdlib.net.socket;
  * @namespace std::net
  * @brief Wrapper namespace for (experimental) standard library networking operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::net {
 #else 
 export namespace stdlib::net {
 #endif
-    #ifdef STDLIB_EXPERIMENTAL_STD
+    #ifdef STDLIBX_EXPERIMENTAL_STD
     using SocketBase = std::experimental::net::socket_base;
 
     template <typename Protocol>
@@ -43,7 +43,7 @@ export namespace stdlib::net {
     template <typename Protocol>
     using BasicSocketAcceptor = std::experimental::net::basic_socket_acceptor<Protocol>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Protocol>
     using BasicSocketStreamBuf = std::experimental::net::basic_socket_streambuf<Protocol>;
     #endif

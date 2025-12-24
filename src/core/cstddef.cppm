@@ -75,7 +75,7 @@ export namespace core {
 
     using byte = std::byte;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using NullPtr = std::nullptr_t;
     using NullPtr_t = std::nullptr_t;
     using NullPointer_t = std::nullptr_t;
@@ -121,7 +121,7 @@ export namespace core {
     // using Float64 = std::float64;
     // using Float128 = std::float128;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using Div_t = std::div_t;
     using LDiv_t = std::ldiv_t;
     using LLDiv_t = std::lldiv_t;
@@ -147,6 +147,6 @@ export namespace core {
     constexpr auto RAND_MAX = _detail::core::RandMax;
 }
 
-#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if (defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif

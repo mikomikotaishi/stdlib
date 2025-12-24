@@ -22,7 +22,7 @@ export namespace alloc {
     using ::alloc::text::string::String;
     using ::alloc::text::string::CharTraits;
     using ::alloc::text::string::BasicString;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::alloc::text::string::U8String;
     using ::alloc::text::string::U16String;
     using ::alloc::text::string::U32String;
@@ -40,7 +40,7 @@ export namespace alloc {
     namespace pmr {
         using ::alloc::text::string::pmr::BasicString;
         using ::alloc::text::string::pmr::String;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using ::alloc::text::string::pmr::U8String;
         using ::alloc::text::string::pmr::U16String;
         using ::alloc::text::string::pmr::U32String;
@@ -96,6 +96,6 @@ export namespace __gnu_cxx {
 }
 #endif
 
-#if defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_ALLOC_MODULE_EXPORT_CORE();
+#if defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_ALLOC_MODULE_EXPORT_CORE();
 #endif

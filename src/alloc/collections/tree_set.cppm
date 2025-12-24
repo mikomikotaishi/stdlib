@@ -40,7 +40,7 @@ export namespace alloc::collections {
             IsSameValue<typename Alloc::value_type, Key>
     using TreeMultiset = std::multiset<Key, Compare, Alloc>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Key, typename Compare = Less<Key>, typename Alloc = Allocator<Key>>
     using Set = TreeSet<Key, Compare, Alloc>;
 
@@ -59,7 +59,7 @@ export namespace alloc::collections {
         template <typename Key, typename Compare = Less<Key>>
         using TreeMultiset = std::pmr::multiset<Key, Compare>;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         template <typename Key, typename Compare = Less<Key>>
         using Set = TreeSet<Key, Compare>;
 

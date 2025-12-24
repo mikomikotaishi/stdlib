@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.net;
 #else
 export module stdlibx.os.linux.net;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.linux.net.ethernet;
 export import stdx.os.linux.net.if_arp;
 export import stdx.os.linux.net.if_packet;

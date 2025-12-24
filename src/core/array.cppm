@@ -43,6 +43,6 @@ export namespace core {
     using std::swap;
 }
 
-#if defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif

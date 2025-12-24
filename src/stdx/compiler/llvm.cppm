@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.compiler.llvm;
 #else
 export module stdlibx.compiler.llvm;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.compiler.llvm.InitializePasses;
 export import stdx.compiler.llvm.Pass;
 #else

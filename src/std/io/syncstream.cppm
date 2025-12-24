@@ -12,7 +12,7 @@ module;
 #include <syncstream>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.syncstream;
 #else
 export module stdlib.io.syncstream;
@@ -22,13 +22,13 @@ export module stdlib.io.syncstream;
  * @namespace std::io
  * @brief Wrapper namespace for standard library IO operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
     #if __has_include(<syncstream>)
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename CharT>
     using BasicSyncBuf = std::basic_syncbuf<CharT>;
 

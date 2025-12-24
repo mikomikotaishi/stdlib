@@ -13,7 +13,7 @@ module;
 #include <windows_base.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.win32.windows:windows_base;
 #else
 export module stdlibx.os.win32.windows:windows_base;
@@ -23,7 +23,7 @@ export module stdlibx.os.win32.windows:windows_base;
  * @namespace stdx::os::win32
  * @brief Wrapper namespace for Windows API operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::win32 {
 #else 
 export namespace stdlibx::os::win32 {

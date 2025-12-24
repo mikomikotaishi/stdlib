@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.meta.type_traits;
 #else
 export module stdlib.meta.type_traits;
@@ -20,13 +20,13 @@ import core.meta.type_traits;
  * @namespace std::meta
  * @brief Wrapper namespace for standard library metaprogramming operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::meta {
 #else 
 export namespace stdlib::meta {
 #endif
     using core::meta::IntegralConstant;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::meta::BoolConstant;
     #endif
     using core::meta::BooleanConstant;
@@ -170,7 +170,7 @@ export namespace stdlib::meta {
     using core::meta::IsInvocableReturnValue;
     using core::meta::IsNothrowInvocableReturn;
     using core::meta::IsNothrowInvocableReturnValue;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::meta::RemoveConst_t;
     using core::meta::RemoveVolatile_t;
     using core::meta::AddConst_t;
@@ -184,7 +184,7 @@ export namespace stdlib::meta {
     using core::meta::RemoveExtent_t;
     using core::meta::RemoveAllExtents_t;
     #endif
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::meta::RemoveCV;
     using core::meta::RemoveCV_t;
     using core::meta::RemoveConstVolatile_t;
@@ -195,7 +195,7 @@ export namespace stdlib::meta {
     using core::meta::RemoveConstType;
     using core::meta::RemoveVolatile;
     using core::meta::RemoveVolatileType;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::meta::AddCV;
     using core::meta::AddCV_t;
     using core::meta::AddConstVolatile_t;
@@ -226,7 +226,7 @@ export namespace stdlib::meta {
     using core::meta::RemoveAllExtentsType;
     using core::meta::Decay;
     using core::meta::DecayType;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::meta::RemoveCVRef;
     using core::meta::RemoveCVRef_t;
     #endif
@@ -256,7 +256,7 @@ export namespace stdlib::meta {
     using core::meta::DisjunctionValue;
     using core::meta::Negation;
     using core::meta::NegationValue;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::meta::Conjunction_v;
     using core::meta::Disjunction_v;
     using core::meta::Negation_v;

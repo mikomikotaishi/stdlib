@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.collections.hash_map;
 #else
 export module stdlib.collections.hash_map;
@@ -20,7 +20,7 @@ import alloc.collections.hash_map;
  * @namespace std::collections
  * @brief Wrapper namespace for standard library collection operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::collections {
 #else 
 export namespace stdlib::collections {
@@ -28,7 +28,7 @@ export namespace stdlib::collections {
     using alloc::collections::HashMap;
     using alloc::collections::HashMultimap;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::collections::UnorderedMap;
     using alloc::collections::UnorderedMultimap;
     #endif
@@ -41,7 +41,7 @@ export namespace stdlib::collections {
         using alloc::collections::pmr::HashMap;
         using alloc::collections::pmr::HashMultimap;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::collections::pmr::UnorderedMap;
         using alloc::collections::pmr::UnorderedMultimap;
         #endif

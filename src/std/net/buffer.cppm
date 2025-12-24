@@ -8,11 +8,11 @@
 
 module;
 
-#ifdef STDLIB_EXPERIMENTAL_STD
+#ifdef STDLIBX_EXPERIMENTAL_STD
 #include <experimental/buffer>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.net.buffer;
 #else
 export module stdlib.net.buffer;
@@ -22,12 +22,12 @@ export module stdlib.net.buffer;
  * @namespace std::net
  * @brief Wrapper namespace for (experimental) standard library networking operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::net {
 #else 
 export namespace stdlib::net {
 #endif
-    #ifdef STDLIB_EXPERIMENTAL_STD
+    #ifdef STDLIBX_EXPERIMENTAL_STD
     using ConstBuffer = std::experimental::net::const_buffer;
     using MutableBuffer = std::experimental::net::mutable_buffer;
 

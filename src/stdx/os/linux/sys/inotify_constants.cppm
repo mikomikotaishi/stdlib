@@ -9,7 +9,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.sys.inotify:constants;
 #else
 export module stdlibx.os.linux.sys.inotify:constants;
@@ -19,7 +19,7 @@ export module stdlibx.os.linux.sys.inotify:constants;
  * @namespace stdx::os::inotify
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::inotify {
 #else 
 export namespace stdlibx::os::inotify {

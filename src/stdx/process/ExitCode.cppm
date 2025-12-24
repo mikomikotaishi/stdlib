@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.process.ExitCode;
 
 import std;
@@ -20,7 +20,7 @@ import stdlib;
 import stdlibx.os;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_NAMESPACE
+#ifdef STDLIBX_NO_RESERVED_STD_NAMESPACE
 using namespace stdx::os;
 #else
 using namespace stdlibx::os;
@@ -30,7 +30,7 @@ using namespace stdlibx::os;
  * @namespace stdx::process
  * @brief Wrapper namespace for standard library extension process operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::process {
 #else
 export namespace stdlibx::process {

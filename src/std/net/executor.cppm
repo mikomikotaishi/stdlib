@@ -8,11 +8,11 @@
 
 module;
 
-#ifdef STDLIB_EXPERIMENTAL_STD
+#ifdef STDLIBX_EXPERIMENTAL_STD
 #include <experimental/executor>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.net.executor;
 #else
 export module stdlib.net.executor;
@@ -22,12 +22,12 @@ export module stdlib.net.executor;
  * @namespace std::net
  * @brief Wrapper namespace for (experimental) standard library networking operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::net {
 #else 
 export namespace stdlib::net {
 #endif
-    #ifdef STDLIB_EXPERIMENTAL_STD
+    #ifdef STDLIBX_EXPERIMENTAL_STD
     template <typename CompletionToken, typename Signature>
     using AsyncResult = std::experimental::net::async_result<CompletionToken, Signature>;
 

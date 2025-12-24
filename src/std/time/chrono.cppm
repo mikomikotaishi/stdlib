@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.time.chrono;
 #else
 export module stdlib.time.chrono;
@@ -20,7 +20,7 @@ import :detail;
  * @namespace std::time
  * @brief Wrapper namespace for standard library time operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::time {
 #else 
 export namespace stdlib::time {
@@ -106,7 +106,7 @@ export namespace stdlib::time {
     using _detail::std::time::TimeZoneDatabase;
     using _detail::std::time::TimeZoneDatabaseList;
     using _detail::std::time::TimeZone;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using _detail::std::time::SysInfo;
     #endif
     using _detail::std::time::SystemInfo;

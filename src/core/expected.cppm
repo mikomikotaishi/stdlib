@@ -35,7 +35,7 @@ export namespace core {
     template <typename E>
     using Unexpected = std::unexpected<E>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using Unexpect_t = std::unexpect_t;
     #endif
 
@@ -124,6 +124,6 @@ export namespace core {
     #endif
 }
 
-#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if (defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif

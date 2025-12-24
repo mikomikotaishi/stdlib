@@ -11,13 +11,13 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.linq.Query;
 #else
 export module stdlibx.linq.Query;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 import std;
 import stdx.core;
 #else
@@ -25,7 +25,7 @@ import stdlib;
 import stdlibx.core;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_NAMESPACE
+#ifdef STDLIBX_NO_RESERVED_STD_NAMESPACE
 using std::collections::Vector;
 using std::mem::SharedPointer;
 using std::meta::ConditionalType;
@@ -69,7 +69,7 @@ using namespace stdlib::ranges::views;
  * @namespace stdx::linq
  * @brief Wrapper namespace for standard library extension LINQ libraries.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::linq {
 #else
 export namespace stdlibx::linq {

@@ -13,7 +13,7 @@ module;
 #include <netinet/if_ether.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.netinet.if_ether;
 #else
 export module stdlibx.os.linux.netinet.if_ether;
@@ -23,13 +23,13 @@ export module stdlibx.os.linux.netinet.if_ether;
  * @namespace stdx::os::linux::netinet
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::linux::netinet {
 #else 
 export namespace stdlibx::os::linux::netinet {
 #endif
     #ifdef __linux__
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using EtherArp = ::ether_arp;
     #endif
 

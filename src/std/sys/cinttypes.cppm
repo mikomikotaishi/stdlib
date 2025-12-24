@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.sys.cinttypes;
 #else
 export module stdlib.sys.cinttypes;
@@ -20,7 +20,7 @@ import core.sys.cinttypes;
  * @namespace std::sys
  * @brief Wrapper namespace for standard library system operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::sys {
 #else 
 export namespace stdlib::sys {

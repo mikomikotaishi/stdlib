@@ -9,11 +9,11 @@
 
 module;
 
-#ifdef STDLIB_EXPERIMENTAL_STD
+#ifdef STDLIBX_EXPERIMENTAL_STD
 #include <experimental/internet>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.net.internet;
 #else
 export module stdlib.net.internet;
@@ -23,7 +23,7 @@ export module stdlib.net.internet;
  * @namespace std::net
  * @brief Wrapper namespace for (experimental) standard library networking operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::net {
 #else 
 export namespace stdlib::net {
@@ -33,7 +33,7 @@ export namespace stdlib::net {
      * @brief Namespace for operations IP addresses.
      */
     namespace ip {
-        #ifdef STDLIB_EXPERIMENTAL_STD
+        #ifdef STDLIBX_EXPERIMENTAL_STD
         using AddressV4 = std::experimental::net::ip::address_v4;
         using AddressV6 = std::experimental::net::ip::address_v6;
         using Address = std::experimental::net::ip::address;
@@ -57,7 +57,7 @@ export namespace stdlib::net {
          * @brief Namespace for operations on unicast.
          */
         namespace unicast {
-            #ifdef STDLIB_EXPERIMENTAL_STD
+            #ifdef STDLIBX_EXPERIMENTAL_STD
             using Hops = std::experimental::net::ip::unicast::hops;
             #endif
         }
@@ -67,7 +67,7 @@ export namespace stdlib::net {
          * @brief Namespace for operations on multicast.
          */
         namespace multicast {
-            #ifdef STDLIB_EXPERIMENTAL_STD
+            #ifdef STDLIBX_EXPERIMENTAL_STD
             using JoinGroup = std::experimental::net::ip::multicast::join_group;
             using LeaveGroup = std::experimental::net::ip::multicast::leave_group;
             using OutboundInterface = std::experimental::net::ip::multicast::outbound_interface;

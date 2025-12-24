@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.sys;
 #else
 export module stdlibx.os.unix.sys;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.unix.sys.ioctl;
 export import stdx.os.unix.sys.ipc;
 export import stdx.os.unix.sys.mman;

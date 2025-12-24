@@ -19,7 +19,7 @@ export import :constants;
  * @brief Wrapper namespace for standard library format operations.
  */
 export namespace core::fmt {
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using IMaxDiv_t = std::imaxdiv_t;
     using IntegerMaxDiv_t = std::imaxdiv_t;
     using IMaxDiv = std::imaxdiv_t;

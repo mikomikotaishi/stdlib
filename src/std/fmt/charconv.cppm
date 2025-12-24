@@ -10,7 +10,7 @@ module;
 
 #include <charconv>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.fmt.charconv;
 #else
 export module stdlib.fmt.charconv;
@@ -20,7 +20,7 @@ export module stdlib.fmt.charconv;
  * @namespace std::fmt
  * @brief Wrapper namespace for standard library format operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::fmt {
 #else 
 export namespace stdlib::fmt {

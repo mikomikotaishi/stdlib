@@ -1,4 +1,4 @@
-# `stdlib`
+# `stdlibx`
 
 > **WARNING:** As this library is still under development, many features do not yet work, or requires inelegant workarounds or even inclusion of headers to resolve. These issues will only be resolved as development continues.
 
@@ -22,7 +22,7 @@ Requires a minimum of C++23.
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Libraries
-The `stdlib` library offers the following namespaces/modules:
+The `stdlibx` library offers the following namespaces/modules:
 
 ### Core library (module `core.*`, namespace `core::*`)
 Core modules of the standard library, not requiring any memory allocation. Provides the most fundamental and low-level features of the C++ standard library. 
@@ -35,16 +35,16 @@ Disabled when `STDLIB_NO_ALLOC` is enabled.
 ### Standard library (module `std.*`, namespace `std::*`)
 The full C++ standard library, containing everything provided by `core.*` and `alloc.*`, as well as additional functionality depending on operating system and runtime.
 
-If `STDLIB_USE_RESERVED_STD_IDENTIFIERS` is disabled, `std.*` is `stdlib.*` and `std::*` is `stdlib::*`. `STDLIB_USE_RESERVED_STD_IDENTIFIERS` can further be more finely-controlled using `STDLIB_NO_RESERVED_STD_MODULE` (modules) and `STDLIB_NO_RESERVED_STD_NAMESPACE` (namespaces).
+If `STDLIBX_USE_RESERVED_STD_IDENTIFIERS` is disabled, `std.*` is `stdlib.*` and `std::*` is `stdlib::*`. `STDLIBX_USE_RESERVED_STD_IDENTIFIERS` can further be more finely-controlled using `STDLIBX_NO_RESERVED_STD_MODULE` (modules) and `STDLIBX_NO_RESERVED_STD_NAMESPACE` (namespaces).
 
-Disabled when `STDLIB_NO_STD` (or `STDLIB_NO_ALLOC`) are enabled.
+Disabled when `STDLIBX_NO_STD` (or `STDLIBX_NO_ALLOC`) are enabled.
 
 ### Extensions library (module `stdx.*`, namespace `stdx::*`)
 Technically not "standard library" in the sense of the ISO C++ standard library, but contains features that (in my opinion) ought to be part of the C++ standard library, and are offered by standard libraries of other languages.
 
-If `STDLIB_USE_RESERVED_STD_IDENTIFIERS` is disabled, `stdx.*` is `stdlibx.*` and `stdx::*` is `stdlibx::*`. `STDLIB_USE_RESERVED_STD_IDENTIFIERS` can further be more finely-controlled using `STDLIB_NO_RESERVED_STD_MODULE` (modules) and `STDLIB_NO_RESERVED_STD_NAMESPACE` (namespaces).
+If `STDLIBX_USE_RESERVED_STD_IDENTIFIERS` is disabled, `stdx.*` is `stdlibx.*` and `stdx::*` is `stdlibx::*`. `STDLIBX_USE_RESERVED_STD_IDENTIFIERS` can further be more finely-controlled using `STDLIBX_NO_RESERVED_STD_MODULE` (modules) and `STDLIBX_NO_RESERVED_STD_NAMESPACE` (namespaces).
 
-Disabled by default - enabled when `STDLIB_EXTENSIONS` is enabled. 
+Disabled by default - enabled when `STDLIBX_EXTENSIONS` is enabled. 
 
 > **NOTE:** Some parts of this library may be third-party or re-exports of existing libraries, and thus not entirely original code. Code that originates from third party will be adequately attributed, but if there are any issues or concerns, please do not hesitate to contact me.
 

@@ -11,7 +11,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.core.contracts;
 #else
 export module stdlib.core.contracts;
@@ -23,17 +23,17 @@ import core.contracts;
  * @namespace std::core
  * @brief Wrapper namespace for (experimental) standard library networking operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
 #endif
-    #ifdef STDLIB_EXPERIMENTAL_STD
+    #ifdef STDLIBX_EXPERIMENTAL_STD
     using ::core::ContractViolationContinuationMode;
     using ::core::ContractViolation;
     #endif
 }
 
-#if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_STD_MODULE_EXPORT_CORE();
+#if !defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

@@ -10,7 +10,7 @@ module;
 
 #include <iostream>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.iostream;
 #else
 export module stdlib.io.iostream;
@@ -20,12 +20,12 @@ export module stdlib.io.iostream;
  * @namespace std::io
  * @brief Wrapper namespace for standard library input/output operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     inline std::ostream& cout = std::cout;
     inline std::istream& cin = std::cin;
     inline std::ostream& cerr = std::cerr;
@@ -37,7 +37,7 @@ export namespace stdlib::io {
     inline std::ostream& Cerr = std::cerr;
     inline std::ostream& Clog = std::clog;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     inline std::wostream& wcout = std::wcout;
     inline std::wistream& wcin = std::wcin;
     inline std::wostream& wcerr = std::wcerr;

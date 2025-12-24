@@ -10,7 +10,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.core.string;
 #else
 export module stdlib.core.string;
@@ -22,7 +22,7 @@ import alloc.string;
  * @namespace std::core
  * @brief Wrapper namespace for the core objects of the standard library.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
@@ -30,7 +30,7 @@ export namespace stdlib::core {
     using alloc::CharTraits;
     using alloc::BasicString;
     using alloc::String;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::U8String;
     using alloc::U16String;
     using alloc::U32String;
@@ -38,7 +38,7 @@ export namespace stdlib::core {
     using alloc::Utf8String;
     using alloc::Utf16String;
     using alloc::Utf32String;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::WString;
     #endif
     using alloc::WideString;
@@ -50,7 +50,7 @@ export namespace stdlib::core {
     namespace pmr {
         using alloc::pmr::BasicString;
         using alloc::pmr::String;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::pmr::U8String;
         using alloc::pmr::U16String;
         using alloc::pmr::U32String;
@@ -109,6 +109,6 @@ export namespace __gnu_cxx {
 }
 #endif
 
-#if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_STD_MODULE_EXPORT_CORE();
+#if !defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

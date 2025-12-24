@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.util.utility;
 #else
 export module stdlib.util.utility;
@@ -20,7 +20,7 @@ import core.util.utility;
  * @namespace std::util
  * @brief Wrapper namespace for standard library utility operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::util {
 #else 
 export namespace stdlib::util {

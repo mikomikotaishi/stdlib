@@ -10,7 +10,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.core.optional;
 #else
 export module stdlib.core.optional;
@@ -22,13 +22,13 @@ import core.optional;
  * @namespace std::core
  * @brief Wrapper namespace for the core objects of the standard library.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
 #endif
     using ::core::Optional;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::NullOpt;
     using ::core::NullOpt_t;
     using ::core::NullOption_t;
@@ -43,6 +43,6 @@ export namespace stdlib::core {
     using ::core::make_optional;
 }
 
-#if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_STD_MODULE_EXPORT_CORE();
+#if !defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

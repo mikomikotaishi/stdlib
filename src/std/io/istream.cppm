@@ -10,7 +10,7 @@ module;
 
 #include <istream>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.istream;
 #else
 export module stdlib.io.istream;
@@ -20,12 +20,12 @@ export module stdlib.io.istream;
  * @namespace std::io
  * @brief Wrapper namespace for standard library input/output operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename CharT>
     using BasicIStream = std::basic_istream<CharT>;
 

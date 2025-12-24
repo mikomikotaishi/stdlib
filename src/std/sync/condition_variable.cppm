@@ -10,7 +10,7 @@ module;
 
 #include <condition_variable>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.sync.condition_variable;
 #else
 export module stdlib.sync.condition_variable;
@@ -20,7 +20,7 @@ export module stdlib.sync.condition_variable;
  * @namespace std::sync
  * @brief Wrapper namespace for standard library synchronisation operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::sync {
 #else 
 export namespace stdlib::sync {
@@ -28,7 +28,7 @@ export namespace stdlib::sync {
     using ConditionVariable = std::condition_variable;
     using ConditionVariableAny = std::condition_variable_any;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using CvStatus = std::cv_status;
     #endif
 

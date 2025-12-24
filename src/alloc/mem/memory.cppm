@@ -35,7 +35,7 @@ export namespace alloc::mem {
     using AllocatorArgumentTag = std::allocator_arg_t;
     inline constexpr AllocatorArgumentTag AllocatorArgument = std::allocator_arg;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T, typename Deleter = DefaultDelete<T>>
     using UniquePtr = std::unique_ptr<T, Deleter>;
 
@@ -63,7 +63,7 @@ export namespace alloc::mem {
 
     using std::hash;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Smart, typename Pointer, typename... Args>
     using OutPtr_t = std::out_ptr_t<Smart, Pointer, Args...>;
 

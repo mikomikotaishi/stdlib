@@ -273,7 +273,7 @@ def runCMakeInit(verbose: bool, release: bool, sanitisers: List[str] = None) -> 
         runCommand(cmake_command, verbose = True)
         return
 
-    print(f"{ANSI.GREEN}Initialising{ANSI.RESET} stdlib build...")
+    print(f"{ANSI.GREEN}Initialising{ANSI.RESET} stdlibx build...")
 
     process: Popen = Popen(
         cmake_command,
@@ -478,7 +478,7 @@ def runCMakeBuild(verbose: bool) -> None:
         runCommand(["cmake", "--build", "build"], verbose = True)
         return
 
-    print(f"{ANSI.GREEN}Building{ANSI.RESET} stdlib...")
+    print(f"{ANSI.GREEN}Building{ANSI.RESET} stdlibx...")
 
     process: Popen = Popen(
         ["cmake", "--build", "build"],
@@ -617,13 +617,13 @@ def main() -> int:
     """
     @brief Main function.
     
-    Main function to execute the build and dependency generation steps for the stdlib project.
+    Main function to execute the build and dependency generation steps for the stdlibx project.
     Supports various flags for different operations.
 
     @return int: Return code (0 for success, non-zero for failure).
     """
     parser: ArgumentParser = ArgumentParser(description = "Build script for stdlib project.")
-
+    
     operation_group: MutuallyExclusiveGroup = parser.add_mutually_exclusive_group()
     parser.add_argument("-r", "--release", action = "store_true",
                         help = "Build in release mode (optimised, no sanitisers, NDEBUG defined)")

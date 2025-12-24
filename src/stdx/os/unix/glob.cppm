@@ -13,7 +13,7 @@ module;
 #include <glob.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.glob;
 #else
 export module stdlibx.os.unix.glob;
@@ -25,7 +25,7 @@ export import :constants;
  * @namespace stdx::os::unix
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::unix {
 #else 
 export namespace stdlibx::os::unix {
@@ -34,7 +34,7 @@ export namespace stdlibx::os::unix {
     using Stat = ::stat;
     using Stat64 = ::stat64;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using Glob_t = ::glob_t;
     #endif
 

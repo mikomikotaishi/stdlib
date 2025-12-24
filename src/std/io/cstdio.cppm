@@ -10,7 +10,7 @@ module;
 
 #include <cstdio>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.cstdio;
 #else
 export module stdlib.io.cstdio;
@@ -20,21 +20,21 @@ export module stdlib.io.cstdio;
  * @namespace std::io
  * @brief Wrapper namespace for standard library input/output operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
 #endif
     using File = std::FILE;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using FPos = std::fpos_t;
     using FPos_t = std::fpos_t;
     using FilePosition_t = std::fpos_t;
     #endif
     using FilePosition = std::fpos_t;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::stdin;
     using ::stdout;
     using ::stderr;

@@ -22,7 +22,7 @@ export namespace core {
     template <typename T>
     using Optional = std::optional<T>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using NullOpt = std::nullopt_t;
     using NullOpt_t = std::nullopt_t;
     using NullOption_t = std::nullopt_t;
@@ -39,6 +39,6 @@ export namespace core {
     using std::make_optional;
 }
 
-#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if (defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif

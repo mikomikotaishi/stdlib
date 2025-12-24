@@ -12,7 +12,7 @@ module;
 #include <barrier>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.sync.barrier;
 #else
 export module stdlib.sync.barrier;
@@ -22,7 +22,7 @@ export module stdlib.sync.barrier;
  * @namespace std::sync
  * @brief Wrapper namespace for standard library synchronisation operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::sync {
 #else 
 export namespace stdlib::sync {

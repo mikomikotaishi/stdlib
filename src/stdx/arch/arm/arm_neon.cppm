@@ -12,7 +12,7 @@ module;
 #include <arm_neon.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.arch.arm.arm_neon;
 #else
 export module stdlibx.arch.arm.arm_neon;

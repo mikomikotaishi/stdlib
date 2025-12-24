@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.math.random;
 
 import std.random;
@@ -26,7 +26,7 @@ import stdlib.random;
  * @namespace std::math
  * @brief Wrapper namespace for standard library mathematical operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::math {
 #else 
 export namespace stdlib::math {
@@ -75,7 +75,7 @@ export namespace stdlib::math {
         
         using RANDOM::generate_canonical;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using RANDOM::MinStdRand0;
         using RANDOM::MinStdRand;
         using RANDOM::Mt19937;

@@ -19,7 +19,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release" OR BUILD_SHARED_LIBS STREQUAL "OFF")
     message(STATUS "Configuring for static linking (single executable)")
 endif()
 
-project(stdlib
+project(stdlibx
     LANGUAGES CXX
     VERSION 0.0.1
 )
@@ -119,87 +119,87 @@ include(FetchContent)
 
 set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
 
-option(STDLIB_USE_RESERVED_STD_IDENTIFIERS "Force usage of reserved module names std.* and std::* namespace (instead of stdlib.* and std::*) and suppress related warnings" ON)
-option(STDLIB_NO_STD "Disable the std.* modules and only use core.* and alloc.*" OFF)
-option(STDLIB_NO_ALLOC "Disable the alloc.* modules and only use core.*" OFF)
-option(STDLIB_IMPLICIT_USING_CORE "Make std.core.* modules implicitly load symbols into scope by importing" ON)
-option(STDLIB_ENABLE_COMPAT_NAMES "Enable compatibility names more similar to ISO C++ names" OFF)
-option(STDLIB_EXPERIMENTAL_STD "Enable experimental headers" OFF)
-option(STDLIB_EXTENSIONS "Enable the stdx.* modules" OFF)
-option(STDLIB_EXTENSIONS_COMPILE_COMPILER_LIBRARY "Enable compiler header modules in stdx.compiler.*" OFF)
+option(STDLIBX_USE_RESERVED_STD_IDENTIFIERS "Force usage of reserved module names std.* and std::* namespace (instead of stdlibx.* and std::*) and suppress related warnings" ON)
+option(STDLIBX_NO_STD "Disable the std.* modules and only use core.* and alloc.*" OFF)
+option(STDLIBX_NO_ALLOC "Disable the alloc.* modules and only use core.*" OFF)
+option(STDLIBX_IMPLICIT_USING_CORE "Make std.core.* modules implicitly load symbols into scope by importing" ON)
+option(STDLIBX_ENABLE_COMPAT_NAMES "Enable compatibility names more similar to ISO C++ names" OFF)
+option(STDLIBX_EXPERIMENTAL_STD "Enable experimental headers" OFF)
+option(STDLIBX_EXTENSIONS "Enable the stdx.* modules" OFF)
+option(STDLIBX_EXTENSIONS_COMPILE_COMPILER_LIBRARY "Enable compiler header modules in stdx.compiler.*" OFF)
 
-if(STDLIB_NO_STD)
-    set(STDLIB_USE_RESERVED_STD_IDENTIFIERS OFF CACHE BOOL "Disabled because STDLIB_NO_STD is ON" FORCE)
+if(STDLIBX_NO_STD)
+    set(STDLIBX_USE_RESERVED_STD_IDENTIFIERS OFF CACHE BOOL "Disabled because STDLIBX_NO_STD is ON" FORCE)
 endif()
 
-if(STDLIB_NO_ALLOC)
-    set(STDLIB_NO_STD ON CACHE BOOL "Implied because STDLIB_NO_ALLOC disables std.*" FORCE)
+if(STDLIBX_NO_ALLOC)
+    set(STDLIBX_NO_STD ON CACHE BOOL "Implied because STDLIBX_NO_ALLOC disables std.*" FORCE)
 endif()
 
-if(NOT STDLIB_EXTENSIONS)
-    set(STDLIB_EXTENSIONS_COMPILE_COMPILER_LIBRARY OFF CACHE BOOL "Disabled because STDLIB_EXTENSIONS is OFF" FORCE)
+if(NOT STDLIBX_EXTENSIONS)
+    set(STDLIBX_EXTENSIONS_COMPILE_COMPILER_LIBRARY OFF CACHE BOOL "Disabled because STDLIBX_EXTENSIONS is OFF" FORCE)
 endif()
 
-if(STDLIB_NO_STD AND STDLIB_ENABLE_COMPAT_NAMES)
-    message(WARNING "STDLIB_ENABLE_COMPAT_NAMES has no effect when STDLIB_NO_STD is ON")
+if(STDLIBX_NO_STD AND STDLIBX_ENABLE_COMPAT_NAMES)
+    message(WARNING "STDLIBX_ENABLE_COMPAT_NAMES has no effect when STDLIBX_NO_STD is ON")
 endif()
 
-add_library(stdlib INTERFACE)
+add_library(stdlibx INTERFACE)
 
 add_subdirectory(src)
 
-target_include_directories(stdlib 
+target_include_directories(stdlibx 
     INTERFACE 
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
 
-if(STDLIB_USE_RESERVED_STD_IDENTIFIERS)
-    target_compile_definitions(stdlib INTERFACE STDLIB_USE_RESERVED_STD_IDENTIFIERS)
+if(STDLIBX_USE_RESERVED_STD_IDENTIFIERS)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_USE_RESERVED_STD_IDENTIFIERS)
 endif()
 
-if(STDLIB_NO_STD)
-    target_compile_definitions(stdlib INTERFACE STDLIB_NO_STD)
+if(STDLIBX_NO_STD)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_NO_STD)
 endif()
 
-if(STDLIB_NO_ALLOC)
-    target_compile_definitions(stdlib INTERFACE STDLIB_NO_ALLOC)
+if(STDLIBX_NO_ALLOC)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_NO_ALLOC)
 endif()
 
-if(STDLIB_IMPLICIT_USING_CORE)
-    target_compile_definitions(stdlib INTERFACE STDLIB_IMPLICIT_USING_CORE)
+if(STDLIBX_IMPLICIT_USING_CORE)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_IMPLICIT_USING_CORE)
 endif()
 
-if(STDLIB_ENABLE_COMPAT_NAMES)
-    target_compile_definitions(stdlib INTERFACE STDLIB_ENABLE_COMPAT_NAMES)
+if(STDLIBX_ENABLE_COMPAT_NAMES)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_ENABLE_COMPAT_NAMES)
 endif()
 
-if(STDLIB_EXPERIMENTAL_STD)
-    target_compile_definitions(stdlib INTERFACE STDLIB_EXPERIMENTAL_STD)
+if(STDLIBX_EXPERIMENTAL_STD)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_EXPERIMENTAL_STD)
 endif()
 
-if(STDLIB_EXTENSIONS)
-    target_compile_definitions(stdlib INTERFACE STDLIB_EXTENSIONS)
+if(STDLIBX_EXTENSIONS)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_EXTENSIONS)
 endif()
 
-if(STDLIB_EXTENSIONS_COMPILE_COMPILER_LIBRARY)
-    target_compile_definitions(stdlib INTERFACE STDLIB_EXTENSIONS_COMPILE_COMPILER_LIBRARY)
+if(STDLIBX_EXTENSIONS_COMPILE_COMPILER_LIBRARY)
+    target_compile_definitions(stdlibx INTERFACE STDLIBX_EXTENSIONS_COMPILE_COMPILER_LIBRARY)
 endif()
 
-set_target_properties(stdlib PROPERTIES 
-    EXPORT_NAME stdlib
+set_target_properties(stdlibx PROPERTIES 
+    EXPORT_NAME stdlibx
     CXX_STANDARD 23
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS OFF
 )
 
 if(COMMAND configure_cpp_module_target)
-    configure_cpp_module_target(stdlib)
+    configure_cpp_module_target(stdlibx)
 endif()
 
-add_library(stdlib::stdlib ALIAS stdlib)
+add_library(stdlibx::stdlibx ALIAS stdlibx)
 
-if(STDLIB_BUILD_TESTS)
+if(STDLIBX_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
 endif()

@@ -49,7 +49,7 @@ module;
 #undef InterlockedCompareExchange128
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.win32.windows;
 #else
 export module stdlibx.os.win32.windows;
@@ -62,7 +62,7 @@ import :windows_base;
  * @namespace stdx::os::win32
  * @brief Wrapper namespace for Windows API operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::win32 {
 #else 
 export namespace stdlibx::os::win32 {
@@ -115,7 +115,7 @@ export namespace stdlibx::os::win32 {
     using InterlockedIncrement = ::_InterlockedIncrement;
     using InterlockedCompareExchange = ::_InterlockedCompareExchange;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     enum class SymTag {
         Null = static_cast<int>(SymTagEnum::SymTagNull),
         Exe = static_cast<int>(SymTagEnum::SymTagExe),

@@ -10,7 +10,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.core.string_view;
 #else
 export module stdlib.core.string_view;
@@ -22,14 +22,14 @@ import core.string_view;
  * @namespace std::core
  * @brief Wrapper namespace for the core objects of the standard library.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
 #endif
     using ::core::BasicStringView;
     using ::core::StringView;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::U8StringView;
     using ::core::U16StringView;
     using ::core::U32StringView;
@@ -37,7 +37,7 @@ export namespace stdlib::core {
     using ::core::Utf8StringView;
     using ::core::Utf16StringView;
     using ::core::Utf32StringView;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::WStringView;
     #endif
     using ::core::WideStringView;
@@ -77,6 +77,6 @@ export namespace __gnu_cxx {
 }
 #endif
 
-#if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_STD_MODULE_EXPORT_CORE();
+#if !defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

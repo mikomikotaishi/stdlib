@@ -12,7 +12,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.ios;
 #else
 export module stdlib.io.ios;
@@ -38,7 +38,7 @@ export {
  * @namespace std::io
  * @brief Wrapper namespace for standard library IO operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
@@ -61,7 +61,7 @@ export namespace stdlib::io {
     using core::io::operator&=;
     using core::io::operator^=;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::io::WIOS;
     using core::io::FPos;
     #endif
@@ -71,14 +71,14 @@ export namespace stdlib::io {
     using core::io::IOErrc;
     using core::io::IsErrorCodeEnum;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::io::StreamOff;
     #endif
 
     using core::io::StreamOffset;
     using core::io::StreamSize;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::io::IOSBaseException;
     #endif
 
@@ -117,12 +117,12 @@ export namespace stdlib::io {
  * @namespace std::core
  * @brief Wrapper namespace for standard library core operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
 #endif
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
     using std::io::IOErrc;
     #else
     using stdlib::io::IOErrc;
@@ -132,6 +132,6 @@ export namespace stdlib::core {
     using ::core::make_error_condition;
 }
 
-#ifndef STDLIB_NO_STD
-STDLIB_STD_MODULE_EXPORT_CORE();
+#ifndef STDLIBX_NO_STD
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

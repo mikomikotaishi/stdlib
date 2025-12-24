@@ -9,8 +9,8 @@ foreach(TEST_SOURCE ${TEST_SOURCES})
     # Create executable
     add_executable(${TEST_NAME} ${TEST_SOURCE})
     
-    # Link against the stdlib library
-    target_link_libraries(${TEST_NAME} PRIVATE stdlib::stdlib)
+    # Link against the stdlibx library
+    target_link_libraries(${TEST_NAME} PRIVATE stdlibx::stdlibx)
     
     # Set C++ standard and properties
     set_target_properties(${TEST_NAME} PROPERTIES

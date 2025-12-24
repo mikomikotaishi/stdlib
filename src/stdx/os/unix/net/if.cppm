@@ -14,7 +14,7 @@ module;
 #include <net/if.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.net.if_header;
 #else
 export module stdlibx.os.unix.net.if_header;
@@ -24,13 +24,13 @@ export module stdlibx.os.unix.net.if_header;
  * @namespace stdx::os::unix::net
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::unix::net {
 #else 
 export namespace stdlibx::os::unix::net {
 #endif
     #ifdef __unix__
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using IfAddr = ::ifaddr;
     using IfMap = ::ifmap;
     using IfReq = ::ifreq;

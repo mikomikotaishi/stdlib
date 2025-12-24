@@ -9,7 +9,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.mem.new_header;
 #else
 export module stdlib.mem.new_header;
@@ -21,12 +21,12 @@ import alloc.mem.new_header;
  * @namespace std::mem
  * @brief Wrapper namespace for standard library memory operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::mem {
 #else 
 export namespace stdlib::mem {
 #endif
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::mem::AlignVal_t;
     using alloc::mem::AlignValue_t;
     using alloc::mem::NoThrow_t;
@@ -38,7 +38,7 @@ export namespace stdlib::mem {
     using alloc::mem::NoThrow;
     using alloc::mem::DestroyingDelete;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::mem::BadAllocException;
     #endif
 

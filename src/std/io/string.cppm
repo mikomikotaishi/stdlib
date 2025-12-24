@@ -10,7 +10,7 @@ module;
 
 #include <string>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.string;
 #else
 export module stdlib.io.string;
@@ -20,7 +20,7 @@ export module stdlib.io.string;
  * @namespace std::io
  * @brief Wrapper namespace for standard library input/output operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {

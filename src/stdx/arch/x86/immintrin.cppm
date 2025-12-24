@@ -12,7 +12,7 @@ module;
 #include <immintrin.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.arch.x86.immintrin;
 #else
 export module stdlibx.arch.x86.immintrin;

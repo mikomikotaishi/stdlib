@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.ranges.ranges;
 #else
 export module stdlib.ranges.ranges;
@@ -21,7 +21,7 @@ import core.ranges.ranges;
  * @namespace std::ranges
  * @brief Wrapper namespace for standard library ranges operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::ranges {
 #else 
 export namespace stdlib::ranges {
@@ -44,7 +44,7 @@ export namespace stdlib::ranges {
     }
 
     inline namespace range_cpo {
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using ::core::ranges::range_cpo::CBegin;
         using ::core::ranges::range_cpo::CEnd;
         using ::core::ranges::range_cpo::RBegin;
@@ -85,7 +85,7 @@ export namespace stdlib::ranges {
     using ::core::ranges::CommonRange;
     using ::core::ranges::ViewableRange;
     using ::core::ranges::ConstantRange;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::ranges::Iterator_t;
     using ::core::ranges::ConstIterator_t;
     using ::core::ranges::Sentinel_t;
@@ -124,7 +124,7 @@ export namespace stdlib::ranges {
     using ::core::ranges::SingleView;
     using ::core::ranges::IotaView;
     using ::core::ranges::RepeatView;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::ranges::BasicIStreamView;
     #endif
     using alloc::ranges::BasicInputStreamView;
@@ -169,7 +169,7 @@ export namespace stdlib::ranges {
     }
 
     using ::core::ranges::RangeAdaptorClosure;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::ranges::RefView;
     #endif
     using ::core::ranges::ReferenceView;
@@ -207,7 +207,7 @@ export namespace stdlib::ranges {
         using ::core::ranges::views::Single;
         using ::core::ranges::views::Iota;
         using ::core::ranges::views::Repeat;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::ranges::views::IStream;
         #endif
         using alloc::ranges::views::InputStream;
@@ -256,12 +256,12 @@ export namespace stdlib::ranges {
     #endif
 }
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std {
 #else
 export namespace stdlib {
 #endif
-    #if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+    #if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
     namespace views = std::ranges;
     #else
     namespace views = stdlib::ranges;

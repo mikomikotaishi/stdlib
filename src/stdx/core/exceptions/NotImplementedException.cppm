@@ -10,13 +10,13 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.core.Exceptions:NotImplementedException;
 #else
 export module stdlibx.core.Exceptions:NotImplementedException;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 import std;
 #else
 import stdlib;
@@ -28,7 +28,7 @@ import :UnsupportedOperationException;
  * @namespace stdx::core
  * @brief Wrapper namespace for standard library extension core libraries.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::core {
 #else
 export namespace stdlibx::core {
@@ -55,4 +55,4 @@ public:
 
 }
 
-STDLIB_STDX_MODULE_EXPORT_CORE();
+STDLIBX_STDX_MODULE_EXPORT_CORE();

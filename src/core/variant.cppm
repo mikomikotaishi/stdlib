@@ -28,7 +28,7 @@ export namespace core {
     template <std::size_t I, typename V>
     using VariantAlternative = std::variant_alternative<I, V>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <std::size_t I, typename T>
     using VariantAlternative_t = std::variant_alternative_t<I, T>;
     #endif
@@ -40,7 +40,7 @@ export namespace core {
 
     using std::hash;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     inline constexpr std::size_t VariantNPos = std::variant_npos;
     #endif
 
@@ -53,6 +53,6 @@ export namespace core {
     using std::swap;
 }
 
-#if (defined(STDLIB_NO_STD) || defined(STDLIB_NO_ALLOC)) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_CORE_MODULE_EXPORT_CORE();
+#if (defined(STDLIBX_NO_STD) || defined(STDLIBX_NO_ALLOC)) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_CORE_MODULE_EXPORT_CORE();
 #endif

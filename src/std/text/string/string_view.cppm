@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.text.string.string_view;
 #else
 export module stdlib.text.string.string_view;
@@ -20,7 +20,7 @@ import core.text.string.string_view;
  * @namespace std::text
  * @brief Wrapper namespace for standard library text operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::text {
 #else 
 export namespace stdlib::text {
@@ -33,7 +33,7 @@ export namespace stdlib::text {
         using core::text::string::CharTraits;
         using core::text::string::BasicStringView;
         using core::text::string::StringView;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using core::text::string::U8StringView;
         using core::text::string::U16StringView;
         using core::text::string::U32StringView;

@@ -12,7 +12,7 @@ module;
 #include <stop_token>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.concurrent.stop_token;
 #else
 export module stdlib.concurrent.stop_token;
@@ -22,7 +22,7 @@ export module stdlib.concurrent.stop_token;
  * @namespace std::concurrent
  * @brief Wrapper namespace for standard library concurrency operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::concurrent {
 #else 
 export namespace stdlib::concurrent {
@@ -34,7 +34,7 @@ export namespace stdlib::concurrent {
     template <typename Callback>
     using StopCallback = ::std::stop_callback<Callback>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using NoStopState_t = ::std::nostopstate_t;
     #endif
 

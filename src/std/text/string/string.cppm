@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.text.string.string;
 #else
 export module stdlib.text.string.string;
@@ -20,7 +20,7 @@ import alloc.text.string.string;
  * @namespace std::text
  * @brief Wrapper namespace for standard library text operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::text {
 #else 
 export namespace stdlib::text {
@@ -33,7 +33,7 @@ export namespace stdlib::text {
         using alloc::text::string::String;
         using alloc::text::string::CharTraits;
         using alloc::text::string::BasicString;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::text::string::U8String;
         using alloc::text::string::U16String;
         using alloc::text::string::U32String;

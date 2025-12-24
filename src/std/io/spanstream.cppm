@@ -12,7 +12,7 @@ module;
 #include <spanstream>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.io.spanstream;
 #else
 export module stdlib.io.spanstream;
@@ -22,7 +22,7 @@ export module stdlib.io.spanstream;
  * @namespace std::io
  * @brief Wrapper namespace for standard library IO operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::io {
 #else 
 export namespace stdlib::io {
@@ -31,7 +31,7 @@ export namespace stdlib::io {
     template <typename CharT>
     using BasicSpanBuf = std::basic_spanbuf<CharT>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename CharT>
     using BasicISpanStream = std::basic_ispanstream<CharT>;
 
@@ -48,7 +48,7 @@ export namespace stdlib::io {
     template <typename CharT>
     using BasicSpanStream = std::basic_spanstream<CharT>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using SpanBuf = std::spanbuf;
     using WSpanBuf = std::wspanbuf;
     using ISpanStream = std::ispanstream;
@@ -66,7 +66,7 @@ export namespace stdlib::io {
 
     using SpanStream = std::spanstream;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WSpanStream = std::wspanstream;
     #endif
 

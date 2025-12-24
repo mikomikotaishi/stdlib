@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.collections.tree_set;
 #else
 export module stdlib.collections.tree_set;
@@ -20,7 +20,7 @@ import alloc.collections.tree_set;
  * @namespace std::collections
  * @brief Wrapper namespace for standard library collection operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::collections {
 #else 
 export namespace stdlib::collections {
@@ -28,7 +28,7 @@ export namespace stdlib::collections {
     using alloc::collections::TreeSet;
     using alloc::collections::TreeMultiset;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::collections::Set;
     using alloc::collections::Multiset;
     #endif
@@ -41,7 +41,7 @@ export namespace stdlib::collections {
         using alloc::collections::pmr::TreeSet;
         using alloc::collections::pmr::TreeMultiset;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::collections::pmr::Set;
         using alloc::collections::pmr::Multiset;
         #endif

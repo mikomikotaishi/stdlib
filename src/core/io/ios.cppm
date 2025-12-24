@@ -126,7 +126,7 @@ export namespace core::io {
     using std::operator&=;
     using std::operator^=;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using WIOS = std::wios;
 
     template <typename StateT>
@@ -150,14 +150,14 @@ export namespace core::io {
     template <typename T>
     using IsErrorCodeEnum = std::is_error_code_enum<T>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using StreamOff = std::streamoff;
     #endif
 
     using StreamOffset = std::streamoff;
     using StreamSize = std::streamsize;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using IOSBaseException = std::ios_base::failure;
     #endif
 

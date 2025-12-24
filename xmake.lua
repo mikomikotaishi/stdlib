@@ -1,4 +1,4 @@
-set_project("stdlib")
+set_project("stdlibx")
 set_version("0.0.1")
 
 add_rules("mode.release", "mode.debug")
@@ -22,7 +22,7 @@ end
 set_policy("build.sanitizer.address", true)
 set_policy("build.c++.modules", true)
 
-target("stdlib")
+target("stdlibx")
 set_kind("shared")
 -- set_kind("static")
 add_includedirs("include")

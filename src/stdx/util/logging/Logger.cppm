@@ -11,7 +11,7 @@ module;
 
 #include <vector>
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export module stdx.util.logging.Logger;
 
 export import stdx.util.logging.Level;
@@ -55,7 +55,7 @@ namespace time = stdlib::time;
  * @namespace stdx::util::logging
  * @brief Wrapper namespace for standard library extension utility operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::util::logging {
 #else
 export namespace stdlibx::util::logging {

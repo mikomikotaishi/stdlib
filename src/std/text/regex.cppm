@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.text.regex;
 #else
 export module stdlib.text.regex;
@@ -20,22 +20,22 @@ import alloc.text.regex;
  * @namespace std::text
  * @brief Wrapper namespace for standard library text operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::text {
 #else 
 export namespace stdlib::text {
 #endif
     using alloc::text::BasicRegex;
     using alloc::text::Regex;    
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::text::WRegex;
     #endif
     using alloc::text::WideRegex;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::text::SubMatch;
     #endif
     using alloc::text::SubexpressionMatch;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::text::CSubMatch;
     using alloc::text::WCSubMatch;
     using alloc::text::SSubMatch;
@@ -47,7 +47,7 @@ export namespace stdlib::text {
     using alloc::text::WideStringSubexpressionMatch;
     using alloc::text::MatchResults;
     using alloc::text::CMatch;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::text::WCMatch;
     using alloc::text::SMatch;
     using alloc::text::WSMatch;
@@ -62,7 +62,7 @@ export namespace stdlib::text {
      */
     namespace pmr {
         using alloc::text::pmr::CMatch;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::text::pmr::WCMatch;
         using alloc::text::pmr::SMatch;
         using alloc::text::pmr::WSMatch;
@@ -74,7 +74,7 @@ export namespace stdlib::text {
 
     using alloc::text::RegexIterator;
     using alloc::text::CRegexIterator;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::text::WCRegexIterator;
     using alloc::text::SRegexIterator;
     using alloc::text::WSRegexIterator;
@@ -84,7 +84,7 @@ export namespace stdlib::text {
     using alloc::text::WideStringRegexIterator;
     using alloc::text::RegexTokenIterator;
     using alloc::text::CRegexTokenIterator;
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::text::WCRegexTokenIterator;
     using alloc::text::SRegexTokenIterator;
     using alloc::text::WideStringRegexTokenIterator;
@@ -142,7 +142,7 @@ export namespace stdlib::text {
         using alloc::text::regex_constants::MATCH_ANY;
         using alloc::text::regex_constants::MATCH_NOT_NULL;
         using alloc::text::regex_constants::MATCH_CONTINUOUS;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::text::regex_constants::MATCH_PREV_AVAIL;
         #endif
         using alloc::text::regex_constants::MATCH_PREVIOUS_AVAILABLE;
@@ -155,7 +155,7 @@ export namespace stdlib::text {
         using alloc::text::regex_constants::ERROR_COLLATE;
         using alloc::text::regex_constants::ERROR_CTYPE;
         using alloc::text::regex_constants::ERROR_ESCAPE;
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::text::regex_constants::ERROR_BACKREF;
         using alloc::text::regex_constants::ERROR_BRACK;
         using alloc::text::regex_constants::ERROR_PAREN;

@@ -30,7 +30,7 @@ export namespace core::text {
 
         using StringView = std::string_view;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using U8StringView = std::u8string_view;
         using U16StringView = std::u16string_view;
         using U32StringView = std::u32string_view;
@@ -39,7 +39,7 @@ export namespace core::text {
         using Utf16StringView = std::u16string_view;
         using Utf32StringView = std::u32string_view;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using WStringView = std::wstring_view;
         #endif
 

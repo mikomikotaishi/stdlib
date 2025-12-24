@@ -10,7 +10,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.core.cstddef;
 #else
 export module stdlib.core.cstddef;
@@ -22,7 +22,7 @@ import core.cstddef;
  * @namespace std::core
  * @brief Wrapper namespace for the core objects of the standard library.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
@@ -56,7 +56,7 @@ export namespace stdlib::core {
 
     using ::core::byte;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::NullPtr;
     using ::core::NullPtr_t;
     using ::core::NullPointer_t;
@@ -98,7 +98,7 @@ export namespace stdlib::core {
     using ::core::Float64;
     using ::core::Float128;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using ::core::Div_t;
     using ::core::LDiv_t;
     using ::core::LLDiv_t;
@@ -124,6 +124,6 @@ export namespace stdlib::core {
     using ::core::RAND_MAX;
 }
 
-#if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_STD_MODULE_EXPORT_CORE();
+#if !defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

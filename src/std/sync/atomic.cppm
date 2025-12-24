@@ -10,7 +10,7 @@ module;
 
 #include <atomic>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.sync.atomic;
 #else
 export module stdlib.sync.atomic;
@@ -20,7 +20,7 @@ export module stdlib.sync.atomic;
  * @namespace std::sync
  * @brief Wrapper namespace for standard library synchronisation operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::sync {
 #else 
 export namespace stdlib::sync {
@@ -29,7 +29,7 @@ export namespace stdlib::sync {
     template <typename T>
     using Atomic = std::atomic<T>;
     
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     // Atomic reference template class
     template <typename T>
     using AtomicRef = std::atomic_ref<T>;
@@ -43,7 +43,7 @@ export namespace stdlib::sync {
     using MemoryOrder = std::memory_order;
     
     // Memory order constants
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     inline constexpr MemoryOrder MEMORY_ORDER_ACQ_REL = std::memory_order_acq_rel;
     inline constexpr MemoryOrder MEMORY_ORDER_SEQ_CST = std::memory_order_seq_cst;
     #endif
@@ -59,7 +59,7 @@ export namespace stdlib::sync {
     using AtomicFlag = std::atomic_flag;
     
     // Basic atomic typedefs
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using AtomicBool = std::atomic_bool;
     using AtomicChar = std::atomic_char;
     using AtomicSChar = std::atomic_schar;
@@ -101,7 +101,7 @@ export namespace stdlib::sync {
     using AtomicWideCharacter = std::atomic_wchar_t;
     
     // Integer type atomics
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using AtomicInt8_t = std::atomic_int8_t;
     using AtomicUInt8_t = std::atomic_uint8_t;
     using AtomicInt16_t = std::atomic_int16_t;
@@ -131,7 +131,7 @@ export namespace stdlib::sync {
     using AtomicUnsignedInteger64 = std::atomic_uint64_t;
     
     // Least/fast atomic integer types
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using AtomicIntLeast8_t = std::atomic_int_least8_t;
     using AtomicUIntLeast8_t = std::atomic_uint_least8_t;
     using AtomicIntLeast16_t = std::atomic_int_least16_t;
@@ -188,7 +188,7 @@ export namespace stdlib::sync {
     using AtomicUnsignedIntegerFast64 = std::atomic_uint_fast64_t;
     
     // Other atomic integer types
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using AtomicIntPtr_t = std::atomic_intptr_t;
     using AtomicUIntPtr_t = std::atomic_uintptr_t;
     using AtomicSize_t = std::atomic_size_t;

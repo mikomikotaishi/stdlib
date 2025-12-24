@@ -13,7 +13,7 @@ module;
 #include <sys/mtio.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.sys.mtio;
 #else
 export module stdlibx.os.linux.sys.mtio;
@@ -23,13 +23,13 @@ export module stdlibx.os.linux.sys.mtio;
  * @namespace stdx::os::linux::sys
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::linux::sys {
 #else 
 export namespace stdlibx::os::linux::sys {
 #endif
     #ifdef __linux__
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using MTOp = ::mtop;
     using MTGet = ::mtget;
     using MTTapeInfo = ::mt_tape_info;

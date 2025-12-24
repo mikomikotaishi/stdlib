@@ -13,7 +13,7 @@ module;
 #include <netinet/in.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.netinet.in;
 #else
 export module stdlibx.os.unix.netinet.in;
@@ -23,13 +23,13 @@ export module stdlibx.os.unix.netinet.in;
  * @namespace stdx::os::unix::netinet
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::unix::netinet {
 #else 
 export namespace stdlibx::os::unix::netinet {
 #endif
     #ifdef __unix__
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using InAddr = ::in_addr;
     using In6Addr = ::in6_addr;
     #endif
@@ -40,7 +40,7 @@ export namespace stdlibx::os::unix::netinet {
     using ::in6addr_any;
     using ::in6addr_loopback;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using IpMReq = ::ip_mreq;
     using IpMReqN = ::ip_mreqn;
     using IpMReqSource = ::ip_mreq_source;
@@ -61,7 +61,7 @@ export namespace stdlibx::os::unix::netinet {
     using ::bindresvport;
     using ::bindresvport6;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using CMsgHdr = ::cmsghdr;
 
     using In6PktInfo = ::in6_pktinfo;

@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.collections.queue;
 #else
 export module stdlib.collections.queue;
@@ -20,7 +20,7 @@ import alloc.collections.queue;
  * @namespace std::collections
  * @brief Wrapper namespace for standard library collection operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::collections {
 #else 
 export namespace stdlib::collections {

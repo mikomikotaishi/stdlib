@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.collections.linked_list;
 #else
 export module stdlib.collections.linked_list;
@@ -20,14 +20,14 @@ import alloc.collections.linked_list;
  * @namespace std::collections
  * @brief Wrapper namespace for standard library collection operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::collections {
 #else 
 export namespace stdlib::collections {
 #endif
     using alloc::collections::LinkedList;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using alloc::collections::List;
     #endif
 
@@ -38,7 +38,7 @@ export namespace stdlib::collections {
     namespace pmr {
         using alloc::collections::pmr::LinkedList;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         using alloc::collections::pmr::List;
         #endif
     }

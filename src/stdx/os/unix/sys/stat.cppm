@@ -13,7 +13,7 @@ module;
 #include <sys/stat.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.sys.stat;
 #else
 export module stdlibx.os.unix.sys.stat;
@@ -23,7 +23,7 @@ export module stdlibx.os.unix.sys.stat;
  * @namespace stdx::os::unix::sys
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::unix::sys {
 #else 
 export namespace stdlibx::os::unix::sys {

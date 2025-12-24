@@ -12,7 +12,7 @@ module;
 // Standard library headers are necessary here - there is no workaround
 #include <string>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.util.Argument;
 
 import std;
@@ -40,7 +40,7 @@ namespace ranges = stdlib::ranges;
  * @namespace stdx::util
  * @brief Wrapper namespace for standard library extension utility operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::util {
 #else
 export namespace stdlibx::util {

@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.text.charconv;
 #else
 export module stdlib.text.charconv;
@@ -20,7 +20,7 @@ import core.text.charconv;
  * @namespace std::text
  * @brief Wrapper namespace for standard library text operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::text {
 #else 
 export namespace stdlib::text {

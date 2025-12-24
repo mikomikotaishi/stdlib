@@ -37,7 +37,7 @@ export namespace alloc::collections {
         requires IsSameValue<typename Alloc::value_type, Pair<const Key, Value>>
     using TreeMultimap = std::multimap<Key, Value, Compare, Alloc>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename Key, typename Value, typename Compare = Less<Key>, typename Alloc = Allocator<Pair<const Key, Value>>>
     using Map = TreeMap<Key, Value, Compare, Alloc>;
 
@@ -56,7 +56,7 @@ export namespace alloc::collections {
         template <typename Key, typename Value, typename Compare = Less<Key>>
         using TreeMultimap = std::pmr::multimap<Key, Value, Compare>;
 
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         template <typename Key, typename Value, typename Compare = Less<Key>>
         using Map = TreeMap<Key, Value, Compare>;
 

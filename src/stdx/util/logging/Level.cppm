@@ -10,7 +10,7 @@ module;
 
 #include "Macros.hpp"
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export module stdx.util.logging.Level;
 
 import std;
@@ -38,7 +38,7 @@ namespace sys = stdlib::sys;
  * @namespace stdx::util::logging
  * @brief Wrapper namespace for standard library extension utility operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::util::logging {
 #else
 export namespace stdlibx::util::logging {
@@ -60,7 +60,7 @@ enum class Level: u8 {
 
 }
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 using stdx::util::logging::Level;
 #else
 using stdlibx::util::logging::Level;
@@ -97,7 +97,7 @@ struct Formatter<Level> {
     }
 };
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 template <>
 struct std::fmt::formatter<Level> : public Formatter<Level> {};
 #else

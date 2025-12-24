@@ -18,7 +18,7 @@ export module alloc.mem.new_header;
  * @brief Wrapper namespace for standard library memory operations.
  */
 export namespace alloc::mem {
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using AlignVal_t = std::align_val_t;
     using AlignValue_t = std::align_val_t;
     using NoThrow_t = std::nothrow_t;
@@ -32,7 +32,7 @@ export namespace alloc::mem {
     inline constexpr NoThrowTag NoThrow = std::nothrow;
     inline constexpr DestroyingDeleteTag DestroyingDelete = std::destroying_delete;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using BadAllocException = std::bad_alloc;
     #endif
 

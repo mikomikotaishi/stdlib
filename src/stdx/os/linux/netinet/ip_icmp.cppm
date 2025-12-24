@@ -13,7 +13,7 @@ module;
 #include <netinet/ip_icmp.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.netinet.ip_icmp;
 #else
 export module stdlibx.os.linux.netinet.ip_icmp;
@@ -23,7 +23,7 @@ export module stdlibx.os.linux.netinet.ip_icmp;
  * @namespace stdx::os::linux::netinet
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::linux::netinet {
 #else 
 export namespace stdlibx::os::linux::netinet {

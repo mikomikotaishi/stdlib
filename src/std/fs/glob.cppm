@@ -13,7 +13,7 @@ module;
 #include <string>
 #include <vector>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.fs.glob;
 
 import std.fmt.format;
@@ -43,7 +43,7 @@ using core::ranges::views::Transform;
 
 using namespace core;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 namespace fmt = std::fmt;
 #else
 namespace fmt = stdlib::fmt;
@@ -53,7 +53,7 @@ namespace fmt = stdlib::fmt;
  * @namespace std::fs
  * @brief Wrapper namespace for standard library file system operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 namespace std::fs {
 #else 
 namespace stdlib::fs {
@@ -380,7 +380,7 @@ namespace {
  * @namespace std::fs
  * @brief Wrapper namespace for standard library file system operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::fs {
 #else 
 export namespace stdlib::fs {

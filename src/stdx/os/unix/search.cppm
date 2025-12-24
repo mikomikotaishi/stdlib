@@ -13,7 +13,7 @@ module;
 #include <search.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.unix.search;
 #else
 export module stdlibx.os.unix.search;
@@ -23,13 +23,13 @@ export module stdlibx.os.unix.search;
  * @namespace stdx::os::unix
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::unix {
 #else 
 export namespace stdlibx::os::unix {
 #endif
     #ifdef __unix__
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using QElem = ::qelem;
     #endif
 
@@ -44,7 +44,7 @@ export namespace stdlibx::os::unix {
     using ::hcreate;
     using ::hdestroy;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using HSearchData = ::hsearch_data;
     #endif
 

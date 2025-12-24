@@ -48,7 +48,7 @@ export namespace core::ranges {
     }
 
     inline namespace range_cpo {
-        #ifdef STDLIB_ENABLE_COMPAT_NAMES
+        #ifdef STDLIBX_ENABLE_COMPAT_NAMES
         inline constexpr access::ConstBegin CBegin = std::ranges::cbegin;
         inline constexpr access::ConstEnd CEnd = std::ranges::cend;
         inline constexpr access::ReverseBegin RBegin = std::ranges::rbegin;
@@ -123,7 +123,7 @@ export namespace core::ranges {
 
     using std::ranges::to;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <typename T>
     using Iterator_t = std::ranges::iterator_t<T>;
 
@@ -283,7 +283,7 @@ export namespace core::ranges {
     template <typename Derived>
     using RangeAdaptorClosure = std::ranges::range_adaptor_closure<Derived>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     template <Range R>
     using RefView = std::ranges::ref_view<R>;
     #endif

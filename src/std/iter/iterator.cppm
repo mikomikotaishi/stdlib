@@ -8,7 +8,7 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.iter.iterator;
 #else
 export module stdlib.iter.iterator;
@@ -20,7 +20,7 @@ import core.iter.iterator;
  * @namespace std::iter
  * @brief Wrapper namespace for standard library iterator operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::iter {
 #else 
 export namespace stdlib::iter {
@@ -54,7 +54,7 @@ export namespace stdlib::iter {
     using core::iter::Mergeable;
     using core::iter::Sortable;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::iter::IndirectResult_t;
     #endif
 
@@ -63,7 +63,7 @@ export namespace stdlib::iter {
     using core::iter::IncrementableTraits;
     using core::iter::IndirectlyReadableTraits;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::iter::IterValue;
     using core::iter::IterReference;
     using core::iter::IterConstReference;
@@ -107,7 +107,7 @@ export namespace stdlib::iter {
     using core::iter::ConstSentinel;
     using core::iter::CommonIterator;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::iter::DefaultSentinel_t;
     using core::iter::UnreachableSentinel_t;
     #endif
@@ -119,7 +119,7 @@ export namespace stdlib::iter {
     using core::iter::FrontInsertIterator;
     using core::iter::InsertIterator;
     
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using core::iter::IStreamIterator;
     using core::iter::OStreamIterator;
     using core::iter::IStreamBufIterator;

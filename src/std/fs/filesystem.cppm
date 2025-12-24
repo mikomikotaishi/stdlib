@@ -10,7 +10,7 @@ module;
 
 #include <filesystem>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.fs.filesystem;
 #else
 export module stdlib.fs.filesystem;
@@ -36,7 +36,7 @@ export {
  * @namespace std::fs
  * @brief Wrapper namespace for standard library file system operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::fs {
 #else 
 export namespace stdlib::fs {
@@ -122,7 +122,7 @@ export namespace stdlib::fs {
         static constexpr InternalPermissionOptions NO_FOLLOW = std::filesystem::perm_options::nofollow;
     };
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using Perms = Permissions;
     using PermOptions = PermissionOptions;
     #endif

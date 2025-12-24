@@ -10,7 +10,7 @@ module;
 
 #include <random>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.random.random;
 #else
 export module stdlib.random.random;
@@ -32,7 +32,7 @@ namespace _detail::std::random {
  * @namespace std::random
  * @brief Wrapper namespace for standard library random number operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::random {
 #else 
 export namespace stdlib::random {
@@ -65,7 +65,7 @@ export namespace stdlib::random {
     template <typename RandomNumberEngine, std::size_t k>
     using ShuffleOrderEngine = std::shuffle_order_engine<RandomNumberEngine, k>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     // Predefined Generators
     using MinStdRand0 = std::minstd_rand0;
     using MinStdRand = std::minstd_rand;
@@ -154,7 +154,7 @@ export namespace stdlib::random {
     template <typename RealType = double>
     using PiecewiseLinearDistribution = std::piecewise_linear_distribution<RealType>;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     // Seed sequence
     using SeedSeq = std::seed_seq;
     #endif

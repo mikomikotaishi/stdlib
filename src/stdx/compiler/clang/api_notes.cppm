@@ -6,7 +6,7 @@
 
 module;
 
-#if defined(__clang__) && defined(STDLIB_EXTENSIONS_COMPILE_COMPILER_LIBRARY)
+#if defined(__clang__) && defined(STDLIBX_EXTENSIONS_COMPILE_COMPILER_LIBRARY)
 #include <clang/APINotes/APINotesManager.h>
 #include <clang/APINotes/APINotesOptions.h>
 #include <clang/APINotes/APINotesReader.h>
@@ -15,15 +15,15 @@ module;
 #include <clang/APINotes/Types.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.compiler.clang.api_notes;
 #else
 export module stdlibx.compiler.clang.api_notes;
 #endif
 
-#ifdef STDLIB_EXTENSIONS_COMPILE_COMPILER_LIBRARY
+#ifdef STDLIBX_EXTENSIONS_COMPILE_COMPILER_LIBRARY
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::compiler::clang {
 #else 
 export namespace stdlibx::compiler::clang {

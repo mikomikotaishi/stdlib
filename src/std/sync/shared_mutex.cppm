@@ -10,7 +10,7 @@ module;
 
 #include <shared_mutex>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.sync.shared_mutex;
 #else
 export module stdlib.sync.shared_mutex;
@@ -20,7 +20,7 @@ export module stdlib.sync.shared_mutex;
  * @namespace std::sync
  * @brief Wrapper namespace for standard library synchronisation operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::sync {
 #else 
 export namespace stdlib::sync {

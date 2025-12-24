@@ -9,13 +9,13 @@
 
 module;
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.arpa;
 #else
 export module stdlibx.os.linux.arpa;
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export import stdx.os.linux.arpa.ftp;
 export import stdx.os.linux.arpa.nameser;
 export import stdx.os.linux.arpa.telnet;

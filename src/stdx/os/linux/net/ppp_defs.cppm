@@ -13,7 +13,7 @@ module;
 #include <net/ppp_defs.h>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module stdx.os.linux.net.ppp_defs;
 #else
 export module stdlibx.os.linux.net.ppp_defs;
@@ -23,13 +23,13 @@ export module stdlibx.os.linux.net.ppp_defs;
  * @namespace stdx::os::linux::net
  * @brief Wrapper namespace for Unix POSIX operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace stdx::os::linux::net {
 #else 
 export namespace stdlibx::os::linux::net {
 #endif
     #ifdef __linux__
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using NpMode = ::NPmode;
     using PppStat = ::pppstat;
     using VjStat = ::vjstat;

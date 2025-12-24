@@ -10,7 +10,7 @@ module;
 
 #include <execution>
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.execution.execution;
 #else
 export module stdlib.execution.execution;
@@ -20,7 +20,7 @@ export module stdlib.execution.execution;
  * @namespace std::core
  * @brief Wrapper namespace for the core objects of the standard library.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
@@ -33,7 +33,7 @@ export namespace stdlib::core {
  * @namespace std::execution
  * @brief Wrapper namespace for standard library execution operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::execution {
 #else 
 export namespace stdlib::execution {
@@ -43,7 +43,7 @@ export namespace stdlib::execution {
     using ParallelUnsequencedPolicy = std::execution::parallel_unsequenced_policy;
     using UnsequencedPolicy = std::execution::unsequenced_policy;
 
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     inline constexpr SequencedPolicy SEQ = std::execution::seq;
     inline constexpr ParallelPolicy PAR = std::execution::par;
     inline constexpr ParallelUnsequencedPolicy PAR_UNSEQ = std::execution::par_unseq;

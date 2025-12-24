@@ -17,7 +17,7 @@ export module core.sys.csetjmp;
  * @brief Wrapper namespace for standard library system operations.
  */
 export namespace core::sys {
-    #ifdef STDLIB_ENABLE_COMPAT_NAMES
+    #ifdef STDLIBX_ENABLE_COMPAT_NAMES
     using JmpBuf = std::jmp_buf;
     #endif
 

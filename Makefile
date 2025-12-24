@@ -1,10 +1,10 @@
-# stdlib Library Makefile
+# stdlibx Library Makefile
 # 
 # This Makefile provides convenient targets for building, testing, and managing
-# the stdlib C++ module library using CMake and Ninja.
+# the stdlibx C++ module library using CMake and Ninja.
 
 # Project configuration
-PROJECT_NAME := stdlib
+PROJECT_NAME := stdlibx
 BUILD_DIR := build
 CMAKE_GENERATOR := Ninja
 CMAKE_BUILD_TYPE := Release
@@ -15,7 +15,7 @@ CMAKE_BUILD_FLAGS :=
 
 # Process build options
 ifneq ($(BUILD_TESTS),OFF)
-	CMAKE_BUILD_FLAGS += -DSTDLIB_BUILD_TESTS=ON
+	CMAKE_BUILD_FLAGS += -DSTDLIBX_BUILD_TESTS=ON
 endif
 
 # Sanitiser configuration (can be overridden with make SANITISERS="address undefined")
@@ -72,7 +72,7 @@ all: build
 # Help target - shows available commands
 .PHONY: help
 help:
-	@printf "$(BOLD)$(CYAN)stdlib Library Makefile$(RESET)\n"
+	@printf "$(BOLD)$(CYAN)stdlibx Library Makefile$(RESET)\n"
 	@printf "\n"
 	@printf "$(BOLD)Build Targets:$(RESET)\n"
 	@printf "  $(YELLOW)build$(RESET)         - Build the library (default)\n"

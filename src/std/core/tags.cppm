@@ -10,7 +10,7 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.core.tags;
 
 import std.concurrent.stop_token;
@@ -48,7 +48,7 @@ using alloc::mem::AllocatorArgument;
 using alloc::mem::DestroyingDelete;
 using alloc::mem::NoThrow;
 
-#ifdef STDLIB_NO_RESERVED_STD_NAMESPACE
+#ifdef STDLIBX_NO_RESERVED_STD_NAMESPACE
 #if __has_include(<stop_token>)
 using std::concurrent::NoStopState;
 #endif
@@ -70,7 +70,7 @@ using stdlib::time::chrono::Last;
  * @namespace std::core
  * @brief Wrapper namespace for the core objects of the standard library.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::core {
 #else 
 export namespace stdlib::core {
@@ -102,7 +102,7 @@ export namespace stdlib::core {
         using AllocatorArgumentTag = ::alloc::mem::AllocatorArgumentTag;
         using DestroyingDeleteTag = ::alloc::mem::DestroyingDeleteTag;
         using NoThrowTag = ::alloc::mem::NoThrowTag;
-        #ifdef STDLIB_NO_RESERVED_STD_MODULE
+        #ifdef STDLIBX_NO_RESERVED_STD_MODULE
         #if __has_include(<stop_token>)
         using NoStopStateTag = ::std::concurrent::NoStopStateTag;
         #endif
@@ -147,6 +147,6 @@ export namespace stdlib::core {
     };
 }
 
-#if !defined(STDLIB_NO_STD) && defined(STDLIB_IMPLICIT_USING_CORE)
-STDLIB_STD_MODULE_EXPORT_CORE();
+#if !defined(STDLIBX_NO_STD) && defined(STDLIBX_IMPLICIT_USING_CORE)
+STDLIBX_STD_MODULE_EXPORT_CORE();
 #endif

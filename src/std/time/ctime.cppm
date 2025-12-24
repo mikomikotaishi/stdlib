@@ -8,7 +8,7 @@
 
 module;
 
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 #define time _get_time
 #include <time.h>
 #undef time
@@ -16,23 +16,23 @@ module;
 #include <ctime>
 #endif
 
-#ifdef STDLIB_NO_RESERVED_STD_MODULE
+#ifdef STDLIBX_NO_RESERVED_STD_MODULE
 export module std.time.ctime;
 #else
 export module stdlib.time.ctime;
 #endif
 
-#ifndef STDLIB_NO_RESERVED_STD_MODULE
+#ifndef STDLIBX_NO_RESERVED_STD_MODULE
 /**
  * @namespace std::time
  * @brief Wrapper namespace for standard library time operations.
  */
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 export namespace std::time {
 #else 
 export namespace stdlib::time {
 #endif
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
     using Time = ::tm;
     using Time_t = ::time_t;
     using Clock_t = ::clock_t;
@@ -52,7 +52,7 @@ export namespace stdlib::time {
     #endif
     
     inline Time_t get_time(Time_t* timer) {
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
         return ::_get_time(timer);
         #else
         return std::time(timer);
@@ -64,7 +64,7 @@ export namespace stdlib::time {
      * @brief Wrapper namespace for standard library time formatting operations
      */
     namespace fmt {
-#if defined(STDLIB_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
         using ::timespec_get;
         using ::ctime;
         using ::asctime;
