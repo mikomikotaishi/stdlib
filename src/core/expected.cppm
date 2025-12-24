@@ -46,7 +46,7 @@ export namespace core {
     using BadExpectedAccessException = std::bad_expected_access<E>;
 
     template <typename E>
-    class Error {
+    class [[nodiscard]] Error {
     private:
         E err;
         StringView msg;
