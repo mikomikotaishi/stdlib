@@ -1,6 +1,6 @@
 /**
  * @file complex.cppm
- * @module core.math.complex
+ * @module core:math.complex
  * @brief Module file for standard library complex number operations.
  *
  * This file contains the implementation of the complex number operations in the standard library.
@@ -10,7 +10,7 @@ module;
 
 #include <complex>
 
-export module core.math.complex;
+export module core:math.complex;
 
 /**
  * @namespace core::math

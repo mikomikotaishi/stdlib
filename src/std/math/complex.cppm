@@ -1,6 +1,6 @@
 /**
  * @file complex.cppm
- * @module std.math.complex
+ * @module std:math.complex
  * @brief Module file for standard library complex number operations.
  *
  * This file contains the implementation of the complex number operations in the standard library.
@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.math.complex;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:math.complex;
 #else
-export module stdlib.math.complex;
+export module stdlib:math.complex;
 #endif
 
-import core.math.complex;
+import core;
 
 /**
  * @namespace std::math

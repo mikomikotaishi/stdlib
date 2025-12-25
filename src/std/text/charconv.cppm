@@ -1,6 +1,6 @@
 /**
  * @file charconv.cppm
- * @module std.text.charconv
+ * @module std:text.charconv
  * @brief Module file for standard library character conversion operations.
  *
  * This file contains the imports for the character conversion operations in the standard library.
@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.text.charconv;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:text.charconv;
 #else
-export module stdlib.text.charconv;
+export module stdlib:text.charconv;
 #endif
 
-import core.text.charconv;
+import core;
 
 /**
  * @namespace std::text

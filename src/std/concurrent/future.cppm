@@ -1,6 +1,6 @@
 /**
  * @file future.cppm
- * @module std.concurrent.future
+ * @module std:concurrent.future
  * @brief Module file for standard library future operations.
  *
  * This file contains the implementation of the future operations in the standard library.
@@ -12,13 +12,13 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.concurrent.future;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:concurrent.future;
 #else
-export module stdlib.concurrent.future;
+export module stdlib:concurrent.future;
 #endif
 
-import core.system_error;
+import core;
 
 using core::ErrorCode;
 using core::ErrorCondition;

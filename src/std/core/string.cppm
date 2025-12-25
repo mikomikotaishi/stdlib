@@ -10,13 +10,13 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.core.string;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:core.string;
 #else
-export module stdlib.core.string;
+export module stdlib:core.string;
 #endif
 
-import alloc.string;
+import alloc;
 
 /**
  * @namespace std::core

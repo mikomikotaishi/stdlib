@@ -1,6 +1,6 @@
 /**
  * @file ios.cppm
- * @module core.io.ios
+ * @module core:io.ios
  * @brief Module file for standard library base input/output operations.
  *
  * This file contains the implementation of the base input/output operations in the standard library.
@@ -10,10 +10,10 @@ module;
 
 #include <ios>
 
-export module core.io.ios;
+export module core:io.ios;
 
-import core.system_error;
-import core.meta.type_traits;
+import :system_error;
+import :meta.type_traits;
 
 using core::meta::TrueType;
 

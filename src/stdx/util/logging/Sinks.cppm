@@ -1,6 +1,6 @@
 /**
  * @file Sinks.cppm
- * @module stdx.util.logging.Sinks
+ * @module stdx:util.logging.Sinks
  * @brief Definition of log sink interfaces and implementations.
  *
  * This file contains the base ILogSink interface and concrete implementations
@@ -9,13 +9,19 @@
 
 module;
 
-#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
-export module stdx.util.logging.Sinks;
-
-export import stdx.util.logging.Level;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module stdx:util.logging.Sinks;
 
 import std;
+#else
+export module stdlibx:util.logging.Sinks;
 
+import stdlib;
+#endif
+
+export import :util.logging.Level;
+
+#if defined(STDLIBX_NO_RESERVED_STD_NAMESPACE) || defined(DOXYGEN)
 using std::fs::Path;
 using std::io::IOException;
 using std::io::IOS;
@@ -31,12 +37,6 @@ namespace io = std::io;
 namespace fs = std::fs;
 namespace mem = std::mem;
 #else
-export module stdlibx.util.logging.Sinks;
-
-export import stdlibx.util.logging.Level;
-
-import stdlib;
-
 using stdlib::fs::Path;
 using stdlib::io::IOException;
 using stdlib::io::IOS;

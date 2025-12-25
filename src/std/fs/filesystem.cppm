@@ -1,6 +1,6 @@
 /**
  * @file filesystem.cppm
- * @module std.fs.filesystem
+ * @module std:fs.filesystem
  * @brief Module file for standard library file system operations.
  *
  * This file contains the implementation of the file system operations in the standard library.
@@ -10,14 +10,13 @@ module;
 
 #include <filesystem>
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.fs.filesystem;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:fs.filesystem;
 #else
-export module stdlib.fs.filesystem;
+export module stdlib:fs.filesystem;
 #endif
 
-import core.system_error;
-import core.meta.type_traits;
+import core;
 
 using core::ErrorCode;
 using core::meta::UnderlyingTypeType;

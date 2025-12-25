@@ -1,6 +1,6 @@
 /**
  * @file cstdlib.cppm
- * @module core.text.cstdlib
+ * @module core:text.cstdlib
  * @brief Module file for standard library C-style wide string manipulation operations.
  *
  * This file contains the imports for the C-style wide string manipulation operations in the standard library.
@@ -10,7 +10,7 @@ module;
 
 #include <cstdlib>
 
-export module core.text.cstdlib;
+export module core:text.cstdlib;
 
 /**
  * @namespace core::text

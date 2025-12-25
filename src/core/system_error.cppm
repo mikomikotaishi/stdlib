@@ -1,6 +1,6 @@
 /**
  * @file system_error.cppm
- * @module core.system_error
+ * @module core:system_error
  * @brief Module file for standard library system error classes.
  *
  * This file contains the implementation of error classes in the standard library.
@@ -11,7 +11,7 @@ module;
 #include <ios>
 #include <system_error>
 
-export module core.system_error;
+export module core:system_error;
 
 /**
  * @namespace core

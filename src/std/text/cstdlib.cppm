@@ -1,6 +1,6 @@
 /**
  * @file cctype.cppm
- * @module std.text.cctype
+ * @module std:text.cctype
  * @brief Module file for standard library C-style wide string manipulation operations.
  *
  * This file contains the imports for the C-style wide string manipulation operations in the standard library.
@@ -8,13 +8,13 @@
 
 module;
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.text.cstdlib;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:text.cstdlib;
 #else
-export module stdlib.text.cstdlib;
+export module stdlib:text.cstdlib;
 #endif
 
-import core.text.cstdlib;
+import core;
 
 /**
  * @namespace std::text

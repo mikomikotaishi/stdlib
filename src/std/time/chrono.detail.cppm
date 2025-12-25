@@ -1,5 +1,6 @@
 /**
- * @file chrono.cppm
+ * @file chrono.detail.cppm
+ * @module std:time.chrono.detail
  * @brief Module file for standard library time operations.
  *
  * This file contains the implementation of the time operations in the standard library.
@@ -9,17 +10,17 @@ module;
 
 #include <chrono>
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.time.chrono:detail;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:time.chrono.detail;
+#else
+export module stdlib:time.chrono.detail;
+#endif
 
-import std.math.ratio;
+import :math.ratio;
 
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
 using std::math::ratio::Ratio;
 #else
-export module stdlib.time.chrono:detail;
-
-import stdlib.math.ratio;
-
 using stdlib::math::ratio::Ratio;
 #endif
 

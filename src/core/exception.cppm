@@ -1,6 +1,6 @@
 /**
  * @file exceptions.cppm
- * @module core.exception
+ * @module core:exception
  * @brief Module file for importing exceptions from the standard library.
  *
  * This file contains the implementation of the exception operations in the standard library.
@@ -13,7 +13,7 @@ module;
 
 #include "Macros.hpp"
 
-export module core.exception;
+export module core:exception;
 
 /**
  * @namespace core
