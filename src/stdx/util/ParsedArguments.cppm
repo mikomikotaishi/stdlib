@@ -1,23 +1,24 @@
 /**
  * @file ParsedArguments.cppm
- * @module stdx.util.ParsedArguments
+ * @module stdx:util.ParsedArguments
  * @brief Implementation of the ParsedArguments class.
  *
  * This file contains the implementation of the ParsedArguments class, which is used to represent
  * the container of parsed arguments.
+ * Adapted from p-ranav/argparse (https://github.com/p-ranav/argparse)
  */
 
 module;
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module stdx.util.ParsedArguments;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module stdx:util.ParsedArguments;
 
 import std;
 
 using std::collections::HashMap;
 using std::collections::Vector;
 #else
-export module stdlibx.util.ParsedArguments;
+export module stdlibx:util.ParsedArguments;
 
 import stdlib;
 

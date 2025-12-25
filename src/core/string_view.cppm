@@ -1,6 +1,6 @@
 /**
  * @file string_view.cppm
- * @module core.string_view
+ * @module core:string_view
  * @brief Module file for importing the StringView class from the standard library.
  * 
  * This file exports the StringView class operations in the standard library.
@@ -10,9 +10,9 @@ module;
 
 #include "Macros.hpp"
 
-export module core.string_view;
+export module core:string_view;
 
-import core.text.string.string_view;
+import :text.string.string_view;
 
 /**
  * @namespace core

@@ -1,6 +1,6 @@
 /**
  * @file exceptions.cppm
- * @module std.core.exceptions
+ * @module std:core.exceptions
  * @brief Module file for importing exceptions from the standard library.
  *
  * This file contains the implementation of the exception operations in the standard library.
@@ -13,10 +13,10 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.core.exceptions;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:core.exceptions;
 #else
-export module stdlib.core.exceptions;
+export module stdlib:core.exceptions;
 #endif
 
 /**

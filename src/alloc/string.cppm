@@ -1,6 +1,6 @@
 /**
  * @file string.cppm
- * @module alloc.string
+ * @module alloc:string
  * @brief Module file for importing the String class from the standard library.
  * 
  * This file exports the String class operations in the standard library.
@@ -10,9 +10,9 @@ module;
 
 #include "Macros.hpp"
 
-export module alloc.string;
+export module alloc:string;
 
-import alloc.text.string.string;
+import :text.string.string;
 
 /**
  * @namespace alloc

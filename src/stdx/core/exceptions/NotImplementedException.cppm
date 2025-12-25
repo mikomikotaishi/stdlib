@@ -1,6 +1,6 @@
 /**
  * @file NotImplementedException.cppm
- * @module stdx.core.Exceptions:NotImplementedException
+ * @module stdx:core.Exceptions.NotImplementedException
  * @brief Implementation of the NotImplementedException class.
  *
  * This file contains the implementation of the NotImplementedException class, which is thrown to indicate a called function has not been implemented.
@@ -10,19 +10,19 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module stdx.core.Exceptions:NotImplementedException;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module stdx:core.Exceptions.NotImplementedException;
 #else
-export module stdlibx.core.Exceptions:NotImplementedException;
+export module stdlibx:core.Exceptions.NotImplementedException;
 #endif
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
 import std;
 #else
 import stdlib;
 #endif
 
-import :UnsupportedOperationException;
+import :core.Exceptions.UnsupportedOperationException;
 
 /**
  * @namespace stdx::core

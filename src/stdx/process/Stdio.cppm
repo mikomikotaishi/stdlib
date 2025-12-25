@@ -1,6 +1,6 @@
 /**
  * @file Stdio.cppm
- * @module stdx.process.Stdio
+ * @module stdx:process.Stdio
  * @brief Implementation of the Stdio class.
  *
  * This file contains the implementation of the Stdio class, which is used to
@@ -8,17 +8,17 @@
 
 module;
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module stdx.process.Stdio;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module stdx:process.Stdio;
 
 import std;
-import stdx.os;
 #else
-export module stdlibx.process.Stdio;
+export module stdlibx:process.Stdio;
 
 import stdlib;
-import stdlibx.os;
 #endif
+
+import :os;
 
 #ifdef STDLIBX_NO_RESERVED_STD_NAMESPACE
 using namespace stdx::os;

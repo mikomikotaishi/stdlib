@@ -1,6 +1,6 @@
 /**
  * @file charconv.cppm
- * @module core.text.charconv
+ * @module core:text.charconv
  * @brief Module file for standard library character conversion operations.
  *
  * This file contains the imports for the character conversion operations in the standard library.
@@ -27,7 +27,7 @@ module;
         return std::from_chars(first, last, value, static_cast<std::chars_format>(fmt)); \
     }
 
-export module core.text.charconv;
+export module core:text.charconv;
 
 /**
  * @namespace core::text

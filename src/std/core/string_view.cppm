@@ -1,6 +1,6 @@
 /**
  * @file string_view.cppm
- * @module std.core.string_view
+ * @module std:core.string_view
  * @brief Module file for importing the StringView class from the standard library.
  * 
  * This file exports the StringView class operations in the standard library.
@@ -10,13 +10,13 @@ module;
 
 #include "Macros.hpp"
 
-#ifdef STDLIBX_NO_RESERVED_STD_MODULE
-export module std.core.string_view;
+#if defined(STDLIBX_NO_RESERVED_STD_MODULE) || defined(DOXYGEN)
+export module std:core.string_view;
 #else
-export module stdlib.core.string_view;
+export module stdlib:core.string_view;
 #endif
 
-import core.string_view;
+import core;
 
 /**
  * @namespace std::core
